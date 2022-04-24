@@ -1,0 +1,24 @@
+{
+    "name": "octancle/octancle",
+    "type": "project",
+    "require": {
+        "php": "^8.0.6",
+        "phpseclib/phpseclib": "^3.0",
+    },
+    "license": "MiT",
+    "authors": [
+        {
+            "name": "hxAri",
+            "email": "ari160824@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "system/builtin/Func/.php"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Yume\\Util\\": "system/builtin/Util"
+        }
+    }
+}
