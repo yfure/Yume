@@ -14,7 +14,6 @@ require "$root/system/__init__/bootstrap.php";
 
 // Replace Name space.
 Yume\Func\replace( Yume\Func\tree( "/" ), [
-	
 ]);
 
 // Run the application.
