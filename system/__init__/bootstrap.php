@@ -9,9 +9,13 @@
  * @author hxAri
  * @license Under MIT
  */
-if( PHP_VERSION < $v = "8.0.6" )
-{
-    throw new RuntimeException( "Oops sorry it looks like you are using a PHP version\nbelow {$v} please upgrade the PHP version to {$v} or higher." );
+try {
+    if( PHP_VERSION < $v = "8.0.6" )
+    {
+        throw new RuntimeException( "Oops sorry it looks like you are using a PHP version\nbelow {$v} please upgrade the PHP version to {$v} or higher." );
+    }
+} catch( RuntimeException $e ) {
+    echo $e::class . ": {$e->getMessage()}\n{$e->getFile()} on line {$e->getLine()}";
 }
 
 /*
