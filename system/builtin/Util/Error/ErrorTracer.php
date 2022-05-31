@@ -44,7 +44,6 @@ abstract class ErrorTracer extends ErrorProvider implements ErrorInterface
     }
     
     
-    
 }
 
 ?>
