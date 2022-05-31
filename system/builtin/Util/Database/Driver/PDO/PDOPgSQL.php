@@ -9,7 +9,7 @@ use PDO;
  *
  * @package Yume\Util\Database\Driver
  */
-class PDOPgSQL extends PHPDataObject
+class PDOPgSQL extends PDOProvider
 {
     
     /*
