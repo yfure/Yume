@@ -24,17 +24,17 @@ abstract class ErrorProvider
         $error['timestamp'] = Himei\Application::$object->dateTime->getTimestamp();
         
         // If the error store has not been created. **/
-        if( file_exists( path( noteware: $dir ) ) === False )
+        if( file_exists( path( log: $dir ) ) === False )
         {
             // Creating an error log directory. **/
-            mkdir( path( noteware: $dir ) );
+            mkdir( path( log: $dir ) );
         }
         
         // Parse error to tree string.
         $data = Himei\Tree::tree( $error, type: Himei\Tree::POINT );
         
         // Create file name by date time.
-        $path = path( noteware: "{$dir}/" );
+        $path = path( log: "{$dir}/" );
         
         // Write file.
         IO\File\File::write( $path . Himei\Application::$object->dateTime->format( "d.M-Y.\l\o\g" ), $data, "a" );
