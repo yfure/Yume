@@ -91,6 +91,7 @@ return( $constant = [
          * @return String
          */
         'APP_PATH' => "/app",
+        'ASSETS_PATH' => "/assets",
         'VENDOR_PATH' => "/vendor",
         'CONFIG_PATH' => "/configs",
         'SYSTEM_PATH' => "/system",
@@ -98,11 +99,9 @@ return( $constant = [
         'ROUTES_PATH' => "/storage/routes",
         'UTIL_PATH' => "/system/builtin/Util",
         'STORAGE_PATH' => "/storage",
+        'LOG_PATH' => "/storage/logs",
         'DATABASE_PATH' => "/storage/database",
-        'EREMENTO_PATH' => "/storage/eremento",
         'LANGUAGE_PATH' => "/storage/language",
-        'NOTEWARE_PATH' => "/storage/noteware",
-        'RESOURCE_PATH' => "/storage/resource",
         
         /*
          * Application environment.
