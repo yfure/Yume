@@ -1,5 +1,7 @@
 <?php
 
+use Yume\Kama\Obi\Environment;
+
 /*
  * Yume PHP Framework.
  *
@@ -20,6 +22,16 @@
  *
  */
 
+// Reporting error.
+error_reporting( E_ALL );
 
+// Load autoload file.
+include "vendor/autoload.php";
+
+// Load builtin functions.
+include "system/buffer/.php";
+
+// Load variable from environment file.
+Environment\Environment::onload()->load();
 
 ?>
