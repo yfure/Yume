@@ -1,0 +1,24 @@
+{
+    "name": "hxari/yume",
+    "type": "project",
+    "require": {
+        "php": "^8.0.6",
+        "phpseclib/phpseclib": "^3.0",
+        "vlucas/phpdotenv": "^5.4"
+    },
+    "license": "MiT",
+    "authors": [
+        {
+            "name": "hxAri",
+            "email": "ari160824@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "public/bootstrap.php"
+        ],
+        "psr-4": {
+            "Yume\\Kama\\Obi\\": "system/buffer/framework"
+        }
+    }
+}
