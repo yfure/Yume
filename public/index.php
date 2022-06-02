@@ -1,6 +1,7 @@
 <?php
 
 use Yume\Kama\Obi\Environment;
+use Yume\Kama\Obi\Runtime;
 
 /*
  * Yume PHP Framework.
@@ -33,5 +34,8 @@ include "system/buffer/.php";
 
 // Load variable from environment file.
 Environment\Environment::onload()->load();
+
+// Run application.
+Runtime\Runtime::create();
 
 ?>

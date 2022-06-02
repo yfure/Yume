@@ -50,7 +50,7 @@ class ModuleError extends ModuleNotFoundError
                 "config" => "Configuration module {} not found.",
                 
                 // Unknown error type.
-                "fone" => "No module named {}"
+                "None" => "No module named {}"
             };
         }
         parent::__construct( format( $message, path( $module, True ) ) );
