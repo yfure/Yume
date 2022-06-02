@@ -40,21 +40,20 @@ trait Config
         if( self::$configs === Null )
         {
             self::$configs = config( strtoupper( self::name() ) );
-        } else {
-            if( $key !== Null )
-            {
-                if( preg_match( "/\./", $key ) )
-                {
-                    return( ify( $key, self::$configs ) );
-                }
-                if( isset( self::$configs[$key] ) )
-                {
-                    return( self::$configs[$key] );
-                }
-                throw new Trouble\KeyError( $key );
-            }
-            return( self::$configs );
         }
+        if( $key !== Null )
+        {
+            if( preg_match( "/\./", $key ) )
+            {
+                return( ify( $key, self::$configs ) );
+            }
+            if( isset( self::$configs[$key] ) )
+            {
+                return( self::$configs[$key] );
+            }
+            throw new Trouble\KeyError( $key );
+        }
+        return( self::$configs );
     }
     
 }

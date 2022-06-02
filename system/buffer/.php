@@ -31,7 +31,7 @@ function ify( String $name, Array | ArrayAccess $array ): Mixed
             {
                 if( isset( $data[$key] ) )
                 {
-                    $data = $array[$key];
+                    $data = $data[$key];
                 } else {
                     if( is_int( $key ) )
                     {
