@@ -1,8 +1,5 @@
 <?php
 
-use Yume\Kama\Obi\Environment;
-use Yume\Kama\Obi\Runtime;
-
 /*
  * Yume PHP Framework.
  *
@@ -23,19 +20,32 @@ use Yume\Kama\Obi\Runtime;
  *
  */
 
-// Reporting error.
+// Show all error reports.
 error_reporting( E_ALL );
 
-// Load autoload file.
-include "vendor/autoload.php";
+// Get server document root.
+$root = $_SERVER['DOCUMENT_ROOT'];
 
-// Load builtin functions.
-include "system/buffer/.php";
+/*
+ * Register Auto Load.
+ *
+ * Automatic loading of files required for a project or application.
+ * This includes the files required for the application without explicitly
+ * including them with the [include] or [require] functions.
+ */
+require "$root/vendor/autoload.php";
 
-// Load variable from environment file.
-Environment\Environment::onload()->load();
+Yume\Func\replace( Yume\Kama\Obi\IO\Dir\Dir::tree( "/" ), [
+    Yume\Kama\Obi\AoE::class => Yume\Kama\Obi\AoE::class,
+    AoE::class => AoE::class,
+    AoE\App::class => AoE\App::class
+]);
 
-// Run application.
-Runtime\Runtime::create();
+/*
+ * ....
+ *
+ * ....
+ */
+Yume\Kama\Obi\Runtime\Runtime::app();
 
 ?>

@@ -1,0 +1,609 @@
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Error
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Throwable
+..+ ..+ ..+ Stringable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 40
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/routes/routes.php
+..+ Message
+..+ ..+ Class "X" not found
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ {closure}
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Spl\Loader\Loader
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Reflection/ReflectionFunction.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 34
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invoke
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 249
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invoke
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Reflection\ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Closure
+..+ ..+     ..+ Array
+..+ ..+         ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 217
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ handler
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\HTTP\Route\Route
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 121
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ guard
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\HTTP\Route\Route
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 81
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ validate
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\Himei\Data
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 65
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ dispatch
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 43
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ web
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Runtime\Runtime
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1651102499
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Error
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Throwable
+..+ ..+ ..+ Stringable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 40
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/routes/routes.php
+..+ Message
+..+ ..+ Class "X" not found
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ {closure}
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Spl\Loader\Loader
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Reflection/ReflectionFunction.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 34
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invoke
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 249
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invoke
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Reflection\ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Closure
+..+ ..+     ..+ Array
+..+ ..+         ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 217
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ handler
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\HTTP\Route\Route
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 121
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ guard
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\HTTP\Route\Route
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 81
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ validate
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\Himei\Data
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 65
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ dispatch
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 43
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ web
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Runtime\Runtime
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1651102554
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Error
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Throwable
+..+ ..+ ..+ Stringable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 47
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Input.php
+..+ Message
+..+ ..+ Class "Egulias\EmailValidator\Validator" not found
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/routes/routes.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 41
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ post
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Input
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ usermail
+..+ ..+     ..+ 8027
+..+ ..+ Array
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ {closure}
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Spl\Loader\Loader
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Reflection/ReflectionFunction.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 34
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invoke
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 249
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invoke
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Reflection\ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Closure
+..+ ..+     ..+ Array
+..+ ..+         ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 217
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ handler
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\HTTP\Route\Route
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 121
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ guard
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\HTTP\Route\Route
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 81
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ validate
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\Himei\Data
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 65
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ dispatch
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 43
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ web
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Runtime\Runtime
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1651103181
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ ParseError
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ CompileError
+..+ ..+     ..+ Error
+..+ ..+ Interface
+..+ ..+ ..+ Throwable
+..+ ..+ ..+ Stringable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 48
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Input.php
+..+ Message
+..+ ..+ syntax error, unexpected token "}"
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/vendor/composer/ClassLoader.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 346
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ Closure
+..+ ..+ ..+ args
+..+ ..+     ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/vendor/composer/../../system/builtin/Util/HTTP/Input.php
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/routes/routes.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 41
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ loadClass
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Composer\Autoload\ClassLoader
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\HTTP\Input
+..+ ..+ Array
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ {closure}
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Spl\Loader\Loader
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Reflection/ReflectionFunction.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 34
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invoke
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 249
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invoke
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Reflection\ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Closure
+..+ ..+     ..+ Array
+..+ ..+         ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 217
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ handler
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\HTTP\Route\Route
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 121
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ guard
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\HTTP\Route\Route
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 81
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ validate
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Yume\Util\Himei\Data
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 65
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ dispatch
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 43
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ web
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Util\Runtime\Runtime
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/Php/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1651103562

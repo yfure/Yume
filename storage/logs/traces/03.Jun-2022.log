@@ -1,0 +1,1298 @@
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Stringable
+..+ ..+ ..+ Throwable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 29
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ Message
+..+ ..+ 
+..+ Trace
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654189279
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Stringable
+..+ ..+ ..+ Throwable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 29
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ Message
+..+ ..+ 
+..+ Trace
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654189322
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Stringable
+..+ ..+ ..+ Throwable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 29
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ Message
+..+ ..+ 
+..+ Trace
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654189458
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Throwable
+..+ ..+ ..+ Stringable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 29
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ Message
+..+ ..+ 
+..+ Trace
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654190055
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Throwable
+..+ ..+ ..+ Stringable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 29
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ Message
+..+ ..+ 
+..+ Trace
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654190056
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Throwable
+..+ ..+ ..+ Stringable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 29
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ Message
+..+ ..+ 
+..+ Trace
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654190056
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Throwable
+..+ ..+ ..+ Stringable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 29
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ Message
+..+ ..+ 
+..+ Trace
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654190058
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Throwable
+..+ ..+ ..+ Stringable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 29
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/system/builtin/Util/Runtime/Runtime.php
+..+ Message
+..+ ..+ 
+..+ Trace
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Octancle/index.php
+..+     ..+ line
+..+     ..+ ..+ 21
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Util\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654190058
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Yume\Kama\Obi\Trouble\Exception\IOError
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ Yume\Kama\Obi\Trouble\Exception
+..+ ..+     ..+ Exception
+..+ ..+ Interface
+..+ ..+ ..+ Yume\Kama\Obi\Trouble\Trouble
+..+ ..+ ..+ Throwable
+..+ ..+ ..+ Stringable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 103
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/IO/File/File.php
+..+ Message
+..+ ..+ The "/storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/views/trigger/.saimin.php" file was not found or may have been deleted.
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ Yume\Kama\Obi\IO\File\{closure}
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\IO\File\File
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Reflection/ReflectionFunction.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 29
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invokeArgs
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Array
+..+ ..+         ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/IO/File/File.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 118
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invoke
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Reflection\ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Closure
+..+ ..+     ..+ Array
+..+ ..+         ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/IO/File/File.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 83
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ handle
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\IO\File\File
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+     ..+ Closure
+..+ ..+     ..+ Closure
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Func/view.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 33
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ read
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\IO\File\File
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ /system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/ErrorTrigger.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 79
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ Closure
+..+ ..+ ..+ args
+..+ ..+     ..+ /system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+     ..+ Array
+..+ ..+         ..+ error
+..+ ..+             ..+ code
+..+ ..+             ..+ ..+ 8192
+..+ ..+             ..+ line
+..+ ..+             ..+ ..+ 58
+..+ ..+             ..+ type
+..+ ..+             ..+ ..+ E_DEPRECATED
+..+ ..+             ..+ file
+..+ ..+             ..+ ..+ /system/builtin/Util/Security/BuiltIn/AES256.php
+..+ ..+             ..+ message
+..+ ..+                 ..+ base64_decode(): Passing null to parameter #1 ($string) of type string is deprecated
+..+ ..+ Array
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ handler
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Error\ErrorTrigger
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 8192
+..+ ..+     ..+ base64_decode(): Passing null to parameter #1 ($string) of type string is deprecated
+..+ ..+     ..+ /system/builtin/Util/Security/BuiltIn/AES256.php
+..+ ..+     ..+ 58
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Security/BuiltIn/AES256.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 58
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ Closure
+..+ ..+ ..+ args
+..+ ..+     ..+ 
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Cookie/Cookie.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 109
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ decrypt
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Security\BuiltIn\AES256
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 
+..+ ..+     ..+ aa66dc54bd12563c8d931382aec1427fae60c4ac7993744682d241c83b5b33a56c9ffd414d61d89fd1bc9f76ce8f9b8d0b1e29e55b16ac99c79edff1fd3ff023
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Authentication/Authentication.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 81
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ get
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Cookie\Cookie
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 3cTv9Z9aEzOo
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 78
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ __construct
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Authentication\Authentication
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 65
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ dispatch
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 43
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ web
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/public/index.php
+..+     ..+ line
+..+     ..+ ..+ 43
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654219454
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Yume\Kama\Obi\Trouble\Exception\IOError
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ Yume\Kama\Obi\Trouble\Exception
+..+ ..+     ..+ Exception
+..+ ..+ Interface
+..+ ..+ ..+ Yume\Kama\Obi\Trouble\Trouble
+..+ ..+ ..+ Throwable
+..+ ..+ ..+ Stringable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 103
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/IO/File/File.php
+..+ Message
+..+ ..+ The "/storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/views/trigger/.saimin.php" file was not found or may have been deleted.
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ Yume\Kama\Obi\IO\File\{closure}
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\IO\File\File
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Reflection/ReflectionFunction.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 29
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invokeArgs
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Array
+..+ ..+         ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/IO/File/File.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 118
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ invoke
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Reflection\ReflectionFunction
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Closure
+..+ ..+     ..+ Array
+..+ ..+         ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/IO/File/File.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 83
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ handle
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\IO\File\File
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+     ..+ Closure
+..+ ..+     ..+ Closure
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Func/view.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 33
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ read
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\IO\File\File
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ /system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Error/ErrorTrigger.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 79
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ Closure
+..+ ..+ ..+ args
+..+ ..+     ..+ /system/builtin/Util/Error/views/trigger/.saimin.php
+..+ ..+     ..+ Array
+..+ ..+         ..+ error
+..+ ..+             ..+ code
+..+ ..+             ..+ ..+ 8192
+..+ ..+             ..+ line
+..+ ..+             ..+ ..+ 58
+..+ ..+             ..+ type
+..+ ..+             ..+ ..+ E_DEPRECATED
+..+ ..+             ..+ file
+..+ ..+             ..+ ..+ /system/builtin/Util/Security/BuiltIn/AES256.php
+..+ ..+             ..+ message
+..+ ..+                 ..+ base64_decode(): Passing null to parameter #1 ($string) of type string is deprecated
+..+ ..+ Array
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ handler
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Error\ErrorTrigger
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 8192
+..+ ..+     ..+ base64_decode(): Passing null to parameter #1 ($string) of type string is deprecated
+..+ ..+     ..+ /system/builtin/Util/Security/BuiltIn/AES256.php
+..+ ..+     ..+ 58
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Security/BuiltIn/AES256.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 58
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ Closure
+..+ ..+ ..+ args
+..+ ..+     ..+ 
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Cookie/Cookie.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 109
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ decrypt
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Security\BuiltIn\AES256
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 
+..+ ..+     ..+ aa66dc54bd12563c8d931382aec1427fae60c4ac7993744682d241c83b5b33a56c9ffd414d61d89fd1bc9f76ce8f9b8d0b1e29e55b16ac99c79edff1fd3ff023
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Authentication/Authentication.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 81
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ get
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Cookie\Cookie
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 3cTv9Z9aEzOo
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 78
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ __construct
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Authentication\Authentication
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 65
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ dispatch
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 43
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ web
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/public/index.php
+..+     ..+ line
+..+     ..+ ..+ 43
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654219455
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Stringable
+..+ ..+ ..+ Throwable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 60
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Security/BuiltIn/AES256.php
+..+ Message
+..+ ..+ Passing null to parameter #1 (string) of type string is deprecated
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Cookie/Cookie.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 109
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ decrypt
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Security\BuiltIn\AES256
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 
+..+ ..+     ..+ aa66dc54bd12563c8d931382aec1427fae60c4ac7993744682d241c83b5b33a56c9ffd414d61d89fd1bc9f76ce8f9b8d0b1e29e55b16ac99c79edff1fd3ff023
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Authentication/Authentication.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 81
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ get
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Cookie\Cookie
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 3cTv9Z9aEzOo
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 78
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ __construct
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Authentication\Authentication
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 65
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ dispatch
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 43
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ web
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/public/index.php
+..+     ..+ line
+..+     ..+ ..+ 43
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654219698
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Stringable
+..+ ..+ ..+ Throwable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 60
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Security/BuiltIn/AES256.php
+..+ Message
+..+ ..+ Passing null to parameter #1 (string) of type string is deprecated
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Cookie/Cookie.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 109
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ decrypt
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Security\BuiltIn\AES256
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 
+..+ ..+     ..+ aa66dc54bd12563c8d931382aec1427fae60c4ac7993744682d241c83b5b33a56c9ffd414d61d89fd1bc9f76ce8f9b8d0b1e29e55b16ac99c79edff1fd3ff023
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Authentication/Authentication.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 81
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ get
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Cookie\Cookie
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 3cTv9Z9aEzOo
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 78
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ __construct
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Authentication\Authentication
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 65
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ dispatch
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 43
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ web
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/public/index.php
+..+     ..+ line
+..+     ..+ ..+ 43
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654219698
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Stringable
+..+ ..+ ..+ Throwable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 60
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Security/BuiltIn/AES256.php
+..+ Message
+..+ ..+ Passing null to parameter #1 (string) of type string is deprecated
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Cookie/Cookie.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 109
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ decrypt
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Security\BuiltIn\AES256
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 
+..+ ..+     ..+ aa66dc54bd12563c8d931382aec1427fae60c4ac7993744682d241c83b5b33a56c9ffd414d61d89fd1bc9f76ce8f9b8d0b1e29e55b16ac99c79edff1fd3ff023
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Authentication/Authentication.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 81
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ get
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Cookie\Cookie
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 3cTv9Z9aEzOo
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 78
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ __construct
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Authentication\Authentication
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 65
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ dispatch
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 43
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ web
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/public/index.php
+..+     ..+ line
+..+     ..+ ..+ 43
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654219802
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Stringable
+..+ ..+ ..+ Throwable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 60
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Security/BuiltIn/AES256.php
+..+ Message
+..+ ..+ Passing null to parameter #1 (string) of type string is deprecated
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Cookie/Cookie.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 109
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ decrypt
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Security\BuiltIn\AES256
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 
+..+ ..+     ..+ aa66dc54bd12563c8d931382aec1427fae60c4ac7993744682d241c83b5b33a56c9ffd414d61d89fd1bc9f76ce8f9b8d0b1e29e55b16ac99c79edff1fd3ff023
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Authentication/Authentication.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 81
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ get
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Cookie\Cookie
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ 3cTv9Z9aEzOo
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/HTTP/Route/RouteDispatch.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 78
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ __construct
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Authentication\Authentication
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ->
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 65
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ dispatch
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\HTTP\Route\RouteDispatch
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 43
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ web
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/public/index.php
+..+     ..+ line
+..+     ..+ ..+ 43
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654219802
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Stringable
+..+ ..+ ..+ Throwable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 74
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/AoE/App.php
+..+ Message
+..+ ..+ 
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 28
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ init
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\AoE\App
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/public/index.php
+..+     ..+ line
+..+     ..+ ..+ 49
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654220477
+..+ Object
+..+ ..+ Code
+..+ ..+ ..+ 0
+..+ ..+ Type
+..+ ..+ ..+ 
+..+ ..+ Alias
+..+ ..+ ..+ 
+..+ ..+ Class
+..+ ..+ ..+ Exception
+..+ ..+ Trait
+..+ ..+ ..+ Empty
+..+ ..+ Parent
+..+ ..+ ..+ 
+..+ ..+ Interface
+..+ ..+ ..+ Stringable
+..+ ..+ ..+ Throwable
+..+ ..+ Previous
+..+     ..+ 
+..+ File
+..+ ..+ Line
+..+ ..+ ..+ 74
+..+ ..+ File
+..+     ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/AoE/App.php
+..+ Message
+..+ ..+ 
+..+ Trace
+..+ ..+ Array
+..+ ..+ ..+ file
+..+ ..+ ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/system/builtin/Util/Runtime/Runtime.php
+..+ ..+ ..+ line
+..+ ..+ ..+ ..+ 28
+..+ ..+ ..+ function
+..+ ..+ ..+ ..+ init
+..+ ..+ ..+ class
+..+ ..+ ..+ ..+ Yume\Kama\Obi\AoE\App
+..+ ..+ ..+ type
+..+ ..+ ..+ ..+ ::
+..+ ..+ ..+ args
+..+ ..+     ..+ Empty
+..+ ..+ Array
+..+     ..+ file
+..+     ..+ ..+ /storage/emulated/0/project/personal/coding/PHP/Yume/public/index.php
+..+     ..+ line
+..+     ..+ ..+ 49
+..+     ..+ function
+..+     ..+ ..+ app
+..+     ..+ class
+..+     ..+ ..+ Yume\Kama\Obi\Runtime\Runtime
+..+     ..+ type
+..+     ..+ ..+ ::
+..+     ..+ args
+..+         ..+ Empty
+..+ timestamp
+    ..+ 1654220478

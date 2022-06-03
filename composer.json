@@ -1,10 +1,12 @@
 {
-    "name": "hxari/yume",
+    "name": "yume/yume",
     "type": "project",
     "require": {
         "php": "^8.0.6",
         "phpseclib/phpseclib": "^3.0",
-        "vlucas/phpdotenv": "^5.4"
+        "swiftmailer/swiftmailer": "^6.3",
+        "predis/predis": "^1.1",
+        "egulias/email-validator": "^3.1"
     },
     "license": "MiT",
     "authors": [
@@ -15,10 +17,13 @@
     ],
     "autoload": {
         "files": [
+            "system/builtin/Func/.php",
             "public/bootstrap.php"
         ],
         "psr-4": {
-            "Yume\\Kama\\Obi\\": "system/buffer/framework"
+            "App\\": "app/",
+            "Yume\\Kama\\Obi\\": "system/builtin/Util",
+            "Yume\\Util\\": "system/builtin/Util"
         }
     }
 }
