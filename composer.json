@@ -1,12 +1,10 @@
 {
-    "name": "yume/yume",
+    "name": "hxari/yume",
     "type": "project",
     "require": {
         "php": "^8.0.6",
         "phpseclib/phpseclib": "^3.0",
-        "swiftmailer/swiftmailer": "^6.3",
-        "predis/predis": "^1.1",
-        "egulias/email-validator": "^3.1"
+        "vlucas/phpdotenv": "^5.4"
     },
     "license": "MiT",
     "authors": [
@@ -22,8 +20,7 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "Yume\\Kama\\Obi\\": "system/builtin/Util",
-            "Yume\\Util\\": "system/builtin/Util"
+            "Yume\\Kama\\Obi\\": "system/buffer/framework/"
         }
     }
 }

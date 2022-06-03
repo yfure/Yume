@@ -5,7 +5,7 @@
  *
  * @author hxAri
  * @create 05.02-2022
- * @update 01.06-2022
+ * @update 03.06-2022
  * @github https://github.com/hxAri/{Yume}
  *
  * Yume is a simple framework for building Websites
@@ -35,11 +35,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
  */
 require "$root/vendor/autoload.php";
 
-Yume\Func\replace( Yume\Kama\Obi\IO\Dir\Dir::tree( "/" ), [
-    Yume\Kama\Obi\AoE::class => Yume\Kama\Obi\AoE::class,
-    AoE::class => AoE::class,
-    AoE\App::class => AoE\App::class
-]);
+Yume\Func\replace( Yume\Kama\Obi\IO\Dir\Dir::tree( "/" ), [] );
 
 /*
  * ....
