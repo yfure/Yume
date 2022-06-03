@@ -3,9 +3,6 @@
 namespace Yume\Kama\Obi\AoE
 {
     
-    use function Yume\Func\config;
-    use function Yume\Func\path;
-    
     use DateTimeZone;
     use DateTime;
     
@@ -40,7 +37,7 @@ namespace Yume\Kama\Obi\AoE
         public static $router;
         public static $object;
         
-        use Config;
+        use Traits\Config;
         
         /*
          * Initialize app runtime.
@@ -49,11 +46,11 @@ namespace Yume\Kama\Obi\AoE
          *
          * @return Void
          */
-        public static function init(): Void
+        public static function buff(): Void
         {
             
             // Get app configuration.
-            self::$config = config( "app" );
+            self::$configs = config( "app" );
             
             // Create instance.
             self::$object = new Data;
@@ -65,15 +62,29 @@ namespace Yume\Kama\Obi\AoE
              * Set time format based on configuration or
              * You can change it in application configuration section.
              */
-            self::$object->dateTime = new DateTime( "now", self::$object->dateTimeZone = new DateTimeZone( self::config( "locale.timezone" ) ) );
+            self::$object->dateTime = new DateTime( "now", self::$object->dateTimeZone = new DateTimeZone( self::config( "timezone" ) ) );
             
-            /** Set Error Handler function. */
-            set_error_handler( self::config( "error.handler.trigger" ) );
-            set_exception_handler( self::config( "error.handler.exception" ) );
+            set_error_handler( "Yume\Kama\Obi\Trouble\Toriga\Toriga::handler" );
+            //set_exception_handler( "Yume\Kama\Obi\Trouble\Sutakku\Sutakku::handler" );
+            set_exception_handler( "Yume\Kama\Obi\Trouble\Memew\Memew::handler" );
             
-            //throw new \Exception;
+            try {
+                try {
+                    try {
+                        throw new \ArithmeticError( "Catch me!" );
+                    } catch( \ArithmeticError $e ) {
+                        throw new \AssertionError( "", 0, previous: $e );
+                    }
+                } catch( \AssertionError $e ) {
+                    throw new \RuntimeException( "", 0, previous: $e );
+                }
+            } catch ( \RuntimeException $e ) {
+                throw new \Error( "", 0, previous: $e );
+            }
             
         }
+        
+        public static function x() {}
     }
     
 }

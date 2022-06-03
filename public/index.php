@@ -35,13 +35,13 @@ $root = $_SERVER['DOCUMENT_ROOT'];
  */
 require "$root/vendor/autoload.php";
 
-Yume\Func\replace( Yume\Kama\Obi\IO\Dir\Dir::tree( "/" ), [] );
+//replace( Yume\Kama\Obi\IO\Dir\Dir::tree( "/" ), [] );
 
 /*
  * ....
  *
  * ....
  */
-Yume\Kama\Obi\Runtime\Runtime::app();
+Yume\Kama\Obi\AoE\Runtime::buff();
 
 ?>

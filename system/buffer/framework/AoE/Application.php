@@ -3,8 +3,8 @@
 namespace Yume\Kama\Obi\AoE
 {
     
-    use function Yume\Func\config;
-    use function Yume\Func\path;
+    
+    
     
     use DateTimeZone;
     use DateTime;

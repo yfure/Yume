@@ -3,7 +3,7 @@
 namespace App\HTTP\Controllers
 {
     
-    use function Yume\Func\config;
+    
     use function Yume\Func\view;
     
     use Yume\Kama\Obi\AoE;

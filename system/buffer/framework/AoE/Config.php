@@ -2,7 +2,7 @@
 
 namespace Yume\Kama\Obi\AoE;
 
-use function Yume\Func\config;
+
 
 use Yume\Kama\Obi\HTTP;
 use Yume\Kama\Obi\Spl;

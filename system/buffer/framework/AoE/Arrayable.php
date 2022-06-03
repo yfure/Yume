@@ -2,7 +2,7 @@
 
 namespace Yume\Kama\Obi\AoE;
 
-use function Yume\Func\ify;
+
 
 abstract class Arrayable
 {
