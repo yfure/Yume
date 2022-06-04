@@ -41,7 +41,9 @@ abstract class Memew
         }
         
         $sutakku = new Sutakku\Sutakku( $object );
-        $sutakku = AoE\Tree::tree([ Throwable::class => $sutakku->stacks ], 0, AoE\Tree::POINT );
+        $sutakku = AoE\Tree::tree( type: AoE\Tree::POINT, array: [
+            Throwable::class => $sutakku->getStacks()
+        ]);
         
         echo "<pre>" . $sutakku;
         
