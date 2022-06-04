@@ -2,12 +2,14 @@
 
 namespace Yume\Kama\Obi\Trouble\Memew;
 
+use Yume\Kama\Obi\AoE;
+
 use Throwable;
 
 /*
  * Memew
  *
- * Sutakku is the class used to display uncaught exception trace messages,
+ * Memew is the class used to display uncaught exception trace messages,
  * this way you won't be in trouble when you encounter an uncaught exception.
  *
  * @package Yume\Kama\Obi\Trouble\Memew
@@ -37,7 +39,12 @@ abstract class Memew
                 $object[( $throw::class )] = $throw;
             }
         }
-        echo "<pre>" . json_encode( (new Sutakku\Sutakku( $object ))->stacks, JSON_PRETTY_PRINT );
+        
+        $sutakku = new Sutakku\Sutakku( $object );
+        $sutakku = AoE\Tree::tree([ Throwable::class => $sutakku->stacks ], 0, AoE\Tree::POINT );
+        
+        echo "<pre>" . $sutakku;
+        
     }
     
 }
