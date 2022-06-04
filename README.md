@@ -9,7 +9,7 @@ composer create-project hxari/yume
 ```
 
 # Running
-```
+```sh
 cd yume && php -S 127.0.0.1:8080 public/index.php
 ```
 
