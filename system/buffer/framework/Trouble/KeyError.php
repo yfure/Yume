@@ -16,9 +16,9 @@ class KeyError extends Error
      *
      * @access Public: Instance
      *
-     * @params String: $message
-     * @params String: $key
-     * @params String: $ref
+     * @params String $message
+     * @params String $key
+     * @params String $ref
      *
      * @return Static
      */
