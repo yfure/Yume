@@ -2,59 +2,133 @@
 
 return([
     
-    'environment' => [
-        'path' => "kankyou"
+    /*
+     * Environment class configuration.
+     *
+     */
+    "environment" => [
+        
+        /*
+         * The location where the environment files are stored.
+         *
+         * You can rename files and move environment
+         * files where no one can reach them.
+         *
+         * @path Default BASE_PATH
+         */
+        "path" => "kankyou"
     ],
     
-    'reflection' => [
-        'function' => [
-            'template' => []
+    /*
+     * Reflection class configuration.
+     *
+     */
+    "reflector" => [
+        "function" => [
+            "template" => []
         ],
-        'instance' => [
-            '@method' => [
-                'allow' => True,
-                'template' => []
+        "instance" => [
+            "@method" => [
+                "filter" => ReflectionMethod::IS_PUBLIC,
+                "scheme" => []
             ],
-            '@constant' => [
-                'allow' => True,
-                'template' => []
+            "@constant" => [
+                "filter" => True,
+                "scheme" => []
             ],
-            '@property' => [
-                'allow' => True,
-                'template' => []
+            "@property" => [
+                "filter" => True,
+                "scheme" => []
             ],
-            'template' => []
+            "scheme" => [
+                "class" => [
+                    "name",
+                    "space"
+                ],
+                "object" => [
+                    "is" => [
+                        "is::Abstract",
+                        "is::Anonymous",
+                        "is::Cloneable",
+                        "is::Countable",
+                        "is::Data",
+                        "is::Enum",
+                        "is::Final",
+                        "is::Instance",
+                        "is::Instantiable",
+                        "is::Interface",
+                        "is::Internal",
+                        "is::Iterable",
+                        "is::Stringable",
+                        "is::SubclassOf",
+                        "is::Throwable",
+                        "is::Trait",
+                        "is::UserDefined"
+                    ]
+                ],
+                "traits" => "traits",
+                "methods" => "methods",
+                "constants" => "constants",
+                "interfaces" => "interfaces",
+                "properties" => "properties"
+            ]
         ],
-        'interface' => [
-            'template' => []
+        "interface" => [
+            "scheme" => []
         ],
-        'parameter' => [
-            'template' => []
+        "parameter" => [
+            "scheme" => []
         ]
     ],
     
-    'timezone' => "Asia/Tokyo",
+    /*
+     * Default Time Zone for app.
+     *
+     */
+    "timezone" => "Asia/Tokyo",
     
-    'trouble' => [
-        'memew' => [
-            'scheme' => [
-                "@Object" => [
-                    "@Code",
-                    "@Type",
-                    "@Alias",
-                    "@Class",
-                    "@Trait",
-                    "@Parent",
-                    "@Interface",
-                    "@Previous"
+    /*
+     * The Trouble configuration.
+     *
+     * It also includes the name of the function that handles the error,
+     * where the error log is stored and also includes how the function
+     * displays error messages based on a template or schema.
+     */
+    "trouble" => [
+        "error" => [
+            "scheme" => [
+                "File" => [
+                    "File",
+                    "Line"
                 ],
-                "@File" => [
-                    "@Line",
-                    "@File"
+                "Error" => [
+                    "Code",
+                    "Level"
                 ],
-                "@Message",
-                "@Trace"
-            ]
+                "Message"
+            ],
+            "handler" => "Yume\Kama\Obi\Trouble\Toriga\Toriga::handler"
+        ],
+        "exception" => [
+            "scheme" => [
+                "Object" => [
+                    "Code",
+                    "Type",
+                    "Alias",
+                    "Class",
+                    "Trait",
+                    "Parent",
+                    "Interface",
+                    "Previous"
+                ],
+                "File" => [
+                    "Line",
+                    "File"
+                ],
+                "Message",
+                "Trace"
+            ],
+            "handler" => "Yume\Kama\Obi\Trouble\Memew\Memew::handler"
         ]
     ]
     
