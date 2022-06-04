@@ -16,8 +16,8 @@ class ModuleError extends ModuleNotFoundError
      *
      * @access Public: Instance
      *
-     * @params String: $message
-     * @params String: $type
+     * @params String $message
+     * @params String $type
      *
      * @return Static
      */
