@@ -16,9 +16,9 @@ class IndexError extends Error
      *
      * @access Public: Instance
      *
-     * @params String: $message
-     * @params Int: $range
-     * @params String: $ref
+     * @params String $message
+     * @params Int $range
+     * @params String $ref
      *
      * @return Static
      */
