@@ -12,7 +12,7 @@ namespace Yume\Kama\Obi\AoE
         /*
          * DateTime Class Instance.
          *
-         * @access Public, Static
+         * @access Public: Static
          *
          * @values DateTime
          */
@@ -49,9 +49,6 @@ namespace Yume\Kama\Obi\AoE
         public static function buff(): Void
         {
             
-            // Get app configuration.
-            self::$configs = config( "app" );
-            
             // Create instance.
             self::$object = new Data;
             
@@ -64,9 +61,19 @@ namespace Yume\Kama\Obi\AoE
              */
             self::$object->dateTime = new DateTime( "now", self::$object->dateTimeZone = new DateTimeZone( self::config( "timezone" ) ) );
             
-            set_error_handler( "Yume\Kama\Obi\Trouble\Toriga\Toriga::handler" );
-            //set_exception_handler( "Yume\Kama\Obi\Trouble\Sutakku\Sutakku::handler" );
-            set_exception_handler( "Yume\Kama\Obi\Trouble\Memew\Memew::handler" );
+            /*
+             * Set user-defined error handler function.
+             *
+             * @see configs/app
+             */
+            set_error_handler( self::config( "trouble.error.handler" ) );
+            
+            /*
+             * Sets a user-defined exception handler function.
+             *
+             * @see configs/app
+             */
+            set_exception_handler( self::config( "trouble.exception.handler" ) );
             
             try {
                 try {
