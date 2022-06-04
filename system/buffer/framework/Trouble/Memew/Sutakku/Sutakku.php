@@ -34,6 +34,7 @@ class Sutakku implements SutakkuInterface
         } else {
             $this->object = $object;
         }
+        
         $this->stacks = $this->stack();
         
     }
@@ -92,14 +93,7 @@ class Sutakku implements SutakkuInterface
             // List of Interfaces implemented.
             "Interface" => Null,
             
-            default => call_user_func( function() use( $trace )
-            {
-                if( method_exists( $this->object, $method = format( "get{}", $trace ) ) )
-                {
-                    return( $this->object->{ $method }() );
-                }
-                return( "Undefined" );
-            })
+            default => call_user_func( fn() => method_exists( $this->object, $method = format( "get{}", $trace ) ) ? $this->object->{ $method }() : "Undefined" )
             
         });
     }
