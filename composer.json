@@ -1,6 +1,8 @@
 {
     "name": "hxari/yume",
     "type": "project",
+    "source: "https://github.com/hxAri/Yume",
+    "issues": "https://github.com/hxAri/Yume/issues",
     "require": {
         "php": "^8.0.6",
         "phpseclib/phpseclib": "^3.0",
