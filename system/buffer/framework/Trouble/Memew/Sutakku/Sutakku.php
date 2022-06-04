@@ -3,17 +3,57 @@
 namespace Yume\Kama\Obi\Trouble\Memew\Sutakku;
 
 use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\RegExp;
+use Yume\Kama\Obi\Reflector;
 
 use Throwable;
 
+/*
+ * Sutakku
+ *
+ * The Sutakku class is a class that defines
+ * the order in which exceptions are thrown.
+ *
+ * @package Yume\Kama\Obi\Trouble\Memew\Sutakku
+ */
 class Sutakku implements SutakkuInterface
 {
     
-    public $object;
-    public $stacks = [];
-    public $previs = [];
+    /*
+     * The Exception thrown.
+     *
+     * @access Private
+     *
+     * @values Throwable
+     */
+    private $object;
     
+    /*
+     * The Exception stack trace.
+     *
+     * @access Private
+     *
+     * @values Array
+     */
+    private $stacks = [];
+    
+    /*
+     * The Exception previous.
+     *
+     * @access Private
+     *
+     * @values Array
+     */
+    private $previs;
+    
+    /*
+     * Construct method of class Sutakku.
+     *
+     * @access Public: Instance
+     *
+     * @params Throwable $object
+     *
+     * @return Static
+     */
     public function __construct( Array | Throwable $object )
     {
         if( is_array( $object ) )
@@ -25,7 +65,7 @@ class Sutakku implements SutakkuInterface
                 if( $i !== 0 )
                 {
                     $this->previs[$name] = new Sutakku( $previous );
-                    $this->previs[$name] = $this->previs[$name]->stacks;
+                    $this->previs[$name] = $this->previs[$name]->getStacks();
                 } else {
                     $this->object = $previous;
                 }
@@ -39,6 +79,42 @@ class Sutakku implements SutakkuInterface
         
     }
     
+    /*
+     * @inherit Yume\Kama\Obi\Trouble\Memew\SutakkuInterface
+     *
+     */
+    public function getObject(): Throwable
+    {
+        return( $this->object );
+    }
+    
+    /*
+     * @inherit Yume\Kama\Obi\Trouble\Memew\SutakkuInterface
+     *
+     */
+    public function getStacks(): Array
+    {
+        return( $this->stacks );
+    }
+    
+    /*
+     * @inherit Yume\Kama\Obi\Trouble\Memew\SutakkuInterface
+     *
+     */
+    public function getPrevis(): ? Array
+    {
+        return( $this->previs );
+    }
+    
+    /*
+     * Get stack.
+     *
+     * @access Public
+     *
+     * @params String $trace
+     *
+     * @return Mixed
+     */
     private function stack( ? Array $traces = Null )
     {
         if( $traces === Null )
@@ -48,7 +124,7 @@ class Sutakku implements SutakkuInterface
              *
              * @values Array
              */
-            $traces  = AoE\App::config( "trouble.memew.scheme" );
+            $traces  = AoE\App::config( "trouble.exception.scheme" );
         }
         
         $scheme = [];
@@ -57,45 +133,40 @@ class Sutakku implements SutakkuInterface
         {
             if( is_array( $value ) )
             {
-                $scheme[RegExp\RegExp::replace( $key, "/^\@([a-zA-Z]+)/", "$1" )] = $this->stack( $value );
+                $scheme[$key] = $this->stack( $value );
             } else {
                 
-                $value = RegExp\RegExp::replace( $value, "/^\@([a-zA-Z]+)/", "$1" );
+                $scheme[$value] = match( $value )
+                {
+                    // The source of the thrown Throwable.
+                    "File" => path( $this->object->getFile(), True ),
+                    
+                    // Throwable class name.
+                    "Class" => $this->object::class,
+                    
+                    // List of Traits used.
+                    "Trait" => Reflector\Kurasu::getTraits( $this->object, True ),
+                    
+                    // Throwable parent class name.
+                    "Parent" => Reflector\Kurasu::getParentTree( $this->object ),
+                    
+                    // Throwable message.
+                    "Message" => path( $this->object->getMessage(), True ),
+                    
+                    // Get the previous exception.
+                    "Previous" => $this->object->getPrevious() !== Null ? $this->previs : [],
+                    
+                    // List of Interfaces implemented.
+                    "Interface" => Reflector\Kurasu::getInterfaces( $this->object, True ),
+                    
+                    default => call_user_func( fn() => method_exists( $this->object, $method = format( "get{}", $value ) ) ? $this->object->{ $method }() : "Undefined" )
+                    
+                };
                 
-                $scheme[$value] = $this->trace( $value );
             }
         }
+        
         return( $scheme );
-    }
-    
-    private function trace( String $trace ): Mixed
-    {
-        return( match( $trace )
-        {
-            // The source of the thrown Throwable.
-            "File" => path( $this->object->getFile(), True ),
-            
-            // Throwable class name.
-            "Class" => $this->object::class,
-            
-            // List of Traits used.
-            "Trait" => [],
-            
-            // Throwable parent class name.
-            "Parent" => Null,
-            
-            // Throwable message.
-            "Message" => path( $this->object->getMessage(), True ),
-            
-            // Get the previous exception.
-            "Previous" => $this->object->getPrevious() !== Null ? $this->previs : [],
-            
-            // List of Interfaces implemented.
-            "Interface" => Null,
-            
-            default => call_user_func( fn() => method_exists( $this->object, $method = format( "get{}", $trace ) ) ? $this->object->{ $method }() : "Undefined" )
-            
-        });
     }
     
 }
