@@ -2,10 +2,12 @@
 
 namespace Yume\Kama\Obi\AoE;
 
-class Collection implements Hairetsu, \Iterator
+use Iterator;
+
+class Collection implements Buffer\Hairetsu, Iterator
 {
     
-    use Iterator;
+    use Buffer\Iterator;
     
     /*
      * @inheritdoc Hairetsu
