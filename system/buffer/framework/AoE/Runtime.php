@@ -2,7 +2,7 @@
 
 namespace Yume\Kama\Obi\AoE;
 
-abstract class Runtime
+final class Runtime
 {
     
     public static function buff(): Void
@@ -10,7 +10,7 @@ abstract class Runtime
         
         App::buff();
         
-        if( isCommandLineInterface )
+        if( CLI )
         {
             /*
              * Handle command line arguments.
@@ -19,6 +19,7 @@ abstract class Runtime
              * Components, models, and so on. If no command is sent,
              * The program will be terminated.
              */
+            echo "Hello World!";
             
         } else {
             
