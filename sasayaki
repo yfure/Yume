@@ -1,0 +1,2 @@
+#!/usr/bin/env php
+<?php require( "public/index.php" ); ?>
