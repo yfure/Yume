@@ -33,8 +33,12 @@ $root = $_SERVER['DOCUMENT_ROOT'];
  * This includes the files required for the application without explicitly
  * including them with the [include] or [require] functions.
  */
-require "$root/vendor/autoload.php";
-
+if( $root !== "" )
+{
+    require "$root/vendor/autoload.php";
+} else {
+    require "vendor/autoload.php";
+}
 //replace( Yume\Kama\Obi\IO\Dir\Dir::tree( "/" ), [] );
 
 /*
