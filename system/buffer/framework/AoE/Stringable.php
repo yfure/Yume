@@ -2,6 +2,9 @@
 
 namespace Yume\Kama\Obi\AoE;
 
+use Yume\Kama\Obi\Reflector;
+use Yume\Kama\Obi\Trouble;
+
 /*
  * Utility class for strings.
  *
@@ -13,39 +16,48 @@ abstract class Stringable
     /*
      * Parses any data to type string.
      *
-     * @access Public, Static
+     * @access Public Static
      *
-     * @params Mixed <data>
+     * @params Mixed $data
      *
      * @return String
      */
     public static function parse( Mixed $data ): String
     {
-        if( $data !== Null )
+        if( $data === Null  )
         {
-            if( is_bool( $data ) )
-            {
-                $data = $data ? "True" : "False";
-            }
-            if( is_array( $data ) )
-            {
-                $data = json_encode( $data/*, JSON_PRETTY_PRINT*/ );
-            }
-            if( is_callable( $data ) )
-            {
-                $data = self::parse( Reflection\ReflectionFunction::invoke( $data ) );
-            }
-            if( is_object( $data ) )
-            {
-                if( $data Instanceof \Stringable )
-                {
-                    return( $data->__toString() );
-                }
-                return( $data::class );
-            }
-            return( "{$data}" );
+            return( "Null" );
         }
-        return( "Null" );
+        if( is_bool( $data ) )
+        {
+            return( $data ? "True" : "False" );
+        }
+        if( is_array( $data ) )
+        {
+            return( json_encode( $data ) );
+        }
+        if( is_callable( $data ) )
+        {
+            return( self::parse( Reflector\Kansu::invoke( $data ) ) );
+        }
+        if( is_object( $data ) )
+        {
+            if( $data Instanceof \Stringable )
+            {
+                return( $data->__toString() );
+            }
+            return( $data::class );
+        }
+        return( $data !== Null ? "{$data}" : "Null" );
+    }
+    
+    /*
+     * @inherit Function format
+     *
+     */
+    public static function format( String $string, Mixed ...$format ): String
+    {
+        return( call_user_func_array( "format", func_get_args() ) );
     }
     
     /*
@@ -53,10 +65,10 @@ abstract class Stringable
      *
      * @source http://stackoverflow.com/a/13733588/
      *
-     * @access Public, Static
+     * @access Public Static
      *
-     * @params Int <length>
-     * @params String, Null <alphabet>
+     * @params Int $length
+     * @params String, Null $alphabet
      *
      * @return String
      */
@@ -70,6 +82,7 @@ abstract class Stringable
             $alphabet .= implode( range( "A", "Z" ) );
             $alphabet .= implode( range( 0, 9 ) );
         }
+        
         $alphabetLength = strlen( $alphabet );
         
         for( $i = 0; $i < $length; $i++ )
@@ -78,6 +91,36 @@ abstract class Stringable
         }
         
         return( $token );
+    }
+    
+    public static function posLetterIs( String $string, String $letter, Int $position ): Bool
+    {
+        if( strlen( $string ) < $position )
+        {
+            throw new Trouble\IndexError( range: $position, ref: __METHOD__ );
+        }
+        foreach( str_split( $string ) As $pos => $let )
+        {
+            if( $pos === $position )
+            {
+                return( $let === $letter );
+            }
+        }
+        return( False );
+    }
+    
+    /*
+     * Check if check if letter is upper or lower.
+     *
+     * @access Public Static
+     *
+     * @params String $string
+     *
+     * @return Bool
+     */
+    public static function firstLetterIsUpper( String $string ): Int | Bool
+    {
+        return( preg_match( "/^[\p{Lu}\x{2160}-\x{216F}]/u", $string ) );
     }
     
 }
