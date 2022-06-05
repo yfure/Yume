@@ -2,15 +2,19 @@
 
 namespace Yume\Kama\Obi\AoE;
 
-class Data extends Collection implements \ArrayAccess, \Countable, Hairetsu, \Iterator
+use ArrayAccess;
+use Countable;
+use Iterator;
+
+class Data extends Collection implements ArrayAccess, Countable, Buffer\Hairetsu, Iterator
 {
     
-    use Access;
-    use Countable;
-    use Overloading;
+    use Buffer\Access;
+    use Buffer\Countable;
+    use Buffer\Overloader;
     
     /*
-     * @inheritdoc Hairetsu
+     * @inheritdoc Yume\Kama\Obi\AoE\Buffer\Hairetsu
      */
     public function __construct( Array $data = [] )
     {
