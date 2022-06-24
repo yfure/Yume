@@ -2,8 +2,6 @@
 
 namespace Yume\Kama\Obi\AoE;
 
-
-
 abstract class Arrayable
 {
     

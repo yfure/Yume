@@ -136,6 +136,17 @@ function format( String $string, Mixed ...$format ): String
 }
 
 /*
+ * Shorthand function name.
+ *
+ * @inherit f.format
+ *
+ */
+function f( String $string, Mixed ...$format ): String
+{
+    return( call_user_func_array( "format", [ $string, ...$format ] ) );
+}
+
+/*
  * Lisy directory contents.
  *
  * @params String <dir>

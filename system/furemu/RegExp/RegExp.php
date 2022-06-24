@@ -6,18 +6,75 @@ abstract class RegExp
 {
     
     /*
-     * ...
+     * Perform a regular expression match.
      *
-     * @access Public: Static
+     * @access Public Static
+     *
+     * @params String $pattern
+     * @params String $subject
+     *
+     * @return Bool
+     */
+    public static function test( String $pattern, String $subject ): Int | Bool
+    {
+        return( ( $match = preg_match( $pattern, $subject ) ) === 0 ? False : ( $match === 1 ? True : $match ) );
+    }
+    
+    /*
+     * Retrieves the result of matching a string against a regular expression.
+     *
+     * @access Public Static
+     *
+     * @params String $pattern
+     * @params String $subject
+     *
+     * @return Array|Bool
+     */
+    public static function match( String $pattern, String $subject ): Array | Bool
+    {
+        $matchs = [];
+        
+        if( preg_match( $pattern, $subject, $matchs, PREG_UNMATCHED_AS_NULL ) )
+        {
+            return( $matchs );
+        }
+        return( False );
+    }
+    
+    /*
+     * Executes a search for a match in a specified string.
+     *
+     * @access Public Static
+     *
+     * @params String $pattern
+     * @params String $subject
+     *
+     * @return Array|Bool
+     */
+    public static function matchs( String $pattern, String $subject ): Array | Bool
+    {
+        $matchs = [];
+        
+        if( preg_match_all( $pattern, $subject, $matchs, PREG_SET_PRDER || PREG_UNMATCHED_AS_NULL ) )
+        {
+            return( $matchs );
+        }
+        return( False );
+    }
+    
+    /*
+     * Replace string with regexp.
+     *
+     * @access Public Static
      *
      * @params  $
      *
      * @return Array|String
      */
-    public static function replace( Array | String $subject, Array | String $pattern, Array | Callable | String $replace ): Array | String
+    public static function replace( Array | String $pattern, Array | String $subject, Array | Callable | String $replace ): Array | String
     {
-        $subIs = ucfirst( gettype( $subject ) );
         $patIs = ucfirst( gettype( $pattern ) );
+        $subIs = ucfirst( gettype( $subject ) );
         $repIs = ucfirst( gettype( $replace ) );
         
         if( $subIs === "Array" )

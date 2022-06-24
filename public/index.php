@@ -5,7 +5,7 @@
  *
  * @author hxAri
  * @create 05.02-2022
- * @update 03.06-2022
+ * @update -
  * @github https://github.com/hxAri/{Yume}
  *
  * Yume is a simple framework for building Websites
@@ -30,8 +30,8 @@ $root = $_SERVER['DOCUMENT_ROOT'];
  * Register Auto Load.
  *
  * Automatic loading of files required for a project or application.
- * This includes the files required for the application without explicitly
- * including them with the [include] or [require] functions.
+ * This includes the files required for the application without
+ * explicitly including them with the include or require functions.
  */
 if( $root !== "" )
 {
@@ -39,13 +39,9 @@ if( $root !== "" )
 } else {
     require "vendor/autoload.php";
 }
+
 //replace( Yume\Kama\Obi\IO\Dir\Dir::tree( "/" ), [] );
 
-/*
- * ....
- *
- * ....
- */
 Yume\Kama\Obi\AoE\Runtime::buff();
 
 ?>

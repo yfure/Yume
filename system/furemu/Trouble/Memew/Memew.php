@@ -18,7 +18,7 @@ abstract class Memew
 {
     
     /*
-     * Handle uncaught exception.
+     * Handle all uncaught exceptions.
      *
      * @access Public: Static
      *
@@ -41,11 +41,11 @@ abstract class Memew
         }
         
         $sutakku = new Sutakku\Sutakku( $object );
-        $sutakku = AoE\Tree::tree( type: AoE\Tree::POINT, array: [
+        $sutakku = AoE\Tree::tree( type: AoE\Tree::LINER, array: [
             Throwable::class => $sutakku->getStacks()
         ]);
         
-        echo "<pre>" . $sutakku;
+        echo f( "<pre>{}\n{}</pre>", $throw::class, $sutakku );
         
     }
     
