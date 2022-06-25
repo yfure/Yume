@@ -1,10 +1,11 @@
 <?php
 
-namespace Yume\Kama\Obi\Trouble;
+namespace Yume\Kama\Obi\Trouble
+{
 
 use Exception;
 use Throwable;
 
-abstract class Error extends Exception implements Throwable {}
-
+class Error extends Exception implements Throwable {}
+}
 ?>

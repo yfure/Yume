@@ -5,6 +5,8 @@ namespace Yume\Kama\Obi\HTTP\Cookies;
 use Yume\Kama\Obi\AoE;
 use Yume\Kama\Obi\Trouble;
 
+use Throwable;
+
 /*
  * CookieError
  *
@@ -23,6 +25,15 @@ class CookieError extends Trouble\Error
      * @values Int
      */
     public const INVALID_DOMAIN = 6861;
+    
+    /*
+     * If the expires is not valid.
+     *
+     * @access Public Static
+     *
+     * @values Int
+     */
+    public const INVALID_EXPIRES = 6891;
     
     /*
      * If the header is not valid.
@@ -49,7 +60,7 @@ class CookieError extends Trouble\Error
      *
      * @values Int
      */
-    public const INVALID_PATH = 6245;
+    public const INVALID_PATH = 6845;
     
     /*
      * If the samesite is not valid.
@@ -79,6 +90,9 @@ class CookieError extends Trouble\Error
             {
                 // If the domain is not valid.
                 self::INVALID_DOMAIN => "Domain name for {} is invalid",
+                
+                // If the expires is not valid.
+                self::INVALID_EXPIRES => "",
                 
                 // If the header is not valid.
                 self::INVALID_HEADER => "Invalid cookie header &gt&gt {}.",

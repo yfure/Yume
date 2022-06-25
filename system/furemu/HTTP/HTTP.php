@@ -22,7 +22,7 @@ abstract class HTTP
     {
         if( headers_sent() )
         {
-            throw new Trouble\Error( "The header must be set before the output is sent." );
+            throw new Trouble\TypeError( "The header must be set before the output is sent." );
         }
         header( $header, $replace, $code );
     }

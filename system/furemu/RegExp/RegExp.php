@@ -17,7 +17,7 @@ abstract class RegExp
      */
     public static function test( String $pattern, String $subject ): Int | Bool
     {
-        return( ( $match = preg_match( $pattern, $subject ) ) === 0 ? False : ( $match === 1 ? True : $match ) );
+        return( ( Bool ) $match = preg_match( $pattern, $subject ) );
     }
     
     /*
