@@ -8,6 +8,13 @@ use Yume\Kama\Obi\Trouble;
 
 use Stringable;
 
+/*
+ * CookieHeader
+ *
+ * Raw Cookies header.
+ *
+ * @package Yume\Kama\Obi\HTTP\Cookies
+ */
 final class CookieHeader implements Stringable
 {
     

@@ -4,6 +4,13 @@ namespace Yume\Kama\Obi\HTTP\Cookies;
 
 use Yume\Kama\Obi\RegExp;
 
+/*
+ * Cookie
+ *
+ * Manage cookies, delete, save, get and also parse.
+ *
+ * @package Yume\Kama\Obi\HTTP\Cookies
+ */
 abstract class Cookie
 {
     

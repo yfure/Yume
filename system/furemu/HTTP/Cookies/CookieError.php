@@ -92,7 +92,7 @@ class CookieError extends Trouble\Error
                 self::INVALID_DOMAIN => "Domain name for {} is invalid",
                 
                 // If the expires is not valid.
-                self::INVALID_EXPIRES => "",
+                self::INVALID_EXPIRES => "Expired must have String value << 1|+1|-1 days >> | <<D, d-M-Y H:i:s T >> | << \d{1,10} >> {} is given.",
                 
                 // If the header is not valid.
                 self::INVALID_HEADER => "Invalid cookie header &gt&gt {}.",

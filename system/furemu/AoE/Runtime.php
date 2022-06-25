@@ -25,12 +25,6 @@ final class Runtime
             
             // Start as web server.
             
-            $cookie = \Yume\Kama\Obi\HTTP\Cookies\Cookie::set( "test", "Testing!" );
-            
-            echo $cookie;
-            echo "\n";
-            echo \Yume\Kama\Obi\HTTP\Cookies\Cookie::parse( $cookie );
-            
         }
         
     }
