@@ -4,6 +4,8 @@ namespace Yume\Kama\Obi\AoE;
 
 final class Runtime
 {
+    public static $matchs = [];
+    
     public static function buff(): Void
     {
         App::buff();
