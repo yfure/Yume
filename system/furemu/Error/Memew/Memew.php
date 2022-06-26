@@ -1,6 +1,6 @@
 <?php
 
-namespace Yume\Kama\Obi\Trouble\Memew;
+namespace Yume\Kama\Obi\Error\Memew;
 
 use Yume\Kama\Obi\AoE;
 
@@ -12,7 +12,7 @@ use Throwable;
  * Memew is the class used to display uncaught exception trace messages,
  * this way you won't be in trouble when you encounter an uncaught exception.
  *
- * @package Yume\Kama\Obi\Trouble\Memew
+ * @package Yume\Kama\Obi\Error\Memew
  */
 abstract class Memew
 {

@@ -54,17 +54,25 @@ final class App
         /*
          * Set user-defined error handler function.
          *
-         * @see configs/app
+         * @see configs/app.trouble.error.handler
          */
         set_error_handler( self::config( "trouble.error.handler" ) );
         
         /*
          * Sets a user-defined exception handler function.
          *
-         * @see configs/app
+         * @see configs/app.trouble.exception.handler
          */
         set_exception_handler( self::config( "trouble.exception.handler" ) );
         
+        ini_set( "session.save_handler", "files" );
+        
+        /*
+         * Sets user-level session storage functions.
+         *
+         * @see configs/app.http.session.handler
+         */
+        session_set_save_handler( new (self::config( "http.session.handler" )), True );
         
     }
     

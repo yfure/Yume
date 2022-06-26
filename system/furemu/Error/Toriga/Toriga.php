@@ -1,6 +1,6 @@
 <?php
 
-namespace Yume\Kama\Obi\Trouble\Toriga;
+namespace Yume\Kama\Obi\Error\Toriga;
 
 abstract class Toriga
 {

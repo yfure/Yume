@@ -9,26 +9,15 @@ namespace Yume\Kama\Obi\Trouble;
  *
  * @package Yume\Kama\Obi\Trouble
  */
-class IndexError extends Error
+class IndexError extends TroubleError
 {
     /*
-     * Construct method of class IndexError.
+     * @inherit Yume\Kama\Obi\Trouble\TroubleError
      *
-     * @access Public: Instance
-     *
-     * @params String $message
-     * @params Int $range
-     * @params String $ref
-     *
-     * @return Static
      */
-    public function __construct( ? String $message = Null, ? Int $range = Null, ? String $ref = Null )
+    public function __construct( ? Int $index = 0, Int $code = 0, ? Throwable $prev = Null )
     {
-        if( $message === Null )
-        {
-            $message = format( "Index {} out of range in {}.", $range, $ref );
-        }
-        parent::__construct( $message );
+        parent::__construct( f( "Index {} out of range.", $index ), $code, $prev );
     }
 }
 

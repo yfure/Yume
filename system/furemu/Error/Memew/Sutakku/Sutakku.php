@@ -1,6 +1,6 @@
 <?php
 
-namespace Yume\Kama\Obi\Trouble\Memew\Sutakku;
+namespace Yume\Kama\Obi\Error\Memew\Sutakku;
 
 use Yume\Kama\Obi\AoE;
 use Yume\Kama\Obi\Reflector;
@@ -13,7 +13,7 @@ use Throwable;
  * The Sutakku class is a class that defines
  * the order in which exceptions are thrown.
  *
- * @package Yume\Kama\Obi\Trouble\Memew\Sutakku
+ * @package Yume\Kama\Obi\Error\Memew\Sutakku
  */
 class Sutakku implements SutakkuInterface
 {
@@ -80,7 +80,7 @@ class Sutakku implements SutakkuInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\Trouble\Memew\SutakkuInterface
+     * @inherit Yume\Kama\Obi\Error\Memew\SutakkuInterface
      *
      */
     public function getObject(): Throwable
@@ -89,7 +89,7 @@ class Sutakku implements SutakkuInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\Trouble\Memew\SutakkuInterface
+     * @inherit Yume\Kama\Obi\Error\Memew\SutakkuInterface
      *
      */
     public function getStacks(): Array
@@ -98,7 +98,7 @@ class Sutakku implements SutakkuInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\Trouble\Memew\SutakkuInterface
+     * @inherit Yume\Kama\Obi\Error\Memew\SutakkuInterface
      *
      */
     public function getPrevis(): ? Array

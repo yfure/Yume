@@ -19,6 +19,15 @@ return([
         "path" => "kankyou"
     ],
     
+    "http" => [
+        "cookies" => [
+            "handler" => Yume\Kama\Obi\HTTP\Cookies\CookieHeader::class
+        ],
+        "session" => [
+            "handler" => Yume\Kama\Obi\HTTP\Session\SessionHandler::class
+        ]
+    ],
+    
     /*
      * Reflection class configuration.
      *
@@ -107,7 +116,7 @@ return([
                 ],
                 "Message"
             ],
-            "handler" => "Yume\Kama\Obi\Trouble\Toriga\Toriga::handler"
+            "handler" => "Yume\Kama\Obi\Error\Toriga\Toriga::handler"
         ],
         "exception" => [
             "scheme" => [
@@ -128,7 +137,7 @@ return([
                 "Message",
                 "Trace"
             ],
-            "handler" => "Yume\Kama\Obi\Trouble\Memew\Memew::handler"
+            "handler" => "Yume\Kama\Obi\Error\Memew\Memew::handler"
         ]
     ]
     

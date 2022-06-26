@@ -4,11 +4,22 @@ namespace Yume\Kama\Obi\AoE;
 
 final class Runtime
 {
-    
     public static function buff(): Void
     {
-        
         App::buff();
+        
+        /*
+         * Replace anything.
+         *
+         */
+        replace( "system", tree( "system" ), function( String $fname, String $fread ): String
+        {
+            if( $match = \Yume\Kama\Obi\RegExp\RegExp::matchs( "/(?:(.*?)(Error)(.*?))/m", str_replace( [ "\t", "\x20\x20\x20\x20" ], "", $fread ) ) )
+            {
+                self::$matchs[] = $fname;
+            }
+            return( $fread );
+        });
         
         if( CLI )
         {
@@ -23,12 +34,13 @@ final class Runtime
             
         } else {
             
-            // Start as web server.
+            /*
+             * Start as web server.
+             *
+             */
             
         }
-        
     }
-    
 }
 
 ?>

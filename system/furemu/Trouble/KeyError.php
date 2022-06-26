@@ -9,26 +9,15 @@ namespace Yume\Kama\Obi\Trouble;
  *
  * @package Yume\Kama\Obi\Trouble
  */
-class KeyError extends Error
+class KeyError extends TroubleError
 {
     /*
-     * Construct method of class KeyError.
+     * @inherit Yume\Kama\Obi\Trouble\TroubleError
      *
-     * @access Public: Instance
-     *
-     * @params String $message
-     * @params String $key
-     * @params String $ref
-     *
-     * @return Static
      */
-    public function __construct( ? String $message = Null, ? String $key = Null, ? String $ref = Null )
+    public function __construct( ? String $key = Null, Int $code = 0, ? Throwable $prev = Null )
     {
-        if( $message === Null )
-        {
-            $message = format( "Undefined key {} in {}", $key, $ref );
-        }
-        parent::__construct( $message );
+        parent::__construct( f( "Key {} undefined.", $key ), $code, $prev );
     }
 }
 

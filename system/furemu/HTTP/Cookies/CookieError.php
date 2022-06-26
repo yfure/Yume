@@ -14,7 +14,7 @@ use Throwable;
  *
  * @package Yume\Kama\Obi\HTTP\Cookies
  */
-class CookieError extends Trouble\Error
+class CookieError extends Trouble\TroubleError
 {
     
     /*
@@ -72,48 +72,17 @@ class CookieError extends Trouble\Error
     public const INVALID_SAMESITE = 6877;
     
     /*
-     * Construct method of class CookieError
+     * @inherit Yume\Kama\Obi\Trouble\TroubleError
      *
-     * @access Public Instance
-     *
-     * @params String $subject
-     * @params Int $flags
-     * @params Throwable $prev
-     *
-     * @return Static
      */
-    public function __construct( String $subject, Int $flags = 0, ? Throwable $prev = Null )
-    {
-        if( $flags !== 0 )
-        {
-            $match = match( $flags )
-            {
-                // If the domain is not valid.
-                self::INVALID_DOMAIN => "Domain name for {} is invalid",
-                
-                // If the expires is not valid.
-                self::INVALID_EXPIRES => "Expired must have String value << 1|+1|-1 days >> | <<D, d-M-Y H:i:s T >> | << \d{1,10} >> {} is given.",
-                
-                // If the header is not valid.
-                self::INVALID_HEADER => "Invalid cookie header &gt&gt {}.",
-                
-                // If the name is not valid.
-                self::INVALID_NAME => "Cookie names must not contain any characters or symbols \\s|\\n|\\r|\\t|\\(|\\)|\\<|\\>|\\@|\\,|\\;|\\:|\\\\|\\\"|\\'|\\/|\\[|\\]|\\?|\\=|\\{|\\}, {} is given.",
-                
-                // If the path is not valid.
-                self::INVALID_PATH => "The pathname must be a valid route path, {} is given.",
-                
-                // If the samesite is not valid.
-                self::INVALID_SAMESITE => "The sameSite attribute must be Lax, None, or Strict, {} is given.",
-                
-                // If the flag is invalid.
-                default => "Invalid flag, unknown error.",
-                
-            };
-            $subject = f( $match, AoE\Stringable::parse( $subject ) );
-        }
-        parent::__construct( $subject, $flags, $prev );
-    }
+    public Array $flags = [
+        self::INVALID_DOMAIN => "Domain name for {} is invalid",
+        self::INVALID_EXPIRES => "Expired must have String value << 1|+1|-1 days >> | <<D, d-M-Y H:i:s T >> | << \d{1,10} >> {} is given.",
+        self::INVALID_HEADER => "Invalid cookie header &gt&gt {}.",
+        self::INVALID_NAME => "Cookie names must not contain any characters or symbols \\s|\\n|\\r|\\t|\\(|\\)|\\<|\\>|\\@|\\,|\\;|\\:|\\\\|\\\"|\\'|\\/|\\[|\\]|\\?|\\=|\\{|\\}, {} is given.",
+        self::INVALID_PATH => "The pathname must be a valid route path, {} is given.",
+        self::INVALID_SAMESITE => "The sameSite attribute must be Lax, None, or Strict, {} is given."
+    ];
     
 }
 

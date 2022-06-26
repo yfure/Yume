@@ -55,7 +55,7 @@ abstract class RegExp
     {
         $matchs = [];
         
-        if( preg_match_all( $pattern, $subject, $matchs, PREG_SET_PRDER || PREG_UNMATCHED_AS_NULL ) )
+        if( preg_match_all( $pattern, $subject, $matchs, PREG_SET_ORDER || PREG_UNMATCHED_AS_NULL ) )
         {
             return( $matchs );
         }

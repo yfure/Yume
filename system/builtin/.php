@@ -9,19 +9,19 @@ use Yume\Kama\Obi\Trouble;
 /*
  * Retrieve element values using dot as array separator.
  *
- * @params String $name
- * @params Array, ArrayAccess $array
+ * @params Array|String $name
+ * @params Array|ArrayAccess $array
  *
  * @return Mixed
  */
-function ify( String $name, Array | ArrayAccess $array ): Mixed
+function ify( Array | String $name, Array | ArrayAccess $array ): Mixed
 {
     /*
      * Split string with period.
      *
      * @values Array
      */
-    $expl = explode( ".", $name );
+    $expl = is_array( $name ) ? $name : explode( ".", $name );
     
     foreach( $expl As $i => $key )
     {
@@ -37,25 +37,17 @@ function ify( String $name, Array | ArrayAccess $array ): Mixed
                 {
                     $data = $data[$key];
                 } else {
-                    if( is_int( $key ) )
-                    {
-                        throw new Trouble\IndexError( key: $key, ref: "data" );
-                    }
-                    throw new Trouble\KeyError( key: $key, ref: "data" );
+                    throw is_int( $key ) ? new Trouble\IndexError( $key ) : new Trouble\KeyError( $key );
                 }
             } else {
-                throw new Trouble\ValueError( $key );
+                throw new Trouble\TypeError( f( "The value must contain an array, {} is given.", gettype( $key ) ) );
             }
         } else {
             if( isset( $array[$key] ) )
             {
                 $data = $array[$key];
             } else {
-                if( is_int( $key ) )
-                {
-                    throw new Trouble\IndexError( range: $key, ref: "data" );
-                }
-                throw new Trouble\KeyError( key: $key, ref: "data" );
+                throw is_int( $key ) ? new Trouble\IndexError( $key ) : new Trouble\KeyError( $key );
             }
         }
     }
@@ -83,8 +75,8 @@ function path( ? String $path = Null, Bool $remove = False ): String
 /*
  * Displays the contents of the view or component.
  *
- * @params String <path>
- * @params Array, Yume\Kama\Obi\AoE\Hairetsu <data>
+ * @params String $path
+ * @params Array|Yume\Kama\Obi\AoE\Hairetsu $data
  *
  * @return String
  */
@@ -149,9 +141,9 @@ function f( String $string, Mixed ...$format ): String
 /*
  * Lisy directory contents.
  *
- * @params String <dir>
+ * @params String $dir
  *
- * @return Array, Null
+ * @return Array|Null
  */
 function ls( String $dir ): Array | Null
 {
@@ -171,37 +163,49 @@ function ls( String $dir ): Array | Null
     return Null;
 }
 
-function replace( Array $tree, Array $replace, String $parent = "" )
+function tree( String $path, String $parent = "" ): Array | False
 {
-    foreach( $tree As $key => $val )
+    if( is_dir( path( $path ) ) )
     {
-        if( is_array( $val ) )
+        $tree = [];
+        $scan = ls( $path );
+        
+        foreach( $scan As $i => $file )
         {
-            replace( $val, $replace, format( "{}/{}", $parent, $key ) );
-        } else {
-            
-            $file = format( "{}/{}", $parent, $val );
-            
-            if( substr( $file, -4 ) === ".php" )
+            if( $rscan = tree( f( "{}/{}", $path, $file ) ) )
             {
-                if( count( $replace ) !== 0 )
+                $tree[$file] = $rscan;
+            } else {
+                $tree[] = $file;
+            }
+        }
+        return( $tree );
+    }
+    return( False );
+}
+
+function replace( String $path, Array $tree, Callable $replace ): Void
+{
+    foreach( $tree As $dir => $file )
+    {
+        if( is_string( $dir ) )
+        {
+            replace( f( "{}/{}", $path, $dir ), $file, $replace );
+        } else {
+            if( is_file( $fpath = f( "{}/{}", $path, $file ) ) )
+            {
+                $fopen = fopen( $fpath, "rw" );
+                $fread = fread( $fopen, 1024 );
+                
+                $frepl = call_user_func_array( $replace, [ $fpath, $fread ] );
+                
+                if( $fread !== $frepl )
                 {
-                    
-                    $fget = file_get_contents( path( $file ) );
-                    
-                    $frep = $fget;
-                    
-                    foreach( $replace As $from => $to )
-                    {
-                        $frep = str_replace( $from, $to, $frep );
-                    }
-                    
-                    if( $fget !== $frep )
-                    {
-                        $fput = file_put_contents( path( $file ), $frep );
-                    }
-                    
+                    fwrite( $fopen, $frepl );
                 }
+                
+                fclose( $fopen );
+                
             }
         }
     }
