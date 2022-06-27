@@ -65,15 +65,6 @@ final class App
          */
         set_exception_handler( self::config( "trouble.exception.handler" ) );
         
-        ini_set( "session.save_handler", "files" );
-        
-        /*
-         * Sets user-level session storage functions.
-         *
-         * @see configs/app.http.session.handler
-         */
-        session_set_save_handler( new (self::config( "http.session.handler" )), True );
-        
     }
     
 }

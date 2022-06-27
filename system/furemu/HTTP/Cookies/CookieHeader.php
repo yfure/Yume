@@ -148,6 +148,9 @@ final class CookieHeader implements Stringable
         // Set header.
         HTTP\HTTP::header( $this->raw() );
         
+        // Add to super global.
+        $_COOKIE[$this->name] = $this->value;
+        
         // Always True return.
         return( True );
     }

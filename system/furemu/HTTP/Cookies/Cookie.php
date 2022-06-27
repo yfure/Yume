@@ -72,7 +72,7 @@ abstract class Cookie
                             // Value by the number of seconds and minutes.
                             $split[1] = ( Int ) $split[1] / 60 / 100;
                         } else {
-                            if( isset( $split[1] ) )
+                            if( isset( $split[1] ) === "Comment" )
                             {
                                 
                                 // Decode string encoded with urlencode.
@@ -133,7 +133,7 @@ abstract class Cookie
     {
         if( isset( $_COOKIE[$name] ) )
         {
-            return( self::set( $name, urldecode( $_COOKIE[$name] ) ) );
+            return( self::set( $name, $_COOKIE[$name] ) );
         }
         return( False );
     }
@@ -149,9 +149,15 @@ abstract class Cookie
      *
      * @return Yume\Kama\Obi\HTTP\Cookies\CookieHeader
      */
-    public static function set( String $name, ? String $value = Null, Array $options = [] ): CookieHeader
+    public static function set( String $name, ? String $value = Null, Array $options = [], Bool $save = False ): CookieHeader
     {
-        return( new CookieHeader( $name, $value, $options ) );
+        $cookie = new CookieHeader( $name, $value, $options );
+        
+        if( $save )
+        {
+        	$cookie->save();
+        }
+        return( $cookie );
     }
     
 }
