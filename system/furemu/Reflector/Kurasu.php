@@ -142,7 +142,7 @@ abstract class Kurasu
         {
             if( self::getParentTree( $parent = $parent->name ) !== Null )
             {
-                return([ $parent => self::getParent( $parent ) ]);
+                return([ $parent => self::getParentTree( $parent ) ]);
             }
             return( $parent );
         }

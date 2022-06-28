@@ -38,8 +38,13 @@ final class Runtime
             
         } else {
             
+            // Starting new session.
             HTTP\Session\Session::start();
             
+            // ....
+            
+            // Destroy current Session.
+            HTTP\Session\Session::destroy();
         }
     }
 }

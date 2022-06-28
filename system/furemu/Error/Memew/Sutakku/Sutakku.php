@@ -159,7 +159,21 @@ class Sutakku implements SutakkuInterface
                     // List of Interfaces implemented.
                     "Interface" => Reflector\Kurasu::getInterfaces( $this->object, True ),
                     
-                    default => call_user_func( fn() => method_exists( $this->object, $method = format( "get{}", $value ) ) ? $this->object->{ $method }() : "Undefined" )
+                    default => call_user_func_array( args: [ $key, $value ], callback: function( $key, $value )
+                    {
+                        // Check if the method is available.
+                        if( method_exists( $this->object, $method = format( "get{}", $value ) ) )
+                        {
+                            // Checks if Traces are allowed.
+                            if( $value === "Trace" && AoE\App::config( "trouble.exception.traces" ) !== True )
+                            {
+                                return([ "Permission Denied." ]);
+                            }
+                            // Return method value.
+                            return( $this->object->{ $method }() );
+                        }
+                        return( "Undefined" );
+                    })
                     
                 };
                 

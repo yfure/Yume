@@ -126,6 +126,11 @@ return([
     /*
      * Default Time Zone for app.
      *
+     * Please visit the official PHP page for a full list of supported Time Zones.
+     *
+     * @webpage https://www.php.net/manual/en/timezones.php
+     *
+     * @default Asia/Tokyo
      */
     "timezone" => "Asia/Tokyo",
     
@@ -149,9 +154,32 @@ return([
                 ],
                 "Message"
             ],
+            
+            /*
+             * Trigger Handler Function
+             *
+             * Function sets a user-defined error handler function.
+             */
             "handler" => "Yume\Kama\Obi\Error\Toriga\Toriga::handler"
         ],
         "exception" => [
+            
+            /*
+             * Note
+             *
+             * It is recommended to set the Trace value to False when the
+             * application will be uploaded to the host, this is because
+             * Trace will display program code traces, such as Argument
+             * Values, Function|Class|File|Directory|Variable Names, etc
+             * this will be very dangerous if the data is leaked.
+             */
+            "traces" => True,
+            
+            /*
+             * The exception scheme that will be displayed, you can change
+             * the order or even delete one of them at will and be careful.
+             *
+             */
             "scheme" => [
                 "Object" => [
                     "Code",
@@ -170,6 +198,13 @@ return([
                 "Message",
                 "Trace"
             ],
+            
+            /*
+             * Exception Handler Function.
+             *
+             * PHP allows you to catch the uncaught exceptions
+             * by registering a global exception handler. 
+             */
             "handler" => "Yume\Kama\Obi\Error\Memew\Memew::handler"
         ]
     ]

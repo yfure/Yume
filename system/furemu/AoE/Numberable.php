@@ -2,8 +2,15 @@
 
 namespace Yume\Kama\Obi\AoE;
 
+use Yume\Kama\Obi\RegExp;
+
 abstract class Numberable
 {
+    
+    public static function is( String $ref ): Bool
+    {
+        return( RegExp\RegExp::test( "/^(?:\d+)$/", $ref ) );
+    }
     
     /*
      * Generate random int.
@@ -68,7 +75,7 @@ abstract class Numberable
     
     public static function parse( String $string ): Bool | String
     {
-        if( Http\RegExp::match( "/^[a-f0-9]$/", $string ) )
+        if( Http\RegExp::match( "/^[a-f0-9]+$/", $string ) )
         {
             $array = [];
             

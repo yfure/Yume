@@ -29,27 +29,33 @@ final class App
     public static function buff(): Void
     {
         
-        /*
-         * DateTimeZone
-         *
-         * Create a new instance of the DateTimeZone class,
-         * parameter values based on the application configuration.
-         *
-         * @see configs/app
-         */
-        $dateTimeZone = new DateTimeZone( self::config( "timezone" ) );
-        
-        /*
-         * DateTime
-         *
-         * Set datetime by current timezone.
-         */
-        $dateTime = new DateTime( "now", $dateTimeZone );
-        
         self::$object = new Data([
-            "dateTimeZone" => $dateTimeZone,
-            "dateTime" => $dateTime
+            
+            /*
+             * DateTimeZone
+             *
+             * Create a new instance of the DateTimeZone class,
+             * parameter values based on the application configuration.
+             *
+             * @see configs/app
+             */
+            "dateTimeZone" => $dateTimeZone = new DateTimeZone( self::config( "timezone" ) ),
+            
+            /*
+             * DateTime
+             *
+             * Set datetime by current timezone.
+             */
+            "dateTime" => $dateTime = new DateTime( "now", $dateTimeZone )
+            
         ]);
+        
+        /*
+         * Sets the default timezone used by all date/time functions in a script.
+         *
+         * @ses configs/app.timezone.
+         */
+        date_default_timezone_set( self::config( "timezone" ) );
         
         /*
          * Set user-defined error handler function.

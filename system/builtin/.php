@@ -3,56 +3,64 @@
 use Yume\Kama\Obi\AoE;
 use Yume\Kama\Obi\HTTP;
 use Yume\Kama\Obi\IO;
+use Yume\Kama\Obi\RegExp;
 use Yume\Kama\Obi\Sasayaki;
 use Yume\Kama\Obi\Trouble;
 
 /*
  * Retrieve element values using dot as array separator.
  *
- * @params Array|String $name
- * @params Array|ArrayAccess $array
+ * @params Array|String $refs
+ * @params Array|ArrayAccess $data
  *
  * @return Mixed
  */
-function ify( Array | String $name, Array | ArrayAccess $array ): Mixed
+function ify( Array | String $refs, Array | ArrayAccess $data ): Mixed
 {
-    /*
-     * Split string with period.
-     *
-     * @values Array
-     */
-    $expl = is_array( $name ) ? $name : explode( ".", $name );
-    
-    foreach( $expl As $i => $key )
+    if( is_string( $refs ) )
     {
-        if( preg_match( "/^[0-9]$/", $key ) )
+        // Encodes each character inside [].
+        $refs = RegExp\RegExp::replace( "/(?:\[([^\]]*)\])/", $refs, fn( $m ) => f( ".b64_{}", base64_encode( $m[1] ) ) );
+        
+        // Split string with period.
+        $refs = explode( ".", $refs );
+    }
+    
+    foreach( $refs As $key )
+    {
+        // Checks if the character contains only numbers.
+        if( AoE\Numberable::is( $key ) )
         {
+            // Parse string to int.
             $key = ( Int ) $key;
-        }
-        if( isset( $data ) )
-        {
-            if( is_array( $data ) )
+        } else {
+            
+            // Checks if the string is encoded text.
+            if( RegExp\RegExp::test( "/^(?:b64_.*?)$/", $key ) )
             {
-                if( isset( $data[$key] ) )
-                {
-                    $data = $data[$key];
-                } else {
-                    throw is_int( $key ) ? new Trouble\IndexError( $key ) : new Trouble\KeyError( $key );
-                }
+                // Decode BASE64 strings.
+                $key = RegExp\RegExp::replace( "/^(?:b64_(.*?))$/", $key, fn( $m ) => base64_decode( $m[1] ) );
+            }
+        }
+        if( isset( $stack ) )
+        {
+            if( isset( $stack[$key] ) )
+            {
+                $stack = $stack[$key];
             } else {
-                throw new Trouble\TypeError( f( "The value must contain an array, {} is given.", gettype( $key ) ) );
+                throw is_string( $key ) ? new Trouble\KeyError( $key ) : new Trouble\IndexError( $key );
             }
         } else {
-            if( isset( $array[$key] ) )
+            if( isset( $data[$key] ) )
             {
-                $data = $array[$key];
+                $stack = $data[$key];
             } else {
-                throw is_int( $key ) ? new Trouble\IndexError( $key ) : new Trouble\KeyError( $key );
+                throw is_string( $key ) ? new Trouble\KeyError( $key ) : new Trouble\IndexError( $key );
             }
         }
     }
     
-    return( $data );
+    return( $stack );
 }
 
 /*

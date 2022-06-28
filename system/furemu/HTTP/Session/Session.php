@@ -8,8 +8,6 @@ use Yume\Kama\Obi\HTTP;
 abstract class Session
 {
     
-    protected static $start;
-    
     /*
      * Starting new session.
      *
@@ -47,16 +45,52 @@ abstract class Session
         }
     }
     
+    /*
+     * Get session value.
+     *
+     * @access Public Static
+     *
+     * @params String $name
+     *
+     * @return String|Bool
+     */
     public static function get( String $name ): Bool | String
     {
-        
+        if( self::isset( $name ) )
+        {
+            return( SessionSecure::decode( $_SESSION[$name] ) );
+        }
+        return( False );
     }
     
-    public static function set( String $name, String $value ): String
+    /*
+     * Set and update session values.
+     *
+     * @access Public Static
+     *
+     * @params String $name
+     * @params String $value
+     *
+     * @return String|Bool
+     */
+    public static function set( String $name, String $value ): Bool | String
     {
-        
+        if( isset( $_SESSION ) )
+        {
+            return( $_SESSION[$name] = SessionSecure::encode( $value ) );
+        }
+        return( False );
     }
     
+    /*
+     * Check if the session is set.
+     *
+     * @access Public Static
+     *
+     * @params String $name
+     *
+     * @return Bool
+     */
     public static function isset( String $name ): Bool
     {
         if( isset( $_SESSION ) )
@@ -66,6 +100,15 @@ abstract class Session
         return( False );
     }
     
+    /*
+     * Unset session.
+     *
+     * @access Public Static
+     *
+     * @params String $name
+     *
+     * @return Void
+     */
     public static function unset( String $name ): Void
     {
         if( isset( $_SESSION ) )
@@ -74,8 +117,17 @@ abstract class Session
         }
     }
     
+    /*
+     * Destroy the current session.
+     *
+     * @access Public Static
+     *
+     * @return Void
+     */
     public static function destroy(): Void
     {
+        $_SESSION = [];
+        
         // Unset all of the session variables.
         unset( $_SESSION );
         

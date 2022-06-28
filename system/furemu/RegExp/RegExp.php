@@ -132,9 +132,13 @@ abstract class RegExp
         }
         if( $subIs === "String" )
         {
-            if( $patIs === "String" && $repIs === "String" )
+            if( $patIs === "String" && ( $repIs === "String" || $repIs === "Object" ) )
             {
-                return( preg_replace( $pattern, $replace, $subject ) );
+                if( $repIs === "String" )
+                {
+                    return( preg_replace( $pattern, $replace, $subject ) );
+                }
+                return( preg_replace_callback( $pattern, $replace, $subject ) );
             }
             if( $patIs === "Array" && $repIs === "Array" )
             {
@@ -161,7 +165,6 @@ abstract class RegExp
                 return( $subject );
             }
         }
-        
     }
     
 }
