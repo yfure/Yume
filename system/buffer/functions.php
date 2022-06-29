@@ -136,7 +136,7 @@ function format( String $string, Mixed ...$format ): String
 }
 
 /*
- * Shorthand function name.
+ * Shorthand format function name.
  *
  * @inherit f.format
  *
@@ -192,33 +192,6 @@ function tree( String $path, String $parent = "" ): Array | False
     return( False );
 }
 
-function replace( String $path, Array $tree, Callable $replace ): Void
-{
-    foreach( $tree As $dir => $file )
-    {
-        if( is_string( $dir ) )
-        {
-            replace( f( "{}/{}", $path, $dir ), $file, $replace );
-        } else {
-            if( is_file( $fpath = f( "{}/{}", $path, $file ) ) )
-            {
-                $fopen = fopen( $fpath, "rw" );
-                $fread = fread( $fopen, 1024 );
-                
-                $frepl = call_user_func_array( $replace, [ $fpath, $fread ] );
-                
-                if( $fread !== $frepl )
-                {
-                    fwrite( $fopen, $frepl );
-                }
-                
-                fclose( $fopen );
-                
-            }
-        }
-    }
-}
-
 /*
  * Get configuration file.
  *
@@ -230,29 +203,22 @@ function config( String $config ): Mixed
 {
     
     // Explode config name.
-    $expl = explode( ".", $config );
+    $expl = explode( ".", RegExp\RegExp::replace( "/(?:\[([^\]]*)\])/", $config, fn( $m ) => f( ".b64_{}", base64_encode( $m[1] ) ) ) );
     
     // Create file name.
-    $file = strtolower( format( "{}.{}", $expl[0], "php" ) );
+    $file = strtolower( $expl[0] );
     
-    // If the configuration file exists.
-    if( file_exists( $file = path( format( "configs/{}", $file ) ) ) )
+    // Import configuration file.
+    $configs = AoE\Package::import( format( "configs/{}", $file ), Trouble\ModuleError::CONFIG );
+    
+    // Unset first element.
+    array_shift( $expl );
+    
+    if( count( $expl ) > 0 )
     {
-        
-        // Return value from config file.
-        $conf = require( $file );
-        
-        // Unset first element.
-        array_shift( $expl );
-        
-        if( count( $expl ) !== 0 )
-        {
-            return( ify( $expl, $conf ) );
-        }
-        return $conf;
+        return( ify( $expl, $configs ) );
     }
-    
-    throw new Trouble\ModuleError( module: $file, type: "config" );
+    return( $configs );
 }
 
 ?>

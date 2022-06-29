@@ -2,10 +2,6 @@
 
 return([
     
-    /*
-     * Environment class configuration.
-     *
-     */
     "environment" => [
         
         /*
@@ -22,6 +18,19 @@ return([
     "http" => [
         "cookies" => [
             "handler" => Yume\Kama\Obi\HTTP\Cookies\CookieHeader::class
+        ],
+        "request" => [
+            "methods" => [
+                "DELETE",
+                "HEAD",
+                "GET",
+                "PATCH",
+                "POST",
+                "PUT"
+            ]
+        ],
+        "routing" => [
+            "routes" => "system/routes/routes"
         ],
         "session" => [
             
@@ -61,66 +70,27 @@ return([
         ]
     ],
     
-    /*
-     * Reflection class configuration.
-     *
-     */
+    "services" => [
+        Yume\Kama\Obi\HTTP\Routing\RouteService::class
+    ],
+    
     "reflector" => [
         "function" => [
             "template" => []
         ],
         "instance" => [
             "@method" => [
-                "filter" => ReflectionMethod::IS_PUBLIC,
-                "scheme" => []
+                "filter" => ReflectionMethod::IS_PUBLIC
             ],
             "@constant" => [
-                "filter" => True,
-                "scheme" => []
+                "filter" => True
             ],
             "@property" => [
-                "filter" => True,
-                "scheme" => []
-            ],
-            "scheme" => [
-                "class" => [
-                    "name",
-                    "space"
-                ],
-                "object" => [
-                    "is" => [
-                        "is::Abstract",
-                        "is::Anonymous",
-                        "is::Cloneable",
-                        "is::Countable",
-                        "is::Data",
-                        "is::Enum",
-                        "is::Final",
-                        "is::Instance",
-                        "is::Instantiable",
-                        "is::Interface",
-                        "is::Internal",
-                        "is::Iterable",
-                        "is::Stringable",
-                        "is::SubclassOf",
-                        "is::Throwable",
-                        "is::Trait",
-                        "is::UserDefined"
-                    ]
-                ],
-                "traits" => "traits",
-                "methods" => "methods",
-                "constants" => "constants",
-                "interfaces" => "interfaces",
-                "properties" => "properties"
+                "filter" => True
             ]
         ],
-        "interface" => [
-            "scheme" => []
-        ],
-        "parameter" => [
-            "scheme" => []
-        ]
+        "interface" => [],
+        "parameter" => []
     ],
     
     /*
@@ -167,13 +137,21 @@ return([
             /*
              * Note
              *
-             * It is recommended to set the Trace value to False when the
+             * It is recommended to set the trace.all value to False when the
              * application will be uploaded to the host, this is because
              * Trace will display program code traces, such as Argument
              * Values, Function|Class|File|Directory|Variable Names, etc
              * this will be very dangerous if the data is leaked.
              */
-            "traces" => True,
+            "trace" => [
+                
+                // Allow show all traces.
+                "all" => True,
+                
+                // Allow show all traces except args.
+                "arg" => False
+                
+            ],
             
             /*
              * The exception scheme that will be displayed, you can change

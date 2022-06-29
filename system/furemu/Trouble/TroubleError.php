@@ -40,7 +40,7 @@ class TroubleError extends Error
     public function __construct( ? String $message = Null, Int $code = self::UNKNOWN, ? Throwable $prev = Null )
     {
         // If the error thrown has a flag.
-        if( $code !== 0 )
+        if( count( $this->flags ) > 0 && $code !== 0 )
         {
             // If the flag is available.
             if( isset( $this->flags[$code] ) )

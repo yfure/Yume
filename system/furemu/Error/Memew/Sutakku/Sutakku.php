@@ -4,6 +4,7 @@ namespace Yume\Kama\Obi\Error\Memew\Sutakku;
 
 use Yume\Kama\Obi\AoE;
 use Yume\Kama\Obi\Reflector;
+use Yume\Kama\Obi\Trouble;
 
 use Throwable;
 
@@ -141,6 +142,49 @@ class Sutakku implements SutakkuInterface
                     // The source of the thrown Throwable.
                     "File" => path( $this->object->getFile(), True ),
                     
+                    // Handle traces.
+                    "Trace" => call_user_func( function()
+                    {
+                        // Get all traces.
+                        $traces = $this->object->getTrace();
+                        
+                        // Checks if the exception thrown is of class Error Trigger Exception.
+                        if( $this->object Instanceof Trouble\TriggerError )
+                        {
+                            /*
+                             * Unset the first & second trace value
+                             *
+                             * If you are thinking why is this done because, the first trace will contain
+                             * the information where the TriggerError class exception was thrown whereas
+                             * the second trace contains the information where the Error Handler Function
+                             * was called because, basically the error handled has been re-thrown by the
+                             * Error Handler Function and not necessarily the first and second traces
+                             * in the track list.
+                             */
+                            unset( $traces[0] );
+                            unset( $traces[1] );
+                        }
+                        
+                        // Check if traces are allowed to be displayed.
+                        if( AoE\App::config( "trouble.exception.trace.all" ) )
+                        {
+                            // Check if argument values are allowed to be displayed
+                            if( AoE\App::config( "trouble.exception.trace.arg" ) !== True )
+                            {
+                                $traces = array_map( array: $traces, callback: function( $trace )
+                                {
+                                    // Clear all argument values.
+                                    $trace['args'] = [];
+                                    
+                                    // Return trace.
+                                    return( $trace );
+                                });
+                            }
+                        }
+                        
+                        return( $traces );
+                    }),
+                    
                     // Throwable class name.
                     "Class" => $this->object::class,
                     
@@ -164,11 +208,6 @@ class Sutakku implements SutakkuInterface
                         // Check if the method is available.
                         if( method_exists( $this->object, $method = format( "get{}", $value ) ) )
                         {
-                            // Checks if Traces are allowed.
-                            if( $value === "Trace" && AoE\App::config( "trouble.exception.traces" ) !== True )
-                            {
-                                return([ "Permission Denied." ]);
-                            }
                             // Return method value.
                             return( $this->object->{ $method }() );
                         }

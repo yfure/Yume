@@ -5,8 +5,10 @@ namespace Yume\Kama\Obi\AoE;
 use DateTimeZone;
 use DateTime;
 
-final class App
+class App
 {
+    
+    use Buffer\Config;
     
     /*
      * ONSaved Instances
@@ -15,21 +17,12 @@ final class App
      *
      * @values Yume\Kama\Obi\Data
      */
-    public static $object;
+    public Data $object;
     
-    use Buffer\Config;
-    
-    /*
-     * Initialize app runtime.
-     *
-     * @access Public, Static
-     *
-     * @return Void
-     */
-    public static function buff(): Void
+    public function __construct()
     {
         
-        self::$object = new Data([
+        $this->object = new Data([
             
             /*
              * DateTimeZone
@@ -71,6 +64,11 @@ final class App
          */
         set_exception_handler( self::config( "trouble.exception.handler" ) );
         
+    }
+    
+    public function service(): Void
+    {
+        // ....
     }
     
 }

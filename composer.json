@@ -16,12 +16,12 @@
     ],
     "autoload": {
         "files": [
-            "system/builtin/.php",
-            "public/bootstrap.php"
+            "system/buffer/bootstrap.php",
+            "system/buffer/functions.php"
         ],
         "psr-4": {
-            "App\\": "app/",
-            "Yume\\Kama\\Obi\\": "system/furemu/"
+            "Yume\\Kama\\Obi\\Apuri": "app/",
+            "Yume\\Kama\\Obi\\Furemu": "system/furemu/"
         }
     }
 }

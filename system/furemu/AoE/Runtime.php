@@ -6,24 +6,31 @@ use Yume\Kama\Obi\HTTP;
 
 final class Runtime
 {
-    public static $matchs = [];
+    
+    public static ? App $app = Null;
+    
+    public static ? Array $matchs = [];
     
     public static function buff(): Void
     {
-        App::buff();
+        
+        // Check if the application already exists.
+        if( self::$app Instanceof App )
+        {
+            throw new Trouble\RuntimeError( "Application initialization found, application cannot be duplicated." );
+        }
+        
+        // Initialize app.
+        self::$app = new App;
+        
+        // Run application services.
+        self::$app->service();
         
         /*
          * Replace anything.
          *
          */
-        replace( "system", tree( "system" ), function( String $fname, String $fread ): String
-        {
-            if( $match = \Yume\Kama\Obi\RegExp\RegExp::matchs( "/(?:(.*?)(Error)(.*?))/m", str_replace( [ "\t", "\x20\x20\x20\x20" ], "", $fread ) ) )
-            {
-                self::$matchs[] = $fname;
-            }
-            return( $fread );
-        });
+        Replace::class;
         
         if( CLI )
         {
@@ -34,17 +41,14 @@ final class Runtime
              * Components, models, and so on. If no command is sent,
              * The program will be terminated.
              */
-            echo "Hello World!";
             
         } else {
             
             // Starting new session.
             HTTP\Session\Session::start();
             
-            // ....
+            // 
             
-            // Destroy current Session.
-            HTTP\Session\Session::destroy();
         }
     }
 }

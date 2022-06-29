@@ -14,7 +14,6 @@ use Throwable;
 class ModuleNotFoundError extends TroubleError
 {
     
-    
     /*
      * If component not found.
      *

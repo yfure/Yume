@@ -40,8 +40,6 @@ if( $root !== "" )
     require "vendor/autoload.php";
 }
 
-//replace( Yume\Kama\Obi\IO\Dir\Dir::tree( "/" ), [] );
-
 Yume\Kama\Obi\AoE\Runtime::buff();
 
 ?>
