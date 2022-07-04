@@ -129,15 +129,23 @@ function format( String $string, Mixed ...$format ): String
             $format = $format[0];
         }
     }
-    return( RegExp\RegExp::replace( "/\{([^\}]*)\}/", $string, function() use( $format )
+    return( RegExp\RegExp::replace( "/(?:(?<F>\{(?<Name>[a-z0-9]+)\}|\{\}))/i", $string, function( $matchs ) use( $format )
     {
         // Statically Variable
         static $i = 0;
         
-        if( isset( $format[$i] ) )
+        if( isset( $matchs['Name'] ) )
         {
-            // Replace by $i.
-            return( $format[$i++] );
+            if( isset( $format[$matchs['Name']] ) )
+            {
+                return( $format[$matchs['Name']] );
+            }
+            return( $matchs['F'] );
+        } else {
+            if( isset( $format[$i] ) )
+            {
+                return( $format[$i++] );
+            }
         }
     }));
 }

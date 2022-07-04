@@ -35,7 +35,7 @@ class Route implements RouteInterface
      */
     protected Array $segments = [];
     
-    protected String $regexp = "//";
+    protected String $regexp = "";
     
     /*
      * Construct method of class Route
@@ -138,7 +138,7 @@ class Route implements RouteInterface
                 $this->segments[$segment]['regexp'] = $regexp;
                 
                 // Replace regular expression with new expression.
-                $this->regexp = RegExp\RegExp::replace( f( "/(?:\(\?<{}>[^\(]*\))/", $segment ), $this->regexp, f( "(?<{}>{})", $segment, $regexp ) );
+                $this->regexp = RegExp\RegExp::replace( $p = f( "/(?:(?<Group>\({1,}\?\<{segment}\>\([^\)]*\){1,})|(?<Single>\(\?\<{segment}\>[^\)]*\)))/", [ "segment" => $segment ] ), $this->regexp, fn( $m ) => f( "(?<{}>{})", $segment, $regexp ) );
             } else {
                 throw new RouteError( [ $segment, $this->path ], RouteError::SEGMENT_READONLY );
             }

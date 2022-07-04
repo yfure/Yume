@@ -19,7 +19,9 @@ class RouteError extends HTTP\HTTPError
      *
      * @values Int
      */
-    public const DUPLICATE_PATH = 3578;
+    public const DUPLICATE_PATH = 3573;
+    
+    public const PAGE_NOT_FOUND = 3578;
     
     /*
      * If the segment name does not exist.
@@ -72,6 +74,7 @@ class RouteError extends HTTP\HTTPError
      */
     protected Array $flags = [
         self::DUPLICATE_PATH => "Route path {} must not have duplicate path.",
+        self::PAGE_NOT_FOUND => "Route path is currently uncaught, page {} not found.",
         self::SEGMENT_NAME_ERROR => "Route path {} has no segment name {}.",
         self::SEGMENT_NAME_DUPLICATE => "Route path {} has more than one {} segment.",
         self::SEGMENT_NAME_PROHIBITED => "Route path {} is prohibited from using segment name :params.",

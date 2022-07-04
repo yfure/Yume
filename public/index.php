@@ -1,5 +1,7 @@
 <?php
 
+use Yume\Kama\Obi\AoE;
+
 /*
  * Yume PHP Framework.
  *
@@ -40,6 +42,6 @@ if( $root !== "" )
     require "vendor/autoload.php";
 }
 
-Yume\Kama\Obi\AoE\Runtime::buff();
+AoE\Runtime::start();
 
 ?>

@@ -9,7 +9,7 @@ HTTP\Session\Session::start();
 HTTP\Route::get( "/", fn() => view( "welcome" ) );
 
 // Nesting Route.
-HTTP\Route::get( "/:user)",
+HTTP\Route::get( "/:user",
     
     // Handler ...
     function( String $user )
@@ -20,13 +20,13 @@ HTTP\Route::get( "/:user)",
     // Children ...
     function()
     {
-        HTTP\Route::get( ":tabs/.*", function( String $user, String $tabs )
+        HTTP\Route::get( ":tabs", function( String $user, String $tabs )
         {
             return( f( "(?<user>{})\/(?<tabs>{})", $user, $tabs ) );
         })
         
         // Where segment name.
-        ->where( "tabs", "post|rails|saveds|charms" );
+        ->where( "tabs", "posts|rails|saveds|charms" );
     }
     
 )

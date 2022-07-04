@@ -25,7 +25,7 @@ final class Runtime
      */
     protected static HTTP\Routing\Router $router;
     
-    public static function buff(): Void
+    public static function start(): Void
     {
         
         // Check if the application already exists.

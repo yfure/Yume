@@ -153,7 +153,7 @@ return([
                 "all" => True,
                 
                 // Allow show all traces except args.
-                "arg" => False
+                "arg" => True
                 
             ],
             
