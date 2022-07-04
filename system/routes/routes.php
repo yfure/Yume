@@ -1,5 +1,6 @@
 <?php
 
+use Yume\Kama\App;
 use Yume\Kama\Obi\HTTP;
 
 // Starting new session.
