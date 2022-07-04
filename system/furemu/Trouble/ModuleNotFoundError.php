@@ -90,7 +90,7 @@ class ModuleNotFoundError extends TroubleError
      * @inherit Yume\Kama\Obi\Trouble\TroubleError
      *
      */
-    public Array $flags = [
+    protected Array $flags = [
         self::CONTROLLER => "No controller named {}.",
         self::ENVIRONMENT => "File {} environment does not exist.",
         self::COMPONENT => "Component {} not found or may be missing.",

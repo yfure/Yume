@@ -6,7 +6,6 @@ use Yume\Kama\Obi\Trouble;
 
 abstract class Toriga
 {
-    
     public static function handler( Int $errcode, String $errmesg, String $errfile, Int $errline ): Void
     {
         $errlevl = match( $errcode )
@@ -31,7 +30,6 @@ abstract class Toriga
         };
         throw new Trouble\TriggerError( $errmesg, $errfile, $errlevl, $errline, $errcode );
     }
-    
 }
 
 ?>

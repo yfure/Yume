@@ -122,7 +122,14 @@ function view( String $path, Array | AoE\Hairetsu $data = [] ): String
  */
 function format( String $string, Mixed ...$format ): String
 {
-    return( preg_replace_callback( "/\{([^\}]*)\}/", subject: $string, callback: function() use( $format )
+    if( isset( $format[0] ) )
+    {
+        if( is_array( $format[0] ) )
+        {
+            $format = $format[0];
+        }
+    }
+    return( RegExp\RegExp::replace( "/\{([^\}]*)\}/", $string, function() use( $format )
     {
         // Statically Variable
         static $i = 0;

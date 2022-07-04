@@ -45,7 +45,7 @@ abstract class Memew
             Throwable::class => $sutakku->getStacks()
         ]);
         
-        echo f( "<pre>{}\n{}</pre>", $throw::class, $sutakku );
+        echo f( "<pre>\n{}\n{}</pre>", $throw::class, $sutakku );
         
     }
     

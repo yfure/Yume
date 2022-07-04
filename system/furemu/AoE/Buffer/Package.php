@@ -2,10 +2,11 @@
 
 namespace Yume\Kama\Obi\AoE\Buffer;
 
+use Yume\Kama\Obi\IO;
+use Yume\Kama\Obi\Trouble;
+
 /*
  * Package
- *
- * Explodes the class name.
  *
  * @package Yume\Kama\Obi\AoE\Traits
  */
@@ -15,7 +16,7 @@ trait Package
     /*
      * Explodes the class name.
      *
-     * @access Public: Static
+     * @access Public Static
      *
      * @params String $class
      *
@@ -34,6 +35,30 @@ trait Package
         
         // Return the last value of the array.
         return( array_pop( $expld ) );
+    }
+    
+    /*
+     * Import single file php
+     *
+     * @access Public Static
+     *
+     * @params String $file
+     *
+     * @return Mixed
+     */
+    public static function import( String $file ): Mixed
+    {
+        // Create new filename.
+        $fname = f( "{}{}", $file, substr( $file, -4 ) !== ".php" ? ".php" : "" );
+        
+        // Check if the file exists.
+        if( IO\File::exists( $fname ) )
+        {
+            // Return value back from file.
+            return( require( path( $fname ) ) );
+        }
+        
+        throw new Trouble\ModuleNotFoundError( $file, ModuleNotFoundError::NAME );
     }
     
 }

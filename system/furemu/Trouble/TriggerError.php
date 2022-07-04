@@ -2,7 +2,7 @@
 
 namespace Yume\Kama\Obi\Trouble;
 
-usr Yume\Kama\Obi\RegExp;
+use Yume\Kama\Obi\RegExp;
 
 /*
  * Trouble TriggerError

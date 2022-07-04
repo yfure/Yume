@@ -3,7 +3,7 @@
 namespace Yume\Kama\Obi\HTTP\Cookies;
 
 use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\Trouble;
+use Yume\Kama\Obi\HTTP;
 
 use Throwable;
 
@@ -14,7 +14,7 @@ use Throwable;
  *
  * @package Yume\Kama\Obi\HTTP\Cookies
  */
-class CookieError extends Trouble\TroubleError
+class CookieError extends HTTP\HTTPError
 {
     
     /*
@@ -75,7 +75,7 @@ class CookieError extends Trouble\TroubleError
      * @inherit Yume\Kama\Obi\Trouble\TroubleError
      *
      */
-    public Array $flags = [
+    protected Array $flags = [
         self::INVALID_DOMAIN => "Domain name for {} is invalid",
         self::INVALID_EXPIRES => "Expired must have String value << 1|+1|-1 days >> | <<D, d-M-Y H:i:s T >> | << \d{1,10} >> {} is given.",
         self::INVALID_HEADER => "Invalid cookie header &gt&gt {}.",

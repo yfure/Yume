@@ -17,9 +17,22 @@ use SessionHandler as PHPBuiltInSessionHandler;
 final class SessionHandler extends PHPBuiltInSessionHandler
 {
     
-    
+    /*
+     * Session key salt.
+     *
+     * @access Protected
+     *
+     * @values String
+     */
     protected String $key;
     
+    /*
+     * Construct method of class SessionHandler
+     *
+     * @access Public Instance
+     *
+     * @return Void
+     */
     public function __construct()
     {
         if( extension_loaded( "mstring" ) === False && 

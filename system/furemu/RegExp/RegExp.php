@@ -20,6 +20,32 @@ abstract class RegExp
         return( ( Bool ) $match = preg_match( $pattern, $subject ) );
     }
     
+    public static function clear( Array $matchs, Bool $capture = False ): Array
+    {
+        foreach( $matchs As $i => $match )
+        {
+            if( is_int( $i ) )
+            {
+                if( $i === 0 && $capture === False )
+                {
+                    continue;
+                }
+                unset( $matchs[$i] );
+            } else {
+                if( is_array( $match ) )
+                {
+                    foreach( $match As $u => $result )
+                    {
+                        $matchs[$i][$u] = $result !== "" ? $result : Null;
+                    }
+                } else {
+                    $matchs[$i] = $match !== "" ? $match : Null;
+                }
+            }
+        }
+        return( $matchs );
+    }
+    
     /*
      * Retrieves the result of matching a string against a regular expression.
      *

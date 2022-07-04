@@ -2,8 +2,6 @@
 
 namespace Yume\Kama\Obi\HTTP;
 
-use Yume\Kama\Obi\Trouble;
-
 abstract class HTTP
 {
     
@@ -22,7 +20,7 @@ abstract class HTTP
     {
         if( headers_sent() )
         {
-            throw new Trouble\RuntimeError( "The header must be set before the output is sent." );
+            throw new HTTPError( "The header must be set before the output is sent." );
         }
         header( $header, $replace, $code );
     }

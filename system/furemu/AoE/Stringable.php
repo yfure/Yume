@@ -34,7 +34,7 @@ abstract class Stringable
         }
         if( is_array( $data ) )
         {
-            return( json_encode( $data ) );
+            return( json_encode( $data, JSON_PRETTY_PRINT ) );
         }
         if( is_callable( $data ) )
         {

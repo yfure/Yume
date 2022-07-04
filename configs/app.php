@@ -30,7 +30,11 @@ return([
             ]
         ],
         "routing" => [
-            "routes" => "system/routes/routes"
+            "routes" => "system/routes/routes",
+            "regexp" => [
+                "default" => "[a-zA-Z0-9\-\_]+",
+                "segment" => "/(?:(?<Segment>\:(?<SegmentName>([a-z]+))(\((?<SegmentRegExp>[^\)]*)\))*)|(?<SegmentMatchAll>\.\*\?*))/i"
+            ]
         ],
         "session" => [
             

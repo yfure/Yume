@@ -176,6 +176,12 @@ class Sutakku implements SutakkuInterface
                                     // Clear all argument values.
                                     $trace['args'] = [];
                                     
+                                    if( isset( $trace['file'] ) )
+                                    {
+                                        // Clear field names from BASE PATH.
+                                        $trace['file'] = path( $trace['file'], True );
+                                    }
+                                    
                                     // Return trace.
                                     return( $trace );
                                 });
