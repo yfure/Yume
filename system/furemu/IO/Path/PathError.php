@@ -16,14 +16,14 @@ use Yume\Kama\Obi\IO;
  */
 class PathError extends IO\IOError
 {
-	
-	/*
-	 * @inherit Yume\Kama\Obi\Trouble\TroubleError
-	 *
-	 */
-	protected Array $flags = [
-	];
-	
+    
+    /*
+     * @inherit Yume\Kama\Obi\Trouble\TroubleError
+     *
+     */
+    protected Array $flags = [
+    ];
+    
 }
 
 ?>

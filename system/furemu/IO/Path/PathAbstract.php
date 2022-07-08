@@ -9,21 +9,21 @@ namespace Yume\Kama\Obi\IO\Path;
  */
 abstract class PathAbstract
 {
-	
-	/*
-	 * Tells whether the filename is a directory.
-	 *
-	 * @access Public Static
-	 *
-	 * @params String $dir
-	 *
-	 * @return Bool
-	 */
-	public static function exists( String $dir ): Bool
-	{
-		return( is_dir( path( $dir ) ) );
-	}
-	
+    
+    /*
+     * Tells whether the filename is a directory.
+     *
+     * @access Public Static
+     *
+     * @params String $dir
+     *
+     * @return Bool
+     */
+    public static function exists( String $dir ): Bool
+    {
+        return( is_dir( path( $dir ) ) );
+    }
+    
 }
 
 ?>

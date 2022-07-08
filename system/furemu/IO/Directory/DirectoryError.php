@@ -14,14 +14,14 @@ use Yume\Kama\Obi\Trouble;
  */
 class DirectoruError extends Trouble\TroubleError
 {
-	
-	/*
-	 * @inherit Yume\Kama\Obi\Trouble\TroubleError
-	 *
-	 */
-	protected Array $flags = [
-	];
-	
+    
+    /*
+     * @inherit Yume\Kama\Obi\Trouble\TroubleError
+     *
+     */
+    protected Array $flags = [
+    ];
+    
 }
 
 ?>

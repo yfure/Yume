@@ -9,16 +9,16 @@ namespace Yume\Kama\Obi\Services;
  */
 interface ServicesInterface
 {
-	
-	/*
-	 * Application bootstrap.
-	 *
-	 * @access Public Static
-	 *
-	 * @return Void
-	 */
-	public static function boot(): Void;
-	
+    
+    /*
+     * Application bootstrap.
+     *
+     * @access Public Static
+     *
+     * @return Void
+     */
+    public static function boot(): Void;
+    
 }
 
 ?>

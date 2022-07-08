@@ -15,16 +15,16 @@ use Yume\Kama\Obi\Services;
  */
 final class TranslatorServices extends Services\Services
 {
-	
-	/*
-	 * @inherit Yume\Kama\Obi\Services\ServicesInterface
-	 *
-	 */
-	public static function boot(): Void
-	{
-		Translator::import( AoE\App::config( "language" ) );
-	}
-	
+    
+    /*
+     * @inherit Yume\Kama\Obi\Services\ServicesInterface
+     *
+     */
+    public static function boot(): Void
+    {
+        Translator::import( AoE\App::config( "language" ) );
+    }
+    
 }
 
 ?>

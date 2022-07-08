@@ -16,6 +16,9 @@ return([
     ],
     
     "http" => [
+        "controller" => [
+            "default.method" => "main"
+        ],
         "cookies" => [
             "handler" => Yume\Kama\Obi\HTTP\Cookies\CookieHeader::class
         ],
@@ -56,7 +59,7 @@ return([
                 "session.name" => "YUMESESSID",
                 "session.sid_length" => 48,
                 "session.sid_bits_per_character" => 6,
-                //"session.save_path" => "/",
+                "session.save_path" => "", // "/",-
                 "session.save_handler" => "files",
                 "session.use_cookies" => 1,
                 "session.use_only_cookies" => 1,
@@ -74,28 +77,22 @@ return([
         ]
     ],
     
+    /*
+     * Default language used.
+     *
+     */
+    "language" => "en-EN",
+    
+    /*
+     * List of all service classes.
+     *
+     */
     "services" => [
-        Yume\Kama\Obi\HTTP\Routing\RouteService::class
+        Yume\Kama\Obi\HTTP\Routing\RouteServices::class,
+        Yume\Kama\Obi\Translator\TranslatorServices::class
     ],
     
-    "reflector" => [
-        "function" => [
-            "template" => []
-        ],
-        "instance" => [
-            "@method" => [
-                "filter" => ReflectionMethod::IS_PUBLIC
-            ],
-            "@constant" => [
-                "filter" => True
-            ],
-            "@property" => [
-                "filter" => True
-            ]
-        ],
-        "interface" => [],
-        "parameter" => []
-    ],
+    "reflector" => [],
     
     /*
      * Default Time Zone for app.

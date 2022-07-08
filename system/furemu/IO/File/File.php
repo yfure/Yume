@@ -14,25 +14,25 @@ use DateTime;
  */
 class File implements FileInterface
 {
-	
-	/*
-	 * File name
-	 *
-	 * @access Public Readonly
-	 *
-	 * @values String
-	 */
-	public Readonly String $fname;
-	
-	/*
-	 * File extension type.
-	 *
-	 * @access Public Readonly
-	 *
-	 * @values String
-	 */
-	public Readonly String $ftype;
-	
+    
+    /*
+     * File name
+     *
+     * @access Public Readonly
+     *
+     * @values String
+     */
+    public Readonly String $fname;
+    
+    /*
+     * File extension type.
+     *
+     * @access Public Readonly
+     *
+     * @values String
+     */
+    public Readonly String $ftype;
+    
 }
 
 ?>

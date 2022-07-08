@@ -9,7 +9,7 @@ namespace Yume\Kama\Obi\HTTP\Controller;
  */
 interface ControllerInterface
 {
-	
+    
 }
 
 ?>
