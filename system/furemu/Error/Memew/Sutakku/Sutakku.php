@@ -186,8 +186,11 @@ class Sutakku implements SutakkuInterface
                                     return( $trace );
                                 });
                             }
+                        } else {
+                        	
+                        	// No traces diplay.
+                        	return([]);
                         }
-                        
                         return( $traces );
                     }),
                     

@@ -1,6 +1,6 @@
 <?php
 
-namespace Yume\Kama\Obi\Sasayaki;
+namespace Yume\Kama\Obi\View\Sasayaki;
 
 use Yume\Kama\Obi\IO;
 use Yume\Kama\Obi\Trouble;

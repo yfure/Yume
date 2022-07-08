@@ -21,6 +21,8 @@ class RouteError extends HTTP\HTTPError
      */
     public const DUPLICATE_PATH = 3573;
     
+    public const METHOD_NOT_ALLOWED = 3574;
+    
     public const PAGE_NOT_FOUND = 3578;
     
     /*

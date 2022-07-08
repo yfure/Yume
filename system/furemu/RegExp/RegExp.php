@@ -53,16 +53,17 @@ abstract class RegExp
      *
      * @params String $pattern
      * @params String $subject
+     * @params Bool $clear
      *
      * @return Array|Bool
      */
-    public static function match( String $pattern, String $subject ): Array | Bool
+    public static function match( String $pattern, String $subject, Bool $clear = False ): Array | Bool
     {
         $matchs = [];
         
         if( preg_match( $pattern, $subject, $matchs, PREG_UNMATCHED_AS_NULL ) )
         {
-            return( $matchs );
+            return( $clear ? self::clear( $matchs ) : $matchs );
         }
         return( False );
     }
@@ -74,16 +75,17 @@ abstract class RegExp
      *
      * @params String $pattern
      * @params String $subject
+     * @params Bool $clear
      *
      * @return Array|Bool
      */
-    public static function matchs( String $pattern, String $subject ): Array | Bool
+    public static function matchs( String $pattern, String $subject, Bool $clear = False ): Array | Bool
     {
         $matchs = [];
         
         if( preg_match_all( $pattern, $subject, $matchs, PREG_SET_ORDER || PREG_UNMATCHED_AS_NULL ) )
         {
-            return( $matchs );
+            return( $clear ? self::clear( $matchs ) : $matchs );
         }
         return( False );
     }

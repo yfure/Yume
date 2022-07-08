@@ -20,6 +20,15 @@ interface RouteInterface
     public function getChild(): ? Routes;
     
     /*
+     * Return route handler.
+     *
+     * @access Public
+     *
+     * @return Array|Object|String|Callable
+     */
+    public function getHandler(): Array | Object | String | Callable;
+    
+    /*
      * Return all headers.
      *
      * @access Public
@@ -27,6 +36,15 @@ interface RouteInterface
      * @return Array
      */
     public function getHeader(): Array;
+    
+    /*
+     * Return route method.
+     *
+     * @access Public
+     *
+     * @return String
+     */
+    public function getMethod(): String;
     
     /*
      * Return route path.
