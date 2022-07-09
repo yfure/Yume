@@ -60,7 +60,7 @@ class TroubleError extends Error
             }
             
             // Get constant name.
-            if( $type = array_search( $code, Reflector\Kurasu::getConstants( $this ) ) )
+            if( $type = array_search( $code, Reflector\ReflectClass::getConstants( $this ) ) )
             {
                 // Set error type based on constant name.
                 $this->type = $type;

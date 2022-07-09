@@ -2,11 +2,12 @@
 
 namespace Yume\Kama\Obi\AoE;
 
-use Yume\Kama\Obi\Reflector;
 use Yume\Kama\Obi\Services;
 
 use DateTimeZone;
 use DateTime;
+
+use ReflectionClass;
 
 /*
  * App
@@ -86,8 +87,8 @@ class App
         // Mapping all services.
         array_map( array: self::config( "services" ), callback: function( String $service )
         {
-            // Create class reflection.
-            $reflect = Reflector\Kurasu::reflect( $service );
+            // Create new class reflection.
+            $reflect = new ReflectionClass( $service );
             
             // If the service class implements the Service Interface.
             if( $reflect->implementsInterface( Services\ServicesInterface::class ) )

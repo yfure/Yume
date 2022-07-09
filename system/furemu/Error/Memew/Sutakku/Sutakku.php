@@ -198,10 +198,10 @@ class Sutakku implements SutakkuInterface
                     "Class" => $this->object::class,
                     
                     // List of Traits used.
-                    "Trait" => Reflector\Kurasu::getTraits( $this->object, True ),
+                    "Trait" => Reflector\ReflectClass::getTraits( $this->object, True ),
                     
                     // Throwable parent class name.
-                    "Parent" => Reflector\Kurasu::getParentTree( $this->object ),
+                    "Parent" => Reflector\ReflectClass::getParentTree( $this->object ),
                     
                     // Throwable message.
                     "Message" => path( $this->object->getMessage(), True ),
@@ -210,7 +210,7 @@ class Sutakku implements SutakkuInterface
                     "Previous" => $this->object->getPrevious() !== Null ? $this->previs : [],
                     
                     // List of Interfaces implemented.
-                    "Interface" => Reflector\Kurasu::getInterfaces( $this->object, True ),
+                    "Interface" => Reflector\ReflectClass::getInterfaces( $this->object, True ),
                     
                     default => call_user_func_array( args: [ $key, $value ], callback: function( $key, $value )
                     {

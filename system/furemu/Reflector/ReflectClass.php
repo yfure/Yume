@@ -5,11 +5,13 @@ namespace Yume\Kama\Obi\Reflector;
 use Yume\Kama\Obi\AoE;
 
 use ReflectionClass;
+use ReflectionMethod;
+use ReflectionProperty;
 
 /*
- * Kurasu
+ * ReflectClass
  *
- * The Kurasu class reports information about a class.
+ * The ReflectClass class reports information about a class.
  *
  * @package Yume\Kama\Obi\Reflector
  */
@@ -17,41 +19,19 @@ abstract class ReflectClass
 {
     
     /*
-     * Gets new reflection.
+     * @inherit https://www.php.net/manual/en/reflectionclass.newinstance.php
+     * @inherit https://www.php.net/manual/en/reflectionclass.newinstanceargs.php
      *
-     * @params Object String class
-     *
-     * @return ReflectionClass as Instance.
      */
-    final public static function reflect( Object | String $class ): ReflectionClass
+    final public static function instance( String | Object $class, Array $args = [], Mixed &$ref = Null ): Object
     {
-        if( is_object( $class ) )
-        {
-            if( $class Instanceof ReflectionClass )
-            {
-                return( $class );
-            }
-        }
-        return( new ReflectionClass( $class ) );
-    }
-    
-    /*
-     * Create new class contructor.
-     *
-     * @access Public Static
-     *
-     * @params String, Object class
-     * @params Array args
-     *
-     * @return Object
-     */
-    final public static function construct( String | Object $class, Array $args = [] ): Object
-    {
-        // New Reflection.
-        $reflect = self::reflect( $class );
+        // Constructs a ReflectionClass.
+        $reflect = $ref = new ReflectionClass( $class );
         
+        // Check if the class has a constructor.
         if( $reflect->getConstructor() !== Null )
         {
+            // Checks if the constructor has parameters.
             if( count( $parameter = $reflect->getConstructor()->getParameters() ) !== 0 )
             {
                 return( $reflect )->newInstanceArgs( $args );
@@ -60,68 +40,54 @@ abstract class ReflectClass
         return( $reflect->newInstance() );
     }
     
-    final public static function getConstants( Object | String $class, Bool $onlyName = False ): Array
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.getconstants.php
+     *
+     */
+    final public static function getConstants( Object | String $class, Bool $onlyName = False, Mixed &$ref = Null ): Array
     {
-        return( self::reflect( $class ) )->getConstants();
+        return( $ref = new ReflectionClass( $class ) )->getConstants();
     }
     
     /*
-     * Gets the interfaces.
+     * @inherit https://www.php.net/manual/en/reflectionclass.getinterfaces.php
      *
-     * @access Public Static
-     *
-     * @params Object, String $class
-     * @params Bool $onlyName
-     *
-     * @return Array
      */
-    final public static function getInterfaces( Object | String $class, Bool $onlyName = False ): Array
+    final public static function getInterfaces( Object | String $class, Bool $onlyName = False, Mixed &$ref = Null ): Array
     {
         if( $onlyName )
         {
-            return( self::reflect( $class ) )->getInterfaceNames();
+            return( $ref = new ReflectionClass( $class ) )->getInterfaceNames();
         }
-        return( self::reflect( $class ) )->getInterfaces();
+        return( $ref = new ReflectionClass( $class ) )->getInterfaces();
     }
     
     /*
-     * Gets an array of methods.
-     *
-     * @access Public Static
-     *
-     * @params Object, String $class
-     * @params Int $filter
+     * @inherit https://www.php.net/manual/en/reflectionclass.getmethods.php
      *
      */
-    final public static function getMethods( Object | String $class, Bool $onlyName = False, Int $filter = 0 )
+    final public static function getMethods( Object | String $class, Int $filter = ReflectionMethod::IS_PUBLIC, Bool $onlyName = False )
     {
-        
         // Get all methods by filter.
-        $methods = self::reflect( $class )->getMethods( $filter !== 0 ? $filter : AoE\App::config( "reflector.instance.method.filter" ) );
+        $methods = ( $ref = new ReflectionClass( $class ) )->getMethods( $filter );
         
+        // Check if only the name is needed.
         if( $onlyName )
         {
-            foreach( $methods As $i => $method )
-            {
-                $methods[$i] = $method->name;
-            }
+            // Mapping methods.
+            $methods = array_map( array: $methods, callback: fn( $method ) => $method->name );
         }
         
         return( $methods );
     }
     
     /*
-     * Get parent class reflection.
+     * @inherit https://www.php.net/manual/en/reflectionclass.getparentclass.php
      *
-     * @access Public Static
-     *
-     * @params Object, String $class
-     *
-     * @return Object
      */
-    final public static function getParent( Object | String $class ): ? ReflectionClass
+    final public static function getParent( Object | String $class, Mixed &$ref = Null ): Bool | ReflectionClass
     {
-        return( self::reflect( $class ) )->getParentClass();
+        return( $ref = new ReflectionClass( $class ) )->getParentClass();
     }
     
     /*
@@ -133,231 +99,206 @@ abstract class ReflectClass
      *
      * @return Array, String
      */
-    final public static function getParentTree( Object | String $class ): Array | String | Null
+    final public static function getParentTree( Object | String $class, Mixed &$ref = Null ): Array | String | Null
     {
+        // Get reflection for parent class.
+        $parent = self::getParent( $class );
         
-        $parent = self::reflect( $class )->getParentClass();
-        
-        if( $parent !== False )
+        // If the parent instance of ReflectionClass.
+        if( $parent Instanceof ReflectionClass )
         {
-            if( self::getParentTree( $parent = $parent->name ) !== Null )
+            // Looping.
+            $tree = self::getParentTree( $parent->name );
+            
+            // If parent also has parent.
+            if( $tree !== Null )
             {
-                return([ $parent => self::getParentTree( $parent ) ]);
+                return([ $parent->name => $tree ]);
             }
-            return( $parent );
+            return( $parent->name );
         }
-        
         return Null;
     }
     
-    final public static function getProperties( Object | String $class )
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.getproperties.php
+     *
+     */
+    final public static function getProperties( Object | String $class, Int $filter = ReflectionProperty::IS_PUBLIC, Bool $onlyName = False, Mixed &$ref = Null ): Array
     {
-        // ....
+        // Get all properties by filter.
+        $props = ( $ref = new ReflectionClass( $class ) )->getProperties( $filter );
+        
+        // Check if only the name is needed.
+        if( $onlyName )
+        {
+            // Mapping properties.
+            $props = array_map( array: $props, callback: fn( $prop ) => $prop->name );
+        }
+        
+        return( $props );
     }
     
     /*
-     * Returns an array of traits used by this class.
+     * @inherit https://www.php.net/manual/en/reflectionclass.gettraits.php
      *
-     * @access Public Static
-     *
-     * @params Object, String $class
-     *
-     * @return Array
      */
     final public static function getTraits( Object | String $class )
     {
-        return( self::reflect( $class ) )->getTraits();
+        return( $ref = new ReflectionClass( $class ) )->getTraits();
     }
     
     /*
-     * Checks if in namespace.
+     * @inherit https://www.php.net/manual/en/reflectionclass.innamespace.php
      *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
      */
-    abstract public static function inNamespace( Object | String $class ): Bool;
-    
-    /*
-     * Checks if class is abstract.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isAbstract( Object | String $class ): Bool;
-    
-    /*
-     * Checks if class is anonymous.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isAnonymous( Object | String $class ): Bool;
-    
-    /*
-     * Returns whether this class is cloneable.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isCloneable( Object | String $class ): Bool;
-    
-    /*
-     * Check if class is countable.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isCountable( Object | String $class ): Bool;
-    
-    /*
-     * Check if class is data.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isData( Object | String $class ): Bool;
-    
-    /*
-     * Returns whether this is an enum.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isEnum( Object | String $class ): Bool;
-    
-    /*
-     * Checks if class is final.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isFinal( Object | String $class ): Bool;
-    
-    abstract public static function isInstance( Object $object ): Bool;
-    
-    /*
-     * Checks if class is instantiable.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isInstantiable( Object | String $class ): Bool;
-    
-    /*
-     * Checks if class is interface.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isInterface( Object | String $class ): Bool;
-    
-    /*
-     * Checks if class is defined internally by an extension, or the core.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class>
-     *
-     * @return Bool
-     */
-    abstract public static function isInternal( Object | String $class ): Bool;
-    
-    /*
-     * Checks if class is iterable.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class>
-     *
-     * @return Bool
-     */
-    abstract public static function isIterable( Object | String $class ): Bool;
-    
-    /*
-     * Checks if class is stringable.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isStringable( Object | String $class ): Bool;
-    
-    /*
-     * Checks if a subclass.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isSubclassOf( Instance | string $class ): Bool;
-    
-    /*
-     * Returns whether this is a trait.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isTrait( Object | String $class ): Bool;
-    
-    /*
-     * Checks if user defined.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    abstract public static function isUserDefined( Object | String $class ): Bool;
-    
-    /*
-     * Parse object or class to string.
-     *
-     * @access Public Static
-     *
-     * @params Object, String class
-     *
-     * @return Bool
-     */
-    final public static function toString( Object | String $class ): String
+    final public static function inNamespace( Object | String $class, Mixed &$ref = Null ): Bool
     {
+        return( $ref = new ReflectionClass( $class ) )->inNameSpace();
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.isabstract.php
+     *
+     */
+    final public static function isAbstract( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isAbstract();
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.isanonymous.php
+     *
+     */
+    final public static function isAnonymous( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isAnonymous();
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.iscloneable.php
+     *
+     */
+    final public static function isCloneable( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isCloneable();
+    }
+    
+    /*
+     * ....
+     *
+     */
+    abstract public static function isCountable( Object | String $class, Mixed &$ref = Null ): Bool;
+    
+    /*
+     * ....
+     *
+     */
+    abstract public static function isData( Object | String $class, Mixed &$ref = Null ): Bool;
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.isenum.php
+     *
+     */
+    final public static function isEnum( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isEnum();
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.isfinal.php
+     *
+     */
+    final public static function isFinal( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isFinal();
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.implementsinterface.php
+     *
+     */
+    final public static function isImplements( Object | String $class, ReflectionClass | String $interface, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->implementsInterface( $interface );
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.isinstance.php
+     *
+     */
+    final public static function isInstance( Object $object, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isInstance();
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.isinstantiable.php
+     *
+     */
+    final public static function isInstantiable( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isInstantiable();
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.isinterface.php
+     *
+     */
+    final public static function isInterface( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isInterface();
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.isinternal.php
+     *
+     */
+    final public static function isInternal( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isInternal();
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.isiterable.php
+     *
+     */
+    final public static function isIterable( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isIterable();
+    }
+    
+    /*
+     * ...
+     *
+     */
+    abstract public static function isStringable( Object | String $class, Mixed &$ref = Null ): Bool;
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.issubclassof.php
+     *
+     */
+    final public static function isSubclassOf( Object | String $class, ReflectionClass | String $object, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isSubclassOf( $object );
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.istrait.php
+     *
+     */
+    final public static function isTrait( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isTrait();
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/reflectionclass.isuserdefined.php
+     *
+     */
+    final public static function isUserDefined( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( $ref = new ReflectionClass( $class ) )->isUserDefined();
     }
     
 }

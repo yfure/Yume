@@ -92,7 +92,8 @@ return([
         Yume\Kama\Obi\Translator\TranslatorServices::class
     ],
     
-    "reflector" => [],
+    "reflector" => [
+    ],
     
     /*
      * Default Time Zone for app.

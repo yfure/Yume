@@ -105,42 +105,82 @@ class Router implements RouterInterface
         throw new RouteError( $this->path, RouteError::PAGE_NOT_FOUND );
     }
     
-    final protected function handleController( Route $route, Array $matches, Object | String $handler, ? String $method = Null ): Void
+    /*
+     * Handle controller class.
+     *
+     * @access Protected
+     *
+     * @params Yume\Kama\Obi\HTTP\Routing\Route $route
+     * @params Array $matches
+     * @params Object|String $handler
+     * @params String $method
+     *
+     * @return Mixed
+     */
+    final protected function handleController( Route $route, Array $matches, Object | String $handler, ? String $method = Null ): Mixed
     {
-        // ....
-        $reflect = Reflector\Kurasu::reflect( $handler );
+        // Reference Class Reflection.
+        $reflect = Null;
         
-        if( $reflect->implementsInterface( HTTP\Controller\ControllerInterface::class ) )
+        // Checks if Controller class implements Controller Interface.
+        if( Reflector\ReflectClass::isImplements( $handler, HTTP\Controller\ControllerInterface::class, $reflect ) )
         {
-            // ....
-            var_dump( RegExp\RegExp::replace( "#" . BASE_PATH . "#", get_included_files(), "" ) );
-        } else {
-            // ....
-        }
-    }
-    
-    final protected function handleCallable( Route $route, Array $matches, Callable $handler ): Void
-    {
-        // ....
-        $reflect = Reflector\ReflectFunction::reflect( $handler );
-        
-        
-    }
-    
-    final protected function handleString( Route $route, Array $matches, String $handler ): Void
-    {
-        if( $matches = RegExp\RegExp::match( "/^(?:(?<Controller>Yume\\\Kama\\\App\\\HTTP\\\Controllers\\\[a-zA-Z_\x80-\xff][a-zA-Z0-9_\\\\x80-\xff]*[a-zA-Z0-9_\x80-\xff])|(?<View>view\.[a-zA-Z_\x80-\xff][a-zA-Z0-9-_\.\x80-\xff]*[a-zA-Z0-9_\x80-\xff]))$/i", $handler, True ) )
-        {
-            // Extract array to variable.
-            extract( $matches );
-            
-            if( isset( $View ) )
+            // Gets a ReflectionMethod for a class method.
+            if( $rmethod = $reflect->getMethod( $method ) )
             {
                 // ...
-            } else {
-                $this->handleController( $route, $matches, $Controller );
+                echo $method;
             }
+            //throw new HTTP\Controller\ControllerError();
         }
+        //throw new HTTP\Controller\ControllerError();
+    }
+    
+    /*
+     * Handle handler route callable.
+     *
+     * @access Protected
+     *
+     * @params Yume\Kama\Obi\HTTP\Routing\Route $route
+     * @params Array $matches
+     * @params Callable $handler
+     *
+     * @return Mixed
+     */
+    final protected function handleCallable( Route $route, Array $matches, Callable $handler ): Mixed
+    {
+        return( Reflector\ReflectFunction::invoke( $handler, $matches ) );
+    }
+    
+    /*
+     * Handle handler route string.
+     *
+     * @access Protected
+     *
+     * @params Yume\Kama\Obi\HTTP\Routing\Route $route
+     * @params Array $matches
+     * @params String $handler
+     *
+     * @return Mixed
+     */
+    final protected function handleString( Route $route, Array $matches, String $handler ): Mixed
+    {
+        // Controller namespace.
+        $cname = "Yume\\\Kama\\\App\\\HTTP\\\Controllers";
+        
+        // Regular Expression.
+        $regexp = "/^(?:(?<Controller>$cname\\\[a-zA-Z_\x80-\xff][a-zA-Z0-9_\\\\x80-\xff]*[a-zA-Z0-9_\x80-\xff])\:\:(?<Method>[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*)|(?<Controller>$cname\\\[a-zA-Z_\x80-\xff][a-zA-Z0-9_\\\\x80-\xff]*[a-zA-Z0-9_\x80-\xff])|view\.(?<View>[a-zA-Z_\x80-\xff][a-zA-Z0-9-_\.\x80-\xff]*[a-zA-Z0-9_\x80-\xff]))$/iJ";
+        
+        // Checks if string is ViewName or ControllerName.
+        if( $matches = RegExp\RegExp::match( $regexp, $handler, True ) )
+        {
+            // Extract array to variable.
+            extract( $matches = RegExp\RegExp::clear( $matches, True ) );
+            
+            // Return value.
+            return( isset( $View ) ? $View : $this->handleController( $route, $matches, $Controller, isset( $Method ) ? $Method : Null ) );
+        }
+        //throw new RouteError( $handler, RouterError::INVALID_HANDLER_STRING );
     }
     
     /*
@@ -164,7 +204,7 @@ class Router implements RouterInterface
             $regexp = $parent !== Null ? f( "{}/{}", $parent, $regexp ) : $regexp;
             
             // Checks if the current route path matches the current uri request.
-            if( $result = RegExp\RegExp::match( $pattern = f( "/^(?:(?<path>({})))$/U", RegExp\RegExp::replace( "/\//", $regexp, "\x5c\x2f" ) ), $this->path ) )
+            if( $result = RegExp\RegExp::match( $pattern = f( "/^(?:({}))$/U", RegExp\RegExp::replace( "/\//", $regexp, "\x5c\x2f" ) ), $this->path ) )
             {
                 return([
                     "route" => $route, 

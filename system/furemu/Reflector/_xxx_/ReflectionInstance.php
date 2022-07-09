@@ -1,47 +1,40 @@
 <?php
 
-namespace Yume\Kama\Obi\Reflector;
+namespace Yume\Kama\Obi\Reflection;
 
-use Yume\Kama\Obi\AoE;
+use Yume\Kama\Obi\Himei;
 
-use ReflectionClass;
+use ReflectionClass As Instance;
 
-/*
- * Kurasu
- *
- * The Kurasu class reports information about a class.
- *
- * @package Yume\Kama\Obi\Reflector
- */
-abstract class Kurasu
+abstract class ReflectionInstance extends ReflectionProvider implements ReflectionInterface
 {
     
     /*
      * Gets new reflection.
      *
-     * @params Object String class
+     * @params Object, String <class>
      *
      * @return ReflectionClass as Instance.
      */
-    final public static function reflect( Object | String $class ): ReflectionClass
+    final public static function reflect( Object | String $class ): Instance
     {
         if( is_object( $class ) )
         {
-            if( $class Instanceof ReflectionClass )
+            if( $class Instanceof Instance )
             {
                 return( $class );
             }
         }
-        return( new ReflectionClass( $class ) );
+        return( new Instance( $class ) );
     }
     
     /*
      * Create new class contructor.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params String, Object class
-     * @params Array args
+     * @params String, Object <class>
+     * @params Array <args>
      *
      * @return Object
      */
@@ -60,93 +53,40 @@ abstract class Kurasu
         return( $reflect->newInstance() );
     }
     
-    final public static function getConstants( Object | String $class, Bool $onlyName = False ): Array
+    final public static function getConstants( Object | String $class ): Array
     {
         return( self::reflect( $class ) )->getConstants();
     }
     
-    /*
-     * Gets the interfaces.
-     *
-     * @access Public Static
-     *
-     * @params Object, String $class
-     * @params Bool $onlyName
-     *
-     * @return Array
-     */
-    final public static function getInterfaces( Object | String $class, Bool $onlyName = False ): Array
+    final public static function getInterfaces( Object | String $class )
     {
-        if( $onlyName )
-        {
-            return( self::reflect( $class ) )->getInterfaceNames();
-        }
         return( self::reflect( $class ) )->getInterfaces();
     }
     
-    /*
-     * Gets an array of methods.
-     *
-     * @access Public Static
-     *
-     * @params Object, String $class
-     * @params Int $filter
-     *
-     */
-    final public static function getMethods( Object | String $class, Bool $onlyName = False, Int $filter = 0 )
+    final public static function getMethods( Object | String $class )
     {
-        
-        // Get all methods by filter.
-        $methods = self::reflect( $class )->getMethods( $filter !== 0 ? $filter : AoE\App::config( "reflector.instance.method.filter" ) );
-        
-        if( $onlyName )
-        {
-            foreach( $methods As $i => $method )
-            {
-                $methods[$i] = $method->name;
-            }
-        }
-        
-        return( $methods );
+        // ....
     }
     
-    /*
-     * Get parent class reflection.
-     *
-     * @access Public Static
-     *
-     * @params Object, String $class
-     *
-     * @return Object
-     */
-    final public static function getParent( Object | String $class ): ? ReflectionClass
-    {
-        return( self::reflect( $class ) )->getParentClass();
-    }
-    
-    /*
-     * Get the parent class name to the bottom of the order.
-     *
-     * @access Public Static
-     *
-     * @params Object, String $class
-     *
-     * @return Array, String
-     */
-    final public static function getParentTree( Object | String $class ): Array | String | Null
+    final public static function getParent( Object | String $class )
     {
         
-        $parent = self::reflect( $class )->getParentClass();
+        // New Reflection.
+        $reflect = self::reflect( $class );
         
-        if( $parent !== False )
+        // Check wheter if class have a parent.
+        if( $reflect->getParentClass() !== False )
         {
-            if( self::getParentTree( $parent = $parent->name ) !== Null )
+            // Parent class name.
+            $name = $reflect->getParentClass()->name;
+            
+            // Check wheter if class have a parent.
+            if( self::getParent( $name ) !== Null )
             {
-                return([ $parent => self::getParentTree( $parent ) ]);
+                return([ $name => self::getParent( $name )]);
             }
-            return( $parent );
+            return( $name );
         }
-        
         return Null;
     }
     
@@ -155,15 +95,6 @@ abstract class Kurasu
         // ....
     }
     
-    /*
-     * Returns an array of traits used by this class.
-     *
-     * @access Public Static
-     *
-     * @params Object, String $class
-     *
-     * @return Array
-     */
     final public static function getTraits( Object | String $class )
     {
         return( self::reflect( $class ) )->getTraits();
@@ -172,9 +103,9 @@ abstract class Kurasu
     /*
      * Checks if in namespace.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -183,9 +114,9 @@ abstract class Kurasu
     /*
      * Checks if class is abstract.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -194,9 +125,9 @@ abstract class Kurasu
     /*
      * Checks if class is anonymous.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -205,9 +136,9 @@ abstract class Kurasu
     /*
      * Returns whether this class is cloneable.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -216,9 +147,9 @@ abstract class Kurasu
     /*
      * Check if class is countable.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -227,9 +158,9 @@ abstract class Kurasu
     /*
      * Check if class is data.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -238,9 +169,9 @@ abstract class Kurasu
     /*
      * Returns whether this is an enum.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -249,9 +180,9 @@ abstract class Kurasu
     /*
      * Checks if class is final.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -262,9 +193,9 @@ abstract class Kurasu
     /*
      * Checks if class is instantiable.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -273,9 +204,9 @@ abstract class Kurasu
     /*
      * Checks if class is interface.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -284,9 +215,9 @@ abstract class Kurasu
     /*
      * Checks if class is defined internally by an extension, or the core.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class>
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -295,9 +226,9 @@ abstract class Kurasu
     /*
      * Checks if class is iterable.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class>
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -306,9 +237,9 @@ abstract class Kurasu
     /*
      * Checks if class is stringable.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -317,9 +248,9 @@ abstract class Kurasu
     /*
      * Checks if a subclass.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -328,9 +259,9 @@ abstract class Kurasu
     /*
      * Returns whether this is a trait.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -339,9 +270,9 @@ abstract class Kurasu
     /*
      * Checks if user defined.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
@@ -350,14 +281,46 @@ abstract class Kurasu
     /*
      * Parse object or class to string.
      *
-     * @access Public Static
+     * @access Public, Static
      *
-     * @params Object, String class
+     * @params Object, String <class>
      *
      * @return Bool
      */
     final public static function toString( Object | String $class ): String
     {
+        ([
+            'class' => [
+                "name",
+                "space"
+            ],
+            'object' => [
+                'is' => [
+                    "is::Abstract",
+                    "is::Anonymous",
+                    "is::Cloneable",
+                    "is::Countable",
+                    "is::Data",
+                    "is::Enum",
+                    "is::Final",
+                    "is::Instance",
+                    "is::Instantiable",
+                    "is::Interface",
+                    "is::Internal",
+                    "is::Iterable",
+                    "is::Stringable",
+                    "is::SubclassOf",
+                    "is::Throwable",
+                    "is::Trait",
+                    "is::UserDefined"
+                ]
+            ],
+            'traits' => "traits",
+            'methods' => "methods",
+            'constants' => "constants",
+            'interfaces' => "interfaces",
+            'properties' => "properties"
+        ]);
     }
     
 }

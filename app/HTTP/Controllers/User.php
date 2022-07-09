@@ -2,7 +2,6 @@
 
 namespace Yume\Kama\App\HTTP\Controllers;
 
-use Yume\Kama\App\View;
 use Yume\Kama\Obi\HTTP;
 
 /*
@@ -12,12 +11,24 @@ use Yume\Kama\Obi\HTTP;
  */
 class User extends HTTP\Controller\Controller
 {
-    
-    public static function main(): Void
+    /*
+     * Main method of controller.
+     *
+     * @access Public
+     *
+     * @params String $user
+     * @params String $tabs
+     *
+     * @return Void
+     */
+    public function main( String $user, String $tabs ): Void
     {
-        
+        $this->view( "user", [
+            "user" => $user,
+            "tabs" => $tabs,
+            "data" => []
+        ]);
     }
-    
 }
 
 ?>

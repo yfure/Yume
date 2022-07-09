@@ -16,11 +16,11 @@ HTTP\Route::get( "/:user",
     App\HTTP\Controllers\User::class,
     
     // Route Children...
-    function()
+    function(): Void
     {
         HTTP\Route::get( ":tabs", function( String $user, String $tabs )
         {
-            return( f( "(?<user>{})\/(?<tabs>{})", $user, $tabs ) );
+            return( f( "<pre>^<b>\/</b>(?:(?&ltuser&gt<b\x20style=\"color:#8490ff\">{}</b>)<b>\/</b>(?&lttabs&gt<b\x20style=\"color:#007bff\">{}</b>))$</pre>", $user, $tabs ) );
         })
         
         // Where segment name.

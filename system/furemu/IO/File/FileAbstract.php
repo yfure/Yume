@@ -5,6 +5,8 @@ namespace Yume\Kama\Obi\IO\File;
 use Yume\Kama\Obi\AoE;
 use Yume\Kama\Obi\IO;
 
+use DateTime;
+
 /*
  * File
  *
@@ -12,6 +14,8 @@ use Yume\Kama\Obi\IO;
  */
 abstract class FileAbstract
 {
+    
+    public const SKIP_EMPTY_LINE = 7829;
     
     /*
      * Check if file is exists.
@@ -34,7 +38,7 @@ abstract class FileAbstract
      *
      * @params String $file
      *
-     * @return Bool
+     * @return String
      */
     public static function read( String $file ): String
     {
@@ -70,21 +74,64 @@ abstract class FileAbstract
             $fsize = ( $fsize = self::size( $file ) ) !== 0 ? $fsize : 13421779;
             
             // Open file.
-            $fopen = fopen( $fname, "r" );
-            $fread = "";
-            
-            while( feof( $fopen ) === False )
+            if( $fopen = fopen( $fname, "r" ) )
             {
-                // Binary-safe file read.
-                $fread .= fread( $fopen, $fsize );
+                // File readed.
+                $fread = "";
+                
+                while( feof( $fopen ) === False )
+                {
+                    // Binary-safe file read.
+                    $fread .= fread( $fopen, $fsize );
+                }
+                
+                // Closes an open file pointer.
+                fclose( $fopen );
+                
+                return( $fread );
             }
-            
-            // Closes an open file pointer.
-            fclose( $fopen );
-            
-            return( $fread );
+            // Failed Open File {}
         }
         throw new IO\Path\PathError( $fpath, IO\Path\PathError::NOT_FOUND );
+    }
+    
+    /*
+     * Read file contents and split file contents with endline.
+     *
+     * @access Public Static
+     *
+     * @params String $file
+     * @params Int $flags
+     *
+     * @return Array
+     */
+    public static function readline( String $file, Int $flags = 0 ): Array
+    {
+        // Reading file contents.
+        $fread = self::read( $file );
+        
+        // Split file contents with end line.
+        $fline = explode( "\n", $fread );
+        
+        switch( $flags )
+        {
+            // Remove or skip blank lines.
+            case self::SKIP_EMPTY_LINE:
+            
+                // Mapping Lines.
+                foreach( $fline As $i => $line )
+                {
+                    // Check if the line is empty.
+                    if( $line === "" )
+                    {
+                        // Destroy the line.
+                        unset( $fline[$i] );
+                    }
+                }
+                break;
+        }
+        
+        return( $fline );
     }
     
     /*
@@ -99,6 +146,27 @@ abstract class FileAbstract
     public static function size( String $file ): Int | String
     {
         return( filesize( path( $file ) ) );
+    }
+    
+    /*
+     * Get DateTime class instance from file.
+     *
+     * @access Public Static
+     *
+     * @params String $file
+     *
+     * @return DateTime
+     */
+    public static function time( String $file ): DateTime
+    {
+        // Get timestamp value from file.
+        $time = filemtime( path( $file ) );
+        
+        // Clone instance of DateTime Runtime class.
+        $date = ( clone AoE\Runtime::$app->object->dateTime )->setTimestamp( $time );
+        
+        // Return DateTime instance.
+        return( $date );
     }
     
     /*
@@ -158,13 +226,16 @@ abstract class FileAbstract
             $fdata = $fdata ? $fdata : "";
             
             // Open file.
-            $fopen = fopen( $fname, $fmode );
-            
-            // Binary-safe file write.
-            fwrite( $fopen, $fdata );
-            
-            // Closes an open file pointer.
-            fclose( $fopen );
+            if( $fopen = fopen( $fname, $fmode ) )
+            {
+                // Binary-safe file write.
+                fwrite( $fopen, $fdata );
+                
+                // Closes an open file pointer.
+                fclose( $fopen );
+            } else {
+                // Failed write file.
+            }
         } else {
             throw new IO\Path\PathError( $fpath, IO\Path\PathError::NOT_FOUND );
         }
