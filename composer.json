@@ -20,6 +20,7 @@
             "system/buffer/functions.php"
         ],
         "psr-4": {
+            "Yume\\Kama\\App\\": "app/",
             "Yume\\Kama\\Obi\\Apuri\\": "app/",
             "Yume\\Kama\\Obi\\": "system/furemu",
             "Yume\\Kama\\Obi\\Furemu\\": "system/furemu/"
