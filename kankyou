@@ -1,0 +1,34 @@
+
+# 
+# This is the environment variable file for Yume Framework
+# You can change where files are stored and even rename
+# environment variable files.
+# 
+# @see configs/app.environment.path
+# 
+
+# Author Name.
+AUTHOR=hxAri
+
+# Application Name.
+APP_NAME=Yume
+
+# Application Version.
+APP_VERSION=
+
+# Database Configuration.
+DATABASE_HOST=
+DATABASE_PORT=
+DATABASE_USER=
+DATABASE_PASS=
+DATABASE_NAME=
+
+# Multiple Database Configuration.
+MULTIDBS:Array=[
+	{
+		"HOST": null,
+		"PORT": null,
+		"USER": null,
+		"PASS": null
+	}
+]

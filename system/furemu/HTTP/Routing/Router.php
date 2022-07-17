@@ -79,7 +79,7 @@ class Router implements RouterInterface
                 array_map( array: $route->getHeader(), callback: fn( $args ) => HTTP\HTTP::header( $args['header'], $args['replace'], $args['code'] ) );
                 
                 // ....
-                exit( $execute = match( $type = ucfirst( [ $type = gettype( $handler = $route->getHandler() ) ][0] === "object" ? ( is_callable( $route->getHandler() ) ? "callable" : "object" ) : $type ) )
+                exit( AoE\Stringable::parse( $execute = match( $type = ucfirst( [ $type = gettype( $handler = $route->getHandler() ) ][0] === "object" ? ( is_callable( $route->getHandler() ) ? "callable" : "object" ) : $type ) )
                 {
                     // ....
                     "Array" => $this->handleController( $route, $matches, $handler[0], isset( $handler[1] ) ? $handler[1] : Null ),
@@ -92,7 +92,7 @@ class Router implements RouterInterface
                     
                     // ...
                     "Callable" => $this->handleCallable( $route, $matches, $handler )
-                });
+                }));
             }
             throw new RouteError( $this->path, RouteError::METHOD_NOT_ALLOWED );
         }
@@ -119,15 +119,13 @@ class Router implements RouterInterface
         // Checks if Controller class implements Controller Interface.
         if( Reflector\ReflectClass::isImplements( $handler, HTTP\Controller\ControllerInterface::class, $reflect ) )
         {
-            // Gets a ReflectionMethod for a class method.
-            if( $rmethod = $reflect->getMethod( $method ) )
+            if( method_exists( $reflect->name, $method = $method !== Null ? $method : AoE\App::config( "http.controller[default.method]" ) ) )
             {
-                // ...
-                echo $method;
+                return( Reflector\ReflectMethod::invoke( $reflect, $method, $matches ) );
             }
-            //throw new HTTP\Controller\ControllerError();
+            throw new HTTP\Controller\ControllerError( [ $reflect->name, $method ], HTTP\Controller\ControllerError::METHOD_ERROR );
         }
-        //throw new HTTP\Controller\ControllerError();
+        throw new HTTP\Controller\ControllerError( $reflect->name, HTTP\Controller\ControllerError::IMPLEMENTS_ERROR );
     }
     
     /*
@@ -166,15 +164,15 @@ class Router implements RouterInterface
         $regexp = "/^(?:(?<Controller>$cname\\\[a-zA-Z_\x80-\xff][a-zA-Z0-9_\\\\x80-\xff]*[a-zA-Z0-9_\x80-\xff])\:\:(?<Method>[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*)|(?<Controller>$cname\\\[a-zA-Z_\x80-\xff][a-zA-Z0-9_\\\\x80-\xff]*[a-zA-Z0-9_\x80-\xff])|view\.(?<View>[a-zA-Z_\x80-\xff][a-zA-Z0-9-_\.\x80-\xff]*[a-zA-Z0-9_\x80-\xff]))$/iJ";
         
         // Checks if string is ViewName or ControllerName.
-        if( $matches = RegExp\RegExp::match( $regexp, $handler, True ) )
+        if( $capture = RegExp\RegExp::match( $regexp, $handler, True ) )
         {
             // Extract array to variable.
-            extract( $matches = RegExp\RegExp::clear( $matches, True ) );
+            extract( $capture = RegExp\RegExp::clear( $capture, True ) );
             
             // Return value.
             return( isset( $View ) ? $View : $this->handleController( $route, $matches, $Controller, isset( $Method ) ? $Method : Null ) );
         }
-        //throw new RouteError( $handler, RouterError::INVALID_HANDLER_STRING );
+        throw new RouteError( $handler, RouterError::INVALID_HANDLER_STRING );
     }
     
     /*

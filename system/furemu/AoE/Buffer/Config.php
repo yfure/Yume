@@ -29,7 +29,7 @@ trait Config
     /*
      * Retrieve the configuration value.
      *
-     * @access Public: Static
+     * @access Public Static
      *
      * @params String $key
      *

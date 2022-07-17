@@ -114,7 +114,7 @@ final class CookieHeader implements Stringable
      * @params Array $options
      * @params Bool $save
      *
-     * @return Static
+     * @return Void
      */
     public function __construct( public String $name, public ? String $value = Null, Array $options = [], Bool $save = False )
     {

@@ -26,15 +26,15 @@ abstract class ReflectClass
     final public static function instance( String | Object $class, Array $args = [], Mixed &$ref = Null ): Object
     {
         // Constructs a ReflectionClass.
-        $reflect = $ref = new ReflectionClass( $class );
+        $reflect = $ref = is_object( $class ) && $class Instanceof ReflectionClass ? $class : new ReflectionClass( $class );
         
         // Check if the class has a constructor.
         if( $reflect->getConstructor() !== Null )
         {
             // Checks if the constructor has parameters.
-            if( count( $parameter = $reflect->getConstructor()->getParameters() ) !== 0 )
+            if( count( $parameter = $reflect->getConstructor()->getParameters() ) > 0 )
             {
-                return( $reflect )->newInstanceArgs( $args );
+                return( $reflect )->newInstanceArgs( ReflectParameter::bind( $parameter, $args ) );
             }
         }
         return( $reflect->newInstance() );
@@ -113,7 +113,22 @@ abstract class ReflectClass
             // If parent also has parent.
             if( $tree !== Null )
             {
-                return([ $parent->name => $tree ]);
+                // ...
+                $class = [ $parent->name, $tree ];
+                
+                // Tidying up the array.
+                foreach( $class As $i => $name )
+                {
+                    if( is_array( $name ) )
+                    {
+                        // Remove array class.
+                        unset( $class[$i] );
+                        
+                        // ...
+                        $class = [ ...$class, ...$name ];
+                    }
+                }
+                return( $class );
             }
             return( $parent->name );
         }

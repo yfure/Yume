@@ -5,6 +5,27 @@ return([
     "environment" => [
         
         /*
+         * Allow replace value on super global variable $_ENV.
+         *
+         * @values Bool
+         */
+        "replace" => False,
+        
+        /*
+         * Give prefix name for super global constant name.
+         *
+         * @values False|String
+         */
+        "prefix" => "ENV",
+        
+        /*
+         * Skip create super global constant if constant is exists.
+         *
+         * @values Bool
+         */
+        "skiped" => True,
+        
+        /*
          * The location where the environment files are stored.
          *
          * You can rename files and move environment
@@ -13,6 +34,7 @@ return([
          * @path Default BASE_PATH
          */
         "path" => "kankyou"
+        
     ],
     
     "http" => [
@@ -151,7 +173,7 @@ return([
                 "all" => True,
                 
                 // Allow show all traces except args.
-                "arg" => True
+                "arg" => False
                 
             ],
             
@@ -164,7 +186,6 @@ return([
                 "Object" => [
                     "Code",
                     "Type",
-                    "Alias",
                     "Class",
                     "Trait",
                     "Parent",

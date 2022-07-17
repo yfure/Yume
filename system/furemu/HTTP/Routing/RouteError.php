@@ -19,7 +19,9 @@ class RouteError extends HTTP\HTTPError
      *
      * @values Int
      */
-    public const DUPLICATE_PATH = 3573;
+    public const DUPLICATE_PATH = 3570;
+    
+    public const INVALID_HANDLER_STRING = 3573;
     
     public const METHOD_NOT_ALLOWED = 3574;
     

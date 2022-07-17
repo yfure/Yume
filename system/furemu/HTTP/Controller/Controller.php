@@ -12,6 +12,8 @@ use Yume\Kama\Obi\HTTP;
 abstract class Controller implements ControllerInterface
 {
     
+    
+    
 }
 
 ?>

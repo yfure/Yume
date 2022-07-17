@@ -63,6 +63,7 @@ final class Runtime
             // ...
             self::$router->dispatch();
             
+            echo "<pre>"; var_dump( $_ENV );
         }
     }
     /*

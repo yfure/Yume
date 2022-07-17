@@ -2,6 +2,8 @@
 
 namespace Yume\Kama\Obi\HTTP\Server;
 
+use Yume\Kama\Obi\RegExp;
+
 /*
  * Server Request
  *
@@ -35,7 +37,7 @@ abstract class Request extends Server
     {
         if( $match !== Null )
         {
-            return( in_array( self::method(), $split = explode( "|", $match ) ) );
+            return( RegExp\RegExp::test( f( "/^(?:({}))$/i", $match ), self::method() ) );
         }
         return( $_SERVER['REQUEST_METHOD'] );
     }

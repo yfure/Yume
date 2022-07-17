@@ -27,6 +27,24 @@ class Route implements RouteInterface
     protected Array $headers = [];
     
     /*
+     * Route name.
+     *
+     * @access Protected
+     *
+     * @values String
+     */
+    protected ? String $name = Null;
+    
+    /*
+     * Regular expression.
+     *
+     * @access Protected
+     *
+     * @values String
+     */
+    protected String $regexp = "";
+    
+    /*
      * Segment route pattern based on segment name.
      *
      * @access Protected
@@ -34,8 +52,6 @@ class Route implements RouteInterface
      * @values Array
      */
     protected Array $segments = [];
-    
-    protected String $regexp = "";
     
     /*
      * Construct method of class Route
@@ -111,6 +127,15 @@ class Route implements RouteInterface
      * @inherit Yume\Kama\Obi\HTTP\Routing\RouteInterface
      *
      */
+    public function getName(): ? String
+    {
+        return( $this->name );
+    }
+    
+    /*
+     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteInterface
+     *
+     */
     public function getPath(): String
     {
         return( $this->path );
@@ -132,6 +157,24 @@ class Route implements RouteInterface
     public function getSegment(): Array
     {
         return( $this->segments );
+    }
+    
+    /*
+     * Change or give route name.
+     *
+     * @access Public
+     *
+     * @params String $name
+     *
+     * @return Static
+     */
+    final public function name( String $name ): Static
+    {
+        if( $name !== "" )
+        {
+            $this->name = $name;
+        }
+        return( $this );
     }
     
     /*

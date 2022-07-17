@@ -54,18 +54,19 @@ class TroubleError extends Error
             // If the flag is available.
             if( isset( $this->flags[$code] ) )
             {
-                   $message = f( $this->flags[$code], $message );
+                $message = f( $this->flags[$code], $message );
             } else {
                 $message = f( "Invalid flag {}, unknown error type.", $code );
             }
-            
-            // Get constant name.
-            if( $type = array_search( $code, Reflector\ReflectClass::getConstants( $this ) ) )
-            {
-                // Set error type based on constant name.
-                $this->type = $type;
-            }
         }
+        
+        // Get constant name.
+        if( $type = array_search( $code, Reflector\ReflectClass::getConstants( $this ) ) )
+        {
+            // Set error type based on constant name.
+            $this->type = $type;
+        }
+        
         parent::__construct( $message, $code, $prev );
     }
     

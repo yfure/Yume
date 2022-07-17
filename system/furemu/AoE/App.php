@@ -2,6 +2,8 @@
 
 namespace Yume\Kama\Obi\AoE;
 
+use Yume\Kama\Obi\Environment;
+use Yume\Kama\Obi\IO;
 use Yume\Kama\Obi\Services;
 
 use DateTimeZone;
@@ -28,29 +30,15 @@ class App
      */
     public Data $object;
     
+    /*
+     * Construct method of class App.
+     *
+     * @access Public Instance
+     *
+     * @return Void
+     */
     public function __construct()
     {
-        
-        $this->object = new Data([
-            
-            /*
-             * DateTimeZone
-             *
-             * Create a new instance of the DateTimeZone class,
-             * parameter values based on the application configuration.
-             *
-             * @see configs/app
-             */
-            "dateTimeZone" => $dateTimeZone = new DateTimeZone( self::config( "timezone" ) ),
-            
-            /*
-             * DateTime
-             *
-             * Set datetime by current timezone.
-             */
-            "dateTime" => $dateTime = new DateTime( "now", $dateTimeZone )
-            
-        ]);
         
         /*
          * Sets the default timezone used by all date/time functions in a script.
@@ -73,6 +61,31 @@ class App
          */
         set_exception_handler( self::config( "trouble.exception.handler" ) );
         
+        // Load environment variables.
+        Environment\Environment::onload();
+        
+        // Global object instance classes.
+        $this->object = new Data([
+            
+            /*
+             * DateTimeZone
+             *
+             * Create a new instance of the DateTimeZone class,
+             * parameter values based on the application configuration.
+             *
+             * @see configs/app
+             */
+            "dateTimeZone" => $dateTimeZone = new DateTimeZone( self::config( "timezone" ) ),
+            
+            /*
+             * DateTime
+             *
+             * Set datetime by current timezone.
+             */
+            "dateTime" => $dateTime = new DateTime( "now", $dateTimeZone )
+            
+        ]);
+        
     }
     
     /*
@@ -84,6 +97,24 @@ class App
      */
     public function service(): Void
     {
+        // Get composer installed packages.
+        $packages = IO\File::read( "vendor/composer/installed.json" );
+        
+        // Decode packages installed.
+        $packages = json_decode( $packages, True );
+        
+        // Mapping all packages.
+        array_map( array: $packages['packages'], callback: function( $package )
+        {
+            if( isset( $package['autoload']['psr-4'] ) )
+            {
+                Package::$packages = [
+                    ...Package::$packages,
+                    ...array_keys( $package['autoload']['psr-4'] )
+                ];
+            }
+        });
+        
         // Mapping all services.
         array_map( array: self::config( "services" ), callback: function( String $service )
         {

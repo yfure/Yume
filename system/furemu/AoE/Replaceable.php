@@ -98,27 +98,18 @@ final class Replaceable
     public function repl( String $fname, String $fdata )
     {
         // Compose regular expression.
-        $regexp = f( "/(?:(?<RegExp>({})))/im", implode( "|", [ "(?<Reflect>\bReflectClass\:\:reflect\b)" ] ) );
+        $regexp = f( "/(?:(?<RegExp>({})))/imJ", implode( "|", [ "(?<Search>\b(Public|Private|Protected)\:[\s]+)" ] ) );
         
         // Start replacing.
-        $replace = RegExp\RegExp::replace( $regexp, $fdata, function( $m ) use( $fname )
+        $replace = RegExp\RegExp::replace( $regexp, $fdata, function( $m ) use( $fname, $fdata )
         {
-            echo $fname . "\n";
-            /*{[0].property}
-            \{
-                [\s|\t]*
-                    \[
-                        [\s|\t]*
-                            (?<Object>[a-zA-Z0-9\_]+)
-                        [\s|\t]*
-                    \]
-                    [\s|\t]*
-                    \.
-                    [\s|\t]*
-                    (?<Property>[a-zA-Z0-9\.\_]+)
-                [\s|\t]*
-            \}*/
+            return( RegExp\RegExp::replace( "/\:/i", $m[0], "" ) );
         });
+        
+        if( $replace !== $fdata )
+        {
+            //IO\File::write( $fname, $replace, "w" );
+        }
     }
 }
 

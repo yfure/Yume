@@ -14,7 +14,7 @@ abstract class RouteAbstract
 {
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Route::path
+     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function delete( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
@@ -23,7 +23,22 @@ abstract class RouteAbstract
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Route::path
+     * Handle route error.
+     *
+     * @access Public Static
+     *
+     * @params Int $flags
+     * @params Array|String|Callable $handler
+     *
+     * @return Yume\Kama\Obi\HTTP\Routing\RouteErrorHandler
+     */
+    public static function error()//:RouteErrorHandler
+    {
+        
+    }
+    
+    /*
+     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function get( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
@@ -32,7 +47,7 @@ abstract class RouteAbstract
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Route::path
+     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function head( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
@@ -41,7 +56,7 @@ abstract class RouteAbstract
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Route::path
+     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function patch( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
@@ -50,7 +65,7 @@ abstract class RouteAbstract
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Route::path
+     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function post( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
@@ -59,7 +74,7 @@ abstract class RouteAbstract
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Route::path
+     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function put( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route

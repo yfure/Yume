@@ -47,6 +47,15 @@ interface RouteInterface
     public function getMethod(): String;
     
     /*
+     * Return route name.
+     *
+     * @access Public
+     *
+     * @return String
+     */
+    public function getName(): ? String;
+    
+    /*
      * Return route path.
      *
      * @access Public

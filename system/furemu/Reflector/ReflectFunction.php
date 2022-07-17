@@ -29,7 +29,7 @@ abstract class ReflectFunction
         // Check if function has parameters.
         if( count( $params ) > 0 )
         {
-            return( $reflect )->invokeArgs( $args );
+            return( $reflect )->invokeArgs( ReflectParameter::bind( $params, $args ) );
         }
         
         // Reflection function without arguments.

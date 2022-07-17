@@ -20,7 +20,7 @@ abstract class Memew
     /*
      * Handle all uncaught exceptions.
      *
-     * @access Public: Static
+     * @access Public Static
      *
      * @params Throwable $caught
      *

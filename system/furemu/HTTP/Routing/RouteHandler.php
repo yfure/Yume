@@ -7,6 +7,9 @@ namespace Yume\Kama\Obi\HTTP\Routing;
  *
  * @package Yume\Kama\Obi\HTTP\Routing
  */
-class RouteHandler extends Route {}
+class RouteHandler extends Route
+{
+    // ....
+}
 
 ?>

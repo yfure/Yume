@@ -49,11 +49,11 @@ class Sutakku implements SutakkuInterface
     /*
      * Construct method of class Sutakku.
      *
-     * @access Public: Instance
+     * @access Public Instance
      *
      * @params Throwable $object
      *
-     * @return Static
+     * @return Void
      */
     public function __construct( Array | Throwable $object )
     {

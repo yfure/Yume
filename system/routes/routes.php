@@ -29,4 +29,7 @@ HTTP\Route::get( "/:user",
     
 );
 
+// Error method not allowed.
+HTTP\Route::error( HTTP\Routing\RouteError::METHOD_NOT_ALLOWED, fn() => "Error" );
+
 ?>

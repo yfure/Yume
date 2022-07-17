@@ -12,7 +12,7 @@ interface Hairetsu
      *
      * @params Array <data>
      *
-     * @return Static
+     * @return Void
      */
     public function __construct( Array $data = [] );
     

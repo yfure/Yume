@@ -53,7 +53,7 @@ abstract class Tree
     /*
      * Create tree
      *
-     * @access Public: Static
+     * @access Public Static
      *
      * @params Array $array
      * @params Int $start
@@ -91,7 +91,7 @@ abstract class Tree
     /*
      * Looping array.
      *
-     * @access Private: Static
+     * @access Private Static
      *
      * @params Array $array
      * @params Int $type
@@ -155,7 +155,7 @@ abstract class Tree
     /*
      * Handle array value.
      *
-     * @access Private: Static
+     * @access Private Static
      *
      * @params Mixed $v
      * @params Mixed $k

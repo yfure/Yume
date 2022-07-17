@@ -2,6 +2,8 @@
 
 namespace Yume\Kama\App\HTTP\Controllers;
 
+use Yume\Kama\App\Models;
+
 use Yume\Kama\Obi\HTTP;
 
 /*
@@ -11,6 +13,19 @@ use Yume\Kama\Obi\HTTP;
  */
 class User extends HTTP\Controller\Controller
 {
+    
+    /*
+     * Construct method of class User Controller.
+     *
+     * @access Public Instance
+     *
+     * @return Void
+     */
+    public function __construct()
+    {
+        // ....
+    }
+    
     /*
      * Main method of controller.
      *
@@ -21,14 +36,11 @@ class User extends HTTP\Controller\Controller
      *
      * @return Void
      */
-    public function main( String $user, String $tabs ): Void
+    public function main( String $user )//: Void
     {
-        $this->view( "user", [
-            "user" => $user,
-            "tabs" => $tabs,
-            "data" => []
-        ]);
+        return( f( "Hi {}, welcome to the board!", $user ) );
     }
+    
 }
 
 ?>
