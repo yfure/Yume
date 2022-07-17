@@ -4,8 +4,7 @@
     "issues": "https://github.com/hxAri/Yume/issues",
     "require": {
         "php": "^8.0.6",
-        "phpseclib/phpseclib": "^3.0",
-        "vlucas/phpdotenv": "^5.4"
+        "phpseclib/phpseclib": "^3.0"
     },
     "license": "MiT",
     "authors": [
