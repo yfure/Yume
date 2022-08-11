@@ -1,11 +1,11 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Routing;
+namespace Yume\Fure\HTTP\Routing;
 
 /*
  * RouteInterface
  *
- * @package Yume\Kama\Obi\HTTP\Routing
+ * @package Yume\Fure\HTTP\Routing
  */
 interface RouteInterface
 {
@@ -15,7 +15,7 @@ interface RouteInterface
      *
      * @access Public
      *
-     * @return Yume\Kama\Obi\HTTP\Routing\Routes
+     * @return Yume\Fure\HTTP\Routing\Routes
      */
     public function getChild(): ? Routes;
     

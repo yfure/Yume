@@ -1,8 +1,9 @@
 <?php
 
-namespace Yume\Kama\Obi\Error\Memew;
+namespace Yume\Fure\Error\Memew;
 
-use Yume\Kama\Obi\AoE;
+use Yume\Fure\AoE;
+use Yume\Fure\HTTP;
 
 use Throwable;
 
@@ -12,7 +13,7 @@ use Throwable;
  * Memew is the class used to display uncaught exception trace messages,
  * this way you won't be in trouble when you encounter an uncaught exception.
  *
- * @package Yume\Kama\Obi\Error\Memew
+ * @package Yume\Fure\Error\Memew
  */
 abstract class Memew
 {
@@ -22,31 +23,39 @@ abstract class Memew
      *
      * @access Public Static
      *
-     * @params Throwable $caught
+     * @params Throwable $throw
      *
      * @return Void
      */
     public static function handler( Throwable $throw ): Void
     {
-        $object = $throw;
+        // ....
+        $stack = $throw;
         
-        if( $object->getPrevious() !== Null )
+        // If exception thrown has previous.
+        if( $stack->getPrevious() !== Null )
         {
-            $object = [ $object ];
+            // Exception class previous.
+            $stack = [ $stack ];
             
-            while( $throw = $throw->getPrevious() )
+            // Main exception class thrown.
+            $prevs = $throw;
+            
+            while( $prevs = $prevs->getPrevious() )
             {
-                $object[( $throw::class )] = $throw;
+                // Insert previous class.
+                $stack[$prevs::class] = $prevs;
             }
         }
         
-        $sutakku = new Sutakku\Sutakku( $object );
-        $sutakku = AoE\Tree::tree( type: AoE\Tree::LINER, array: [
-            Throwable::class => $sutakku->getStacks()
-        ]);
+        // Create new Sutakku claass instance.
+        $sutakku = new Sutakku\Sutakku( $stack );
         
-        echo f( "<pre>\n{}\n{}</pre>", $throw::class, $sutakku );
+        // Set header into JSON.
+        HTTP\HTTP::header( "Content-Type: application/json", True );
         
+        // Display exception output.
+        echo f( "\n{}\n{}", $throw::class, AoE\Tree::tree([ Throwable::class => $sutakku->getStacks() ]) );
     }
     
 }

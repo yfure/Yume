@@ -1,13 +1,13 @@
 <?php
 
-namespace Yume\Kama\Obi\AoE;
+namespace Yume\Fure\AoE;
 
 /*
  * Tree
  *
  * Create tree structure.
  *
- * @package Yume\Kama\Obi\AoE
+ * @package Yume\Fure\AoE
  */
 abstract class Tree
 {
@@ -73,11 +73,12 @@ abstract class Tree
         // The default value for event value.
         $val = $val !== Null ? $val : fn( $key, $val, $type ) => $val;
         
+        // If first space is not empty.
         if( $start !== 0 && $space === "" )
         {
             for( $i = 0; $i < $start; $i++ )
             {
-                $space .= " ";
+                $space .= "\x20";
             }
         }
         
@@ -103,9 +104,13 @@ abstract class Tree
      */
     private static function loop( Array $array, Int $type, String $space, Callable $key, Callable $val ): String
     {
+        // Iteration start.
         $iter = 0;
+        
+        // Result stacks.
         $result = "";
         
+        // Check if array is not empty.
         if( count( $array ) !== 0 )
         {
             foreach( $array As $k => $v )
@@ -113,6 +118,7 @@ abstract class Tree
                 
                 $iter++;
                 
+                // If current iterate is last.
                 if( count( $array ) === $iter )
                 {
                     $lineKey = self::$types[$type][2];
@@ -122,31 +128,44 @@ abstract class Tree
                     $lineVal = self::$types[$type][0];
                 }
                 
-                $result = format( "{}{}{}", $result, $space, $lineKey );
+                // Create format.
+                $result = f( "{}{}{}", $result, $space, $lineKey );
                 
+                // If array key is Int not String.
                 if( is_int( $k ) )
                 {
+                    // If value is array.
                     if( is_array( $v ) )
                     {
-                        $result = format( "{}{}\n{}", $result, call_user_func_array( $key, [ "Array" ] ), self::loop( $v, $type, $space . $lineVal, $key, $val ) );
+                        // Looping.
+                        $result = f( "{}{}\n{}", $result, call_user_func_array( $key, [ "Array" ] ), self::loop( $v, $type, $space . $lineVal, $key, $val ) );
                     } else {
-                        $result = format( "{}{}", $result, self::value( $v, $k, $type, $space, $lineVal, $key, $val ) );
+                        
+                        // Parse value.
+                        $result = f( "{}{}", $result, self::value( $v, $k, $type, $space, $lineVal, $key, $val ) );
                     }
                 } else {
                     
-                    $result = format( "{}{}\n", $result, call_user_func_array( $key, [ $k ] ) );
+                    // Create format.
+                    $result = f( "{}{}\n", $result, call_user_func_array( $key, [ $k ] ) );
                     
+                    // If value is array.
                     if( is_array( $v ) )
                     {
-                        $result = format( "{}{}", $result, self::loop( $v, $type, $space . $lineVal, $key, $val ) );
+                        // Looping.
+                        $result = f( "{}{}", $result, self::loop( $v, $type, $space . $lineVal, $key, $val ) );
                     } else {
-                        $result = format( "{}{}{}{}{}", $result, $space, $lineVal, self::$types[$type][2], self::value( $v, $k, $type, $space, $lineVal, $key, $val ) );
+                        
+                        // Parse value.
+                        $result = f( "{}{}{}{}{}", $result, $space, $lineVal, self::$types[$type][2], self::value( $v, $k, $type, $space, $lineVal, $key, $val ) );
                     }
                 }
                 
             }
         } else {
-            $result = format( "{}{}{}{}\n", $result, $space, self::$types[$type][2], call_user_func_array( $val, [ 'Array', "Empty", "Array" ] ) );
+            
+            // Last.
+            $result = f( "{}{}{}{}\n", $result, $space, self::$types[$type][2], call_user_func_array( $val, [ 'Array', "Empty", "Array" ] ) );
         }
         
         return $result;
@@ -169,21 +188,26 @@ abstract class Tree
      */
     private static function value( Mixed $v, Mixed $k, Int $type, String $space, String $lineVal, Callable $key, Callable $val ): String
     {
-        if( is_bool( $v ) ) {
+        if( is_bool( $v ) )
+        {
             $re = call_user_func_array( $val, [ $k, $v, "Bool" ] );
-        } else
-        if( is_array( $v ) ) {
+        }
+        else if( is_array( $v ) )
+        {
             $re = self::loop( $v, $type, $space . $lineVal, $key, $val );
-        } else
-        if( is_callable( $v ) ) {
+        }
+        else if( is_callable( $v ) )
+        {
             $re = call_user_func_array( $val, [ $k, "Closure", "Callable" ] );
-        } else
-        if( is_object( $v ) ) {
+        }
+        else if( is_object( $v ) )
+        {
             $re = call_user_func_array( $val, [ $k, $v::class, "Object" ] );
-        } else {
+        }
+        else {
             $re = call_user_func_array( $val, [ $k, $v, "Unknown" ] );
         }
-        return( format( "{}\n", $re ) );
+        return( f( "{}\n", $re === Null ? "Empty" : $re ) );
     }
     
 }

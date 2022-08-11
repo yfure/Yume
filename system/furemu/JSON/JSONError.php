@@ -1,15 +1,15 @@
 <?php
 
-namespace Yume\Kama\Obi\JSON;
+namespace Yume\Fure\JSON;
 
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\Error;
 
 /*
  * JSONError
  *
- * @package Yume\Kama\Obi\JSON
+ * @package Yume\Fure\JSON
  */
-class JSONError extends Trouble\TypeError
+class JSONError extends Error\TypeError
 {
     
     /*

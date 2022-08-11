@@ -1,9 +1,9 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Cookies;
+namespace Yume\Fure\HTTP\Cookies;
 
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\HTTP;
+use Yume\Fure\AoE;
+use Yume\Fure\HTTP;
 
 use Throwable;
 
@@ -12,7 +12,7 @@ use Throwable;
  *
  * An exception will only be thrown if there is an error in the Cookie.
  *
- * @package Yume\Kama\Obi\HTTP\Cookies
+ * @package Yume\Fure\HTTP\Cookies
  */
 class CookieError extends HTTP\HTTPError
 {
@@ -72,12 +72,12 @@ class CookieError extends HTTP\HTTPError
     public const INVALID_SAMESITE = 6877;
     
     /*
-     * @inherit Yume\Kama\Obi\Trouble\TroubleError
+     * @inherit Yume\Fure\Error\BaseError
      *
      */
     protected Array $flags = [
         self::INVALID_DOMAIN => "Domain name for {} is invalid",
-        self::INVALID_EXPIRES => "Expired must have String value << 1|+1|-1 days >> | <<D, d-M-Y H:i:s T >> | << \d{1,10} >> {} is given.",
+        self::INVALID_EXPIRES => "Expired must have String value \"1|+1|-1 days\" || \"D, d-M-Y H:i:s T\" || \"\d{1,10}\", \"{}\" is given.",
         self::INVALID_HEADER => "Invalid cookie header &gt&gt {}.",
         self::INVALID_NAME => "Cookie names must not contain any characters or symbols \\s|\\n|\\r|\\t|\\(|\\)|\\<|\\>|\\@|\\,|\\;|\\:|\\\\|\\\"|\\'|\\/|\\[|\\]|\\?|\\=|\\{|\\}, {} is given.",
         self::INVALID_PATH => "The pathname must be a valid route path, {} is given.",

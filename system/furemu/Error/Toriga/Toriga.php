@@ -1,13 +1,32 @@
 <?php
 
-namespace Yume\Kama\Obi\Error\Toriga;
+namespace Yume\Fure\Error\Toriga;
 
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\Error;
+use Yume\Fure\Logger;
 
+/*
+ * Toriga (Trigger)
+ *
+ * @package Yume\Fure\Error\Toriga
+ */
 abstract class Toriga
 {
+    /*
+     * Trigger handler.
+     *
+     * @access Public Static
+     *
+     * @params Int $errcode
+     * @params String $errmesg
+     * @params String $errfile
+     * @params Int $errline
+     *
+     * @return Void
+     */
     public static function handler( Int $errcode, String $errmesg, String $errfile, Int $errline ): Void
     {
+        // Getting error level.
         $errlevl = match( $errcode )
         {
             E_ERROR => "E_ERROR",
@@ -28,7 +47,12 @@ abstract class Toriga
             E_ALL => "E_ALL",
             default => "E_UNKNOWN"
         };
-        throw new Trouble\TriggerError( $errmesg, $errfile, $errlevl, $errline, $errcode );
+        
+        // Wrire new error log.
+        Logger\Logger::write( $errmesg, $errfile );
+        
+        // Throw new error.
+        throw new Error\TriggerError( $errmesg, $errfile, $errlevl, $errline, $errcode );
     }
 }
 

@@ -1,19 +1,19 @@
 <?php
 
-namespace Yume\Kama\Obi\Environment;
-
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\IO;
-use Yume\Kama\Obi\JSON;
-use Yume\Kama\Obi\RegExp;
+namespace Yume\Fure\Environment;
+;
+use Yume\Fure\IO;
+use Yume\Fure\JSON;
+use Yume\Fure\RegExp;
 
 /*
  * Environment Class
  *
- * @package Yume\Kama\Obi\Environment
+ * @package Yume\Fure\Environment
  */
 abstract class Environment
 {
+    use \Yume\Fure\AoE\ITraits\Config;
     
     /*
      * The overall results of the captured variables.
@@ -80,7 +80,7 @@ abstract class Environment
          * @example VAR=Value
          * @example VAR="Value"
          */
-        "String" => "\".*\k{Distance}\"|."
+        "String" => "\".*\k{Distance}\"|([\S]+)"
         
     ];
     
@@ -103,14 +103,14 @@ abstract class Environment
     public static function onload(): Void
     {
         // Reading environment file.
-        self::search( IO\File::read( AoE\App::config( "environment.path" ) ) );
+        self::search( IO\File::read( self::config( "path" ) ) );
         
         // Get environment flags lags.
-        $skiped = AoE\App::config( "environment.skiped" );
-        $replace = AoE\App::config( "environment.replace" );
+        $skiped = self::config( "skiped" );
+        $replace = self::config( "replace" );
         
         // Check if environment has prefix.
-        if( $prefix = AoE\App::config( "environment.prefix" ) )
+        if( $prefix = self::config( "prefix" ) )
         {
             // If environment prefix is invalid.
             if( RegExp\RegExp::test( "/^(?:(?<Prefix>[A-Z_\x80-\xff][A-Z0-9_\x80-\xff]*))$/", $prefix ) === False )
@@ -121,26 +121,15 @@ abstract class Environment
         
         foreach( self::$matchs As $name => $option )
         {
-            // Parse variable value.
-            $env = match( $option['retype'] )
+            try 
             {
-                // Decode json string value.
-                "Array" => JSON\JSON::decode( $option['value'] ),
-                
-                // Convert string value to boolean.
-                "Bool" => $option['value'] === "True" ? True : False,
-                
-                // Convert string value to int.
-                "Int" => ( Int ) $option['value'],
-                
-                // Convert string value to null.
-                "Null",
-                "None" => Null,
-                
-                // No parse.
-                default => $option['value']
-                
-            };
+                // Parse variable value.
+                $env = self::convert( $option );
+            }
+            catch( JSON\JSONError $e )
+            {
+                throw new EnvironmentError( $name, EnvironmentError::INVALID_ARRAY_VALUE, $e );
+            }
             
             // Check if the variable name is not capitalized.
             if( strtoupper( $name ) !== $name )
@@ -185,6 +174,51 @@ abstract class Environment
                 define( $prefix ? $name = f( "{}_{}", $prefix, $name ) : $name, $env );
             }
         }
+    }
+    
+    /*
+     * Mapping configuration.
+     *
+     * @access Public Static
+     *
+     * @params Array $configs
+     *
+     * @return Array
+     */
+    public static function mapping( Array $configs ): Array
+    {
+        foreach( $configs As $key => $val )
+        {
+            if( is_array( $val ) )
+            {
+                $configs[$key] = self::mapping( $val );
+            } else {
+                $configs[$key] = envable( $val );
+            }
+        }
+        return( $configs );
+    }
+    
+    protected static function convert( Array $option ): Mixed
+    {
+        return( match( $option['retype'] )
+        {
+            // Decode json string value.
+            "Array" => JSON\JSON::decode( $option['value'], True ),
+            
+            // Convert string value to boolean.
+            "Bool" => $option['value'] === "True" ? True : False,
+            
+            // Convert string value to int.
+            "Int" => ( Int ) $option['value'],
+            
+            // Convert string value to null.
+            "Null",
+            "None" => Null,
+            
+            // String only.
+            default => RegExp\RegExp::replace( "/^\"([^\"]*)\"$/", $option['value'], "$1" )
+        });
     }
     
     /*

@@ -1,6 +1,6 @@
 <?php
 
-namespace Yume\Kama\Obi\Error\Memew\Sutakku;
+namespace Yume\Fure\Error\Memew\Sutakku;
 
 use Throwable;
 

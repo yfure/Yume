@@ -1,11 +1,11 @@
 <?php
 
-namespace Yume\Kama\Obi\IO\File;
+namespace Yume\Fure\IO\File;
 
 /*
  * FileInterface
  *
- * @package Yume\Kama\Obi\IO\File
+ * @package Yume\Fure\IO\File
  */
 interface FileInterface
 {

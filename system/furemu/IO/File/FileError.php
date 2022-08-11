@@ -1,8 +1,8 @@
 <?php
 
-namespace Yume\Kama\Obi\IO\File;
+namespace Yume\Fure\IO\File;
 
-use Yume\Kama\Obi\IO;
+use Yume\Fure\IO;
 
 /*
  * FileError
@@ -10,9 +10,9 @@ use Yume\Kama\Obi\IO;
  * FileError will only be thrown
  * if there is an error in the file.
  *
- * @extends Yume\Kama\Obi\IO\IOError
+ * @extends Yume\Fure\IO\IOError
  *
- * @package Yume\Kama\Obi\IO\File
+ * @package Yume\Fure\IO\File
  */
 class FileError extends IO\IOError
 {
@@ -63,7 +63,7 @@ class FileError extends IO\IOError
     public const NOT_WRITEABLE = 9880;
     
     /*
-     * @inherit Yume\Kama\Obi\Trouble\TroubleError
+     * @inherit Yume\Fure\Error\BaseError
      *
      */
     protected Array $flags = [

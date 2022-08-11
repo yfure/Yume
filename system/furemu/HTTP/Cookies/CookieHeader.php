@@ -1,10 +1,10 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Cookies;
+namespace Yume\Fure\HTTP\Cookies;
 
-use Yume\Kama\Obi\HTTP;
-use Yume\Kama\Obi\RegExp;
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\HTTP;
+use Yume\Fure\RegExp;
+use Yume\Fure\Error;
 
 use Stringable;
 
@@ -13,7 +13,7 @@ use Stringable;
  *
  * Raw Cookies header.
  *
- * @package Yume\Kama\Obi\HTTP\Cookies
+ * @package Yume\Fure\HTTP\Cookies
  */
 final class CookieHeader implements Stringable
 {
@@ -172,7 +172,7 @@ final class CookieHeader implements Stringable
         {
             $this->{ $attribute } = $value;
         } else {
-            throw new Trouble\AttributeError( f( "Cookie object has no attribute \"{}\"", $attribute ) );
+            throw new Error\AttributeError( f( "Cookie object has no attribute \"{}\"", $attribute ) );
         }
         return( $this );
     }
@@ -255,7 +255,7 @@ final class CookieHeader implements Stringable
                     } else
                     
                     // If the expiration value is a time string (e.g... 1|+1|-1 days)
-                    if( RegExp\RegExp::test( "/^(?:(\+|\-)*(\d)\s(seconds|minutes|hours|days|weeks|months|years))$/i", $expires ) )
+                    if( RegExp\RegExp::test( "/^(?:(\+|\-)*(\d+)\s(seconds|minutes|hours|days|weeks|months|years))$/i", $expires ) )
                     {
                         $header .= f( "; expires={}", gmdate( "D, d-M-Y H:i:s T", strtotime( $expires ) ) );
                     } else {

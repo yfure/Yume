@@ -1,9 +1,47 @@
 <?php
 
-namespace Yume\Kama\Obi\RegExp;
+namespace Yume\Fure\RegExp;
 
+/*
+ * RegExp
+ *
+ * @package Yume\Fure\RegExp
+ */
 abstract class RegExp
 {
+    
+    /*
+     * @inherit https://www.php.net/manual/en/function.preg-last-error.php
+     *
+     */
+    public static function errno(): Int
+    {
+        return( preg_last_error() );
+    }
+    
+    /*
+     * @inherit https://www.php.net/manual/en/function.preg-last-error-msg.php
+     *
+     */
+    public static function error(): String
+    {
+        return( preg_last_error_msg() );
+    }
+    
+    public static function etype( Int $errno = 7668 ): String
+    {
+        return( match( self::errno() )
+        {
+            2 => "PREG_BACKTRACK_LIMIT_ERROR",
+            4 => "PREG_BAD_UTF8_ERROR",
+            5 => "PREG_BAD_UTF8_OFFSET_ERROR",
+            1 => "PREG_INTERNAL_ERROR",
+            6 => "PREG_JIT_STACKLIMIT_ERROR",
+            0 => "PREG_NO_ERROR",
+            3 => "PREG_RECURSION_LIMIT_ERROR"
+        });
+        
+    }
     
     /*
      * Perform a regular expression match.
@@ -17,7 +55,16 @@ abstract class RegExp
      */
     public static function test( String $pattern, String $subject ): Int | Bool
     {
-        return( ( Bool ) $match = preg_match( $pattern, $subject ) );
+        // Parse preg-match return into boolean type.
+        $match = ( ( Bool ) preg_match( $pattern, $subject ) );
+        
+        // Check if an error occurred.
+        if( self::errno() )
+        {
+            throw new RegExpError( self::error(), self::errno() );
+        }
+        
+        return( $match );
     }
     
     public static function clear( Array $matchs, Bool $capture = False ): Array
@@ -61,10 +108,18 @@ abstract class RegExp
     {
         $matchs = [];
         
+        // ....
         if( preg_match( $pattern, $subject, $matchs, PREG_UNMATCHED_AS_NULL ) )
         {
             return( $clear ? self::clear( $matchs ) : $matchs );
         }
+        
+        // Check if an error occurred.
+        if( self::errno() )
+        {
+            throw new RegExpError( self::error(), self::errno() );
+        }
+        
         return( False );
     }
     
@@ -83,10 +138,18 @@ abstract class RegExp
     {
         $matchs = [];
         
+        // ...
         if( preg_match_all( $pattern, $subject, $matchs, PREG_SET_ORDER || PREG_UNMATCHED_AS_NULL ) )
         {
             return( $clear ? self::clear( $matchs ) : $matchs );
         }
+        
+        // Check if an error occurred.
+        if( self::errno() )
+        {
+            throw new RegExpError( self::error(), self::errno() );
+        }
+        
         return( False );
     }
     
@@ -99,90 +162,82 @@ abstract class RegExp
      *
      * @return Array|String
      */
-    public static function replace( Array | String $pattern, Array | String $subject, Array | Callable | String $replace ): Array | String
+    public static function replace( Array | String $pattern, Array | String $subject, Array | Callable | String $replace/*, Bool $clear = False */ ): Array | String
     {
-        $patIs = ucfirst( gettype( $pattern ) );
-        $subIs = ucfirst( gettype( $subject ) );
-        $repIs = ucfirst( gettype( $replace ) );
+        $result = Null;
         
-        if( $subIs === "Array" )
+        $patType = ucfirst( gettype( $pattern ) );
+        $subType = ucfirst( gettype( $subject ) );
+        $repType = ucfirst( gettype( $replace ) );
+        
+        if( $subType === "Array" )
         {
-            if( $patIs === "Array" )
+            if( $patType === "Array" )
             {
-                if( count( $subject ) !== ( $count = count( $pattern ) ) )
+                if( $repType === "Array" )
                 {
-                    throw new Exception;
-                }
-                if( $repIs === "Array" )
-                {
-                    if( count( $subject ) !== ( $count = count( $replace ) ) )
-                    {
-                        throw new Exception;
-                    }
                     for( $i = 0; $i < $count; $i++ )
                     {
                         $subject[$i] = is_string( $replace[$i] ) ? 
                             preg_replace( $pattern[$i], $replace[$i], $subject[$i] ) : 
                             preg_replace_callback( $pattern[$i], $replace[$i], $subject[$i] ) ;
                     }
-                    return( $subject );
+                    $result = $subject;
                 }
-                for( $i = 0; $i < $count; $i++ )
-                {
-                    $subject[$i] = [];
-                }
-                return( $subject );
-            }
-            if( $patIs === "String" )
-            {
-                if( $repIs === "Array" )
-                {
-                    if( count( $subject ) !== ( $count = count( $replace ) ) )
+                else {
+                    for( $i = 0; $i < $count; $i++ )
                     {
-                        throw new Exception;
+                        $subject[$i] = is_string( $replace ) ? 
+                            preg_replace( $pattern[$i], $replace, $subject[$i] ) : 
+                            preg_replace_callback( $pattern[$i], $replace, $subject[$i] ) ;
                     }
+                    $result = $subject;
+                }
+            }
+            if( $patType === "String" )
+            {
+                if( $repType === "Array" )
+                {
                     for( $i = 0; $i < $count; $i++ )
                     {
                         $subject[$i] = is_string( $replace[$i] ) ?
                             preg_replace( $pattern, $replace[$i], $subject[$i] ) : 
                             preg_replace_callback( $pattern, $replace[$i], $subject[$i] ) ;
                     }
-                    return( $subject );
+                    $result = $subject;
                 }
-                for( $i = 0; $i < count( $subject ); $i++ )
-                {
-                    $subject[$i] = is_string( $replace ) ?
-                        preg_replace( $pattern, $replace, $subject[$i] ) : 
-                        preg_replace_callback( $pattern, $replace, $subject[$i] ) ;
+                else {
+                    for( $i = 0; $i < count( $subject ); $i++ )
+                    {
+                        $subject[$i] = is_string( $replace ) ?
+                            preg_replace( $pattern, $replace, $subject[$i] ) : 
+                            preg_replace_callback( $pattern, $replace, $subject[$i] ) ;
+                    }
+                    $result = $subject;
                 }
-                return( $subject );
             }
-        }
-        if( $subIs === "String" )
+        } else if( $subType === "String" )
         {
-            if( $patIs === "String" && ( $repIs === "String" || $repIs === "Object" ) )
+            if( $patType === "String" && ( $repType === "String" || $repType === "Object" ) )
             {
-                if( $repIs === "String" )
+                if( $repType === "String" )
                 {
-                    return( preg_replace( $pattern, $replace, $subject ) );
+                    $result = preg_replace( $pattern, $replace, $subject );
+                } else {
+                    $result = preg_replace_callback( $pattern, $replace, $subject );
                 }
-                return( preg_replace_callback( $pattern, $replace, $subject ) );
             }
-            if( $patIs === "Array" && $repIs === "Array" )
+            if( $patType === "Array" && $repType === "Array" )
             {
-                if( count( $pattern ) !== ( $count = count( $replace ) ) )
-                {
-                    throw new Exception;
-                }
                 for( $i = 0; $i < $count; $i++ )
                 {
                     $subject = is_string( $replace[$i] ) ? 
                         preg_replace( $pattern[$i], $replace[$i], $subject ) : 
                         preg_replace_callback( $pattern[$i], $replace[$i], $subject );
                 }
-                return( $subject );
+                $result = $subject;
             }
-            if( $patIs === "Array" )
+            if( $patType === "Array" )
             {
                 for( $i = 0; $i < count( $pattern ); $i++ )
                 {
@@ -190,9 +245,18 @@ abstract class RegExp
                         preg_replace( $pattern[$i], $replace, $subject ) : 
                         preg_replace_callback( $pattern[$i], $replace, $subject );
                 }
-                return( $subject );
+                $result = $subject;
             }
         }
+        
+        // Check if an error occurred.
+        if( self::errno() )
+        {
+            throw new RegExpError( self::error(), self::errno() );
+        }
+        
+        // Return replace results.
+        return( $result );
     }
     
 }

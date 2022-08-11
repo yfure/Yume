@@ -1,11 +1,11 @@
 <?php
 
-namespace Yume\Kama\Obi\JSON;
+namespace Yume\Fure\JSON;
 
 /*
  * JSON
  *
- * @package Yume\Kama\Obi\JSON
+ * @package Yume\Fure\JSON
  */
 abstract class JSON
 {

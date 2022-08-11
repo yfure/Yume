@@ -1,13 +1,13 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Controller;
+namespace Yume\Fure\HTTP\Controller;
 
-use Yume\Kama\Obi\HTTP;
+use Yume\Fure\HTTP;
 
 /*
  * Controller
  *
- * @package Yume\Kama\Obi\HTTP\Controller
+ * @package Yume\Fure\HTTP\Controller
  */
 abstract class Controller implements ControllerInterface
 {

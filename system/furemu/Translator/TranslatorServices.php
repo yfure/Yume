@@ -1,28 +1,29 @@
 <?php
 
-namespace Yume\Kama\Obi\Translator;
+namespace Yume\Fure\Translator;
 
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\Services;
+use Yume\Fure\AoE;
+use Yume\Fure\Services;
+use Yume\Fure\Threader;
 
 /*
  * TranslatorServices
  *
- * @extends Yume\Kama\Obi\Services\Services
+ * @extends Yume\Fure\Services\Services
  *
- * @package Yume\Kama\Obi\Translator
+ * @package Yume\Fure\Translator
  *
  */
 final class TranslatorServices extends Services\Services
 {
     
     /*
-     * @inherit Yume\Kama\Obi\Services\ServicesInterface
+     * @inherit Yume\Fure\Services\ServicesInterface
      *
      */
     public static function boot(): Void
     {
-        Translator::import( AoE\App::config( "language" ) );
+        Translator::import( Threader\App::config( "localization.language" ) );
     }
     
 }

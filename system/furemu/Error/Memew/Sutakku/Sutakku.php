@@ -1,10 +1,11 @@
 <?php
 
-namespace Yume\Kama\Obi\Error\Memew\Sutakku;
+namespace Yume\Fure\Error\Memew\Sutakku;
 
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\Reflector;
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\AoE;
+use Yume\Fure\Reflector;
+use Yume\Fure\Error;
+use Yume\Fure\Threader;
 
 use Throwable;
 
@@ -14,7 +15,7 @@ use Throwable;
  * The Sutakku class is a class that defines
  * the order in which exceptions are thrown.
  *
- * @package Yume\Kama\Obi\Error\Memew\Sutakku
+ * @package Yume\Fure\Error\Memew\Sutakku
  */
 class Sutakku implements SutakkuInterface
 {
@@ -65,8 +66,7 @@ class Sutakku implements SutakkuInterface
             {
                 if( $i !== 0 )
                 {
-                    $this->previs[$name] = new Sutakku( $previous );
-                    $this->previs[$name] = $this->previs[$name]->getStacks();
+                    $this->previs[$name] = ( new Sutakku( $previous ) )->getStacks();
                 } else {
                     $this->object = $previous;
                 }
@@ -81,7 +81,7 @@ class Sutakku implements SutakkuInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\Error\Memew\SutakkuInterface
+     * @inherit Yume\Fure\Error\Memew\SutakkuInterface
      *
      */
     public function getObject(): Throwable
@@ -90,7 +90,7 @@ class Sutakku implements SutakkuInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\Error\Memew\SutakkuInterface
+     * @inherit Yume\Fure\Error\Memew\SutakkuInterface
      *
      */
     public function getStacks(): Array
@@ -99,7 +99,7 @@ class Sutakku implements SutakkuInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\Error\Memew\SutakkuInterface
+     * @inherit Yume\Fure\Error\Memew\SutakkuInterface
      *
      */
     public function getPrevis(): ? Array
@@ -125,7 +125,7 @@ class Sutakku implements SutakkuInterface
              *
              * @values Array
              */
-            $traces  = AoE\App::config( "trouble.exception.scheme" );
+            $traces  = Threader\App::config( "trouble.exception.scheme" );
         }
         
         $scheme = [];
@@ -149,7 +149,7 @@ class Sutakku implements SutakkuInterface
                         $traces = $this->object->getTrace();
                         
                         // Checks if the exception thrown is of class Error Trigger Exception.
-                        if( $this->object Instanceof Trouble\TriggerError )
+                        if( $this->object Instanceof Error\TriggerError )
                         {
                             /*
                              * Unset the first & second trace value
@@ -166,26 +166,27 @@ class Sutakku implements SutakkuInterface
                         }
                         
                         // Check if traces are allowed to be displayed.
-                        if( AoE\App::config( "trouble.exception.trace.all" ) )
+                        if( Threader\App::config( "trouble.exception.trace.all" ) )
                         {
-                            // Check if argument values are allowed to be displayed
-                            if( AoE\App::config( "trouble.exception.trace.arg" ) !== True )
+                            // Mapping error traces.
+                            $traces = array_map( array: $traces, callback: function( $trace )
                             {
-                                $traces = array_map( array: $traces, callback: function( $trace )
+                                // Check if argument values are allowed to be displayed
+                                if( Threader\App::config( "trouble.exception.trace.arg" ) !== True )
                                 {
                                     // Clear all argument values.
                                     $trace['args'] = [];
-                                    
-                                    if( isset( $trace['file'] ) )
-                                    {
-                                        // Clear field names from BASE PATH.
-                                        $trace['file'] = path( $trace['file'], True );
-                                    }
-                                    
-                                    // Return trace.
-                                    return( $trace );
-                                });
-                            }
+                                }
+                                
+                                if( isset( $trace['file'] ) )
+                                {
+                                    // Clear field names from BASE PATH.
+                                    $trace['file'] = path( $trace['file'], True );
+                                }
+                                
+                                // Return trace.
+                                return( $trace );
+                            });
                         } else {
                             
                             // No traces diplay.
@@ -207,7 +208,22 @@ class Sutakku implements SutakkuInterface
                     "Message" => path( $this->object->getMessage(), True ),
                     
                     // Get the previous exception.
-                    "Previous" => $this->object->getPrevious() !== Null ? $this->previs : [],
+                    "Previous" => call_user_func( function()
+                    {
+                        // Check if exception class has previous.
+                        if( $this->object->getPrevious() !== Null && $this->previs !== Null )
+                        {
+                            return( array_map( array: $this->previs, callback: function( $prev )
+                            {
+                                // Remove traces.
+                                $prev['Trace'] = f( "@inherit {}", $this->object::class );
+                                
+                                // ...
+                                return( $prev );
+                            }));
+                        }
+                        return([]);
+                    }),
                     
                     // List of Interfaces implemented.
                     "Interface" => Reflector\ReflectClass::getInterfaces( $this->object, True ),
@@ -215,7 +231,7 @@ class Sutakku implements SutakkuInterface
                     default => call_user_func_array( args: [ $key, $value ], callback: function( $key, $value )
                     {
                         // Check if the method is available.
-                        if( method_exists( $this->object, $method = format( "get{}", $value ) ) )
+                        if( method_exists( $this->object, $method = f( "get{}", $value ) ) )
                         {
                             // Return method value.
                             return( $this->object->{ $method }() );

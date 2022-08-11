@@ -1,15 +1,15 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Cookies;
+namespace Yume\Fure\HTTP\Cookies;
 
-use Yume\Kama\Obi\RegExp;
+use Yume\Fure\RegExp;
 
 /*
  * Cookie
  *
  * Manage cookies, delete, save, get and also parse.
  *
- * @package Yume\Kama\Obi\HTTP\Cookies
+ * @package Yume\Fure\HTTP\Cookies
  */
 abstract class Cookie
 {
@@ -19,7 +19,7 @@ abstract class Cookie
      *
      * @access Public Static
      *
-     * @return Yume\Kama\Obi\HTTP\Cookies\CookieIterator
+     * @return Yume\Fure\HTTP\Cookies\CookieIterator
      */
     public static function getAll(): CookieIterator
     {
@@ -40,7 +40,7 @@ abstract class Cookie
      * @params String $header
      * @params Bool $save
      *
-     * @return Yume\Kama\Obi\HTTP\Cookies\CookieHeader
+     * @return Yume\Fure\HTTP\Cookies\CookieHeader
      */
     public static function parse( String $header, Bool $save = False ): CookieHeader
     {
@@ -127,7 +127,7 @@ abstract class Cookie
      *
      * @params String $name
      *
-     * Yume\Kama\Obi\HTTP\Cookies\CookieHeader|Bool
+     * Yume\Fure\HTTP\Cookies\CookieHeader|Bool
      */
     public static function get( String $name ): CookieHeader | Bool
     {
@@ -147,7 +147,7 @@ abstract class Cookie
      * @params String $value
      * @params Array $options
      *
-     * @return Yume\Kama\Obi\HTTP\Cookies\CookieHeader
+     * @return Yume\Fure\HTTP\Cookies\CookieHeader
      */
     public static function set( String $name, ? String $value = Null, Array $options = [], Bool $save = False ): CookieHeader
     {

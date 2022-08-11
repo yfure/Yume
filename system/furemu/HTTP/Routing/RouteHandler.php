@@ -1,11 +1,11 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Routing;
+namespace Yume\Fure\HTTP\Routing;
 
 /*
  * RouteHandler
  *
- * @package Yume\Kama\Obi\HTTP\Routing
+ * @package Yume\Fure\HTTP\Routing
  */
 class RouteHandler extends Route
 {

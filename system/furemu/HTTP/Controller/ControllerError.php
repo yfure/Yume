@@ -1,17 +1,17 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Controller;
+namespace Yume\Fure\HTTP\Controller;
 
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\Error;
 
 /*
  * ControllerError
  *
- * @extends Yume\Kama\Obi\Error\TroubleError
+ * @extends Yume\Fure\Error\BaseError
  *
- * @package Yume\Kama\Obi\HTTP\Controller
+ * @package Yume\Fure\HTTP\Controller
  */
-class ControllerError extends Trouble\TroubleError
+class ControllerError extends Error\BaseError
 {
     
     /*
@@ -33,7 +33,7 @@ class ControllerError extends Trouble\TroubleError
     public const METHOD_ERROR = 5789;
     
     /*
-     * @inherit Yume\Kama\Obi\Trouble\TroubleError
+     * @inherit Yume\Fure\Error\BaseError
      *
      */
     protected Array $flags = [

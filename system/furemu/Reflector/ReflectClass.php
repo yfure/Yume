@@ -1,8 +1,11 @@
 <?php
 
-namespace Yume\Kama\Obi\Reflector;
+namespace Yume\Fure\Reflector;
 
-use Yume\Kama\Obi\AoE;
+use Yume\Fure\AoE;
+
+use Countable;
+use Stringable;
 
 use ReflectionClass;
 use ReflectionMethod;
@@ -13,7 +16,7 @@ use ReflectionProperty;
  *
  * The ReflectClass class reports information about a class.
  *
- * @package Yume\Kama\Obi\Reflector
+ * @package Yume\Fure\Reflector
  */
 abstract class ReflectClass
 {
@@ -37,6 +40,7 @@ abstract class ReflectClass
                 return( $reflect )->newInstanceArgs( ReflectParameter::bind( $parameter, $args ) );
             }
         }
+        
         return( $reflect->newInstance() );
     }
     
@@ -200,16 +204,34 @@ abstract class ReflectClass
     }
     
     /*
-     * ....
+     * Check if the class implements the Countable interface.
      *
+     * @access Public Static
+     *
+     * @params Object|String $class
+     * @params Miced $ref
+     *
+     * @return Bool
      */
-    abstract public static function isCountable( Object | String $class, Mixed &$ref = Null ): Bool;
+    final public static function isCountable( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( self::isImplements( $class, Countable::class, $ref ) );
+    }
     
     /*
-     * ....
+     * Check if class is Data.
      *
+     * @access Public Static
+     *
+     * @params Object|String $class
+     * @params Mixed $ref
+     *
+     * @return Bool
      */
-    abstract public static function isData( Object | String $class, Mixed &$ref = Null ): Bool;
+    final public static function isData( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( self::isSubclassOf( $class, AoE\Data::class, $ref ) );
+    }
     
     /*
      * @inherit https://www.php.net/manual/en/reflectionclass.isenum.php
@@ -284,10 +306,19 @@ abstract class ReflectClass
     }
     
     /*
-     * ...
+     * Check if the class implements the Stringable interface.
      *
+     * @access Public Static
+     *
+     * @params Object|String $class
+     * @params Mixed $ref
+     *
+     * @return Bool
      */
-    abstract public static function isStringable( Object | String $class, Mixed &$ref = Null ): Bool;
+    final public static function isStringable( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( self::isImplements( $class, Stringable::class, $ref ) );
+    }
     
     /*
      * @inherit https://www.php.net/manual/en/reflectionclass.issubclassof.php
@@ -305,6 +336,21 @@ abstract class ReflectClass
     final public static function isTrait( Object | String $class, Mixed &$ref = Null ): Bool
     {
         return( $ref = new ReflectionClass( $class ) )->isTrait();
+    }
+    
+    /*
+     * Check if the class implements the Unchangeable interface.
+     *
+     * @access Public Static
+     *
+     * @params Object|String $class
+     * @params Mixed $ref
+     *
+     * @return Bool
+     */
+    final public static function isUnchangeable( Object | String $class, Mixed &$ref = Null ): Bool
+    {
+        return( self::isImplements( $class, AoE\Intafesu\Unchangeable::class, $ref ) );
     }
     
     /*

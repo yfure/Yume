@@ -1,11 +1,11 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Controller;
+namespace Yume\Fure\HTTP\Controller;
 
 /*
  * ControllerInterface
  *
- * @package Yume\Kama\Obi\HTTP\Controller
+ * @package Yume\Fure\HTTP\Controller
  */
 interface ControllerInterface
 {

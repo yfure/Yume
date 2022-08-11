@@ -1,9 +1,9 @@
 <?php
 
-namespace Yume\Kama\Obi\View\Sasayaki;
+namespace Yume\Fure\View\Sasayaki;
 
-use Yume\Kama\Obi\IO;
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\IO;
+use Yume\Fure\Error;
 
 class Sasayaki
 {
@@ -80,7 +80,8 @@ class Sasayaki
             "(?<ObjectMethod>(.[^\n]*)",
             "(?<ObjectConstant>(.[^\n]*)",
             "(?<ObjectProperty>(.[^\n]*)",
-            "(?<ObjectPrototype>(.[^\n]*)"
+            "(?<ObjectPrototype>(.[^\n]*)",
+            "(?<Comment>(?<!:)(\#[^\n]*))"
         );
         
         $strings = implode( "\n", [

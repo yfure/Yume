@@ -1,20 +1,25 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Routing;
+namespace Yume\Fure\HTTP\Routing;
 
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\RegExp;
+use Yume\Fure\AoE;
+use Yume\Fure\RegExp;
+use Yume\Fure\Threader;
 
 /*
  * RouteAbstract
  *
- * @package Yume\Kama\Obi\HTTP\Routing
+ * @package Yume\Fure\HTTP\Routing
  */
 abstract class RouteAbstract
 {
     
+    public const ANY = 7346;
+    public const AUTH = 7568;
+    public const GUEST = 7975;
+    
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
+     * @inherit Yume\Fure\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function delete( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
@@ -30,7 +35,7 @@ abstract class RouteAbstract
      * @params Int $flags
      * @params Array|String|Callable $handler
      *
-     * @return Yume\Kama\Obi\HTTP\Routing\RouteErrorHandler
+     * @return Yume\Fure\HTTP\Routing\RouteErrorHandler
      */
     public static function error()//:RouteErrorHandler
     {
@@ -38,7 +43,7 @@ abstract class RouteAbstract
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
+     * @inherit Yume\Fure\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function get( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
@@ -47,7 +52,7 @@ abstract class RouteAbstract
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
+     * @inherit Yume\Fure\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function head( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
@@ -56,7 +61,7 @@ abstract class RouteAbstract
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
+     * @inherit Yume\Fure\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function patch( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
@@ -65,7 +70,7 @@ abstract class RouteAbstract
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
+     * @inherit Yume\Fure\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function post( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
@@ -74,7 +79,7 @@ abstract class RouteAbstract
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteAbstract::path
+     * @inherit Yume\Fure\HTTP\Routing\RouteAbstract::path
      *
      */
     public static function put( String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
@@ -92,14 +97,14 @@ abstract class RouteAbstract
      * @params Array|String|Callable $handler
      * @params Null|Callable $children
      *
-     * @return Yume\Kama\Obi\HTTP\Routing\Route
+     * @return Yume\Fure\HTTP\Routing\Route
      */
     public static function path( String $method, String $path, Array | String | Callable $handler, ? Callable $children = Null ): Route
     {
         // Check if route is exists.
         if( self::exists( $path ) )
         {
-            throw new RouteError( RegExp\RegExp::replace( "/(?:(?<Segment>\:(?<SegmentName>([a-z]+))(\((?<SegmentRegExp>[^\)]*)\))*))/", AoE\Runtime::$app->object->routes->__isset( "parent" ) ? f( "{}/{}", AoE\Runtime::$app->object->routes->parent, $path ) : $path, "\:$2" ), RouteError::DUPLICATE_PATH );
+            throw new RouteError( RegExp\RegExp::replace( "/(?:(?<Segment>\:(?<SegmentName>([a-z]+))(\((?<SegmentRegExp>[^\)]*)\))*))/", Threader\Runtime::$app->object->routes->__isset( "parent" ) ? f( "{}/{}", Threader\Runtime::$app->object->routes->parent, $path ) : $path, "\:$2" ), RouteError::DUPLICATE_PATH );
         } else {
             
             // If the route has children.
@@ -107,19 +112,19 @@ abstract class RouteAbstract
             {
                 
                 // Copy global routes.
-                $globalRoutes = AoE\Runtime::$app->object->routes;
+                $globalRoutes = Threader\Runtime::$app->object->routes;
                 
                 // Get parent routes.
                 $parentRoutes = $globalRoutes['parent'] ? f( "{}/{}", $globalRoutes['parent'], $path ) : $path;
                 
                 // Replace global routes with child routes.
-                $childsRoutes = AoE\Runtime::$app->object->routes = new Routes([ "parent" => $parentRoutes ]);
+                $childsRoutes = Threader\Runtime::$app->object->routes = new Routes([ "parent" => $parentRoutes ]);
                 
                 // Execute a function that wraps a child route.
                 call_user_func( $children );
                 
                 // Return value from global with routes global copied earlier.
-                AoE\Runtime::$app->object->routes = $globalRoutes;
+                Threader\Runtime::$app->object->routes = $globalRoutes;
                 
                 // Copy child route list.
                 $children = $childsRoutes;
@@ -127,7 +132,7 @@ abstract class RouteAbstract
             }
             
             // Registers routes to global routes.
-            return( AoE\Runtime::$app->object->routes[] = new Route( $method, $path, $handler, $children ) );
+            return( Threader\Runtime::$app->object->routes[] = new Route( $method, $path, $handler, $children ) );
         }
     }
     
@@ -143,7 +148,7 @@ abstract class RouteAbstract
     public static function exists( String $path ): Bool
     {
         // Get routes from global.
-        $routes = AoE\Runtime::$app->object->routes;
+        $routes = Threader\Runtime::$app->object->routes;
         
         foreach( $routes As $route )
         {
@@ -168,7 +173,7 @@ abstract class RouteAbstract
      * @access Public Static
      *
      * @params String $path
-     * @params Yume\Kama\Obi\HTTP\Routing\Routes
+     * @params Yume\Fure\HTTP\Routing\Routes
      *
      * @return Bool
      */
@@ -177,7 +182,7 @@ abstract class RouteAbstract
         if( $routes === Null )
         {
             // Get routes from global.
-            $routes = AoE\Runtime::$app->object->routes;
+            $routes = Threader\Runtime::$app->object->routes;
         }
         foreach( $routes As $route )
         {

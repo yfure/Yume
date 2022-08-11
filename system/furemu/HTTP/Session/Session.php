@@ -1,9 +1,10 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Session;
+namespace Yume\Fure\HTTP\Session;
 
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\HTTP;
+use Yume\Fure\AoE;
+use Yume\Fure\HTTP;
+use Yume\Fure\Threader;
 
 abstract class Session
 {
@@ -22,10 +23,10 @@ abstract class Session
         {
             
             // Get session ini configuration.
-            $configs = AoE\App::config( "http.session.configs" );
+            $configs = Threader\App::config( "http.session.configs" );
             
             // Get session save handler class.
-            $handler = AoE\App::config( "http.session.handler" );
+            $handler = Threader\App::config( "http.session.handler" );
             
             foreach( $configs As $option => $value )
             {
@@ -131,7 +132,7 @@ abstract class Session
         // Unset all of the session variables.
         unset( $_SESSION );
         
-        if( AoE\App::config( "http.session.configs[session.use_cookies]" ) )
+        if( Threader\App::config( "http.session.configs[session.use_cookies]" ) )
         {
             // Get session name.
             $name = session_name();

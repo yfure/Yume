@@ -1,22 +1,23 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Routing;
+namespace Yume\Fure\HTTP\Routing;
 
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\Services;
+use Yume\Fure\AoE;
+use Yume\Fure\Services;
+use Yume\Fure\Threader;
 
 /*
  * RouteServices
  *
- * @extends Yume\Kama\Obi\Services\Services
+ * @extends Yume\Fure\Services\Services
  *
- * @package Yume\Kama\Obi\HTTP\Routing
+ * @package Yume\Fure\HTTP\Routing
  */
 final class RouteServices extends Services\Services
 {
     
     /*
-     * @inherit Yume\Kama\Obi\Services\ServicesInterface
+     * @inherit Yume\Fure\Services\ServicesInterface
      *
      */
     public static function boot(): Void
@@ -25,7 +26,7 @@ final class RouteServices extends Services\Services
         $segments = [
             
             // For default you can replace it in the app configuration file.
-            "default" => AoE\App::config( "http.routing.regexp.default" ),
+            "default" => Threader\App::config( "http.routing.regexp.default" ),
             
             // Todo code here...
             "user" => "[a-zA-Z_\x80-\xff][a-zA-Z0-9_\.\x80-\xff][a-zA-Z0-9_\x80-\xff]*"

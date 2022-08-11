@@ -1,8 +1,8 @@
 <?php
 
-namespace Yume\Kama\Obi\IO;
+namespace Yume\Fure\IO;
 
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\Error;
 
 /*
  * IOError
@@ -10,10 +10,10 @@ use Yume\Kama\Obi\Trouble;
  * IOError will only be thrown if there
  * is an error in the input or output.
  *
- * @extends Yume\Kama\Obi\Trouble\TroubleError
+ * @extends Yume\Fure\Error\BaseError
  *
- * @package Yume\Kama\Obi\IO
+ * @package Yume\Fure\IO
  */
-class IOError extends Trouble\TroubleError {}
+class IOError extends Error\BaseError {}
 
 ?>

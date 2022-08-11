@@ -1,13 +1,13 @@
 <?php
 
-namespace Yume\Kama\Obi\IO;
+namespace Yume\Fure\IO;
 
 /*
  * Path
  *
- * @extends Yume\Kama\Obi\IO\Path\PathAbstract
+ * @extends Yume\Fure\IO\Path\PathAbstract
  *
- * @package Yume\Kama\Obi\IO
+ * @package Yume\Fure\IO
  */
 abstract class Path extends Path\PathAbstract {}
 

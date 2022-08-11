@@ -1,26 +1,17 @@
 <?php
 
-namespace Yume\Kama\Obi\AoE;
+namespace Yume\Fure\AoE;
 
 use Iterator;
 
-class Collection implements Buffer\Hairetsu, Iterator
+/*
+ * Collection
+ *
+ * @package Yume\Fure\AoE
+ */
+class Collection extends Overloader implements Iterator
 {
-    
-    use Buffer\Iterator;
-    
-    /*
-     * @inheritdoc Hairetsu
-     */
-    public function __construct( Array $data = [] )
-    {
-        // Set Array element.
-        $this->data = $data;
-        
-        // Set Position to zero.
-        $this->position = 0;
-    }
-    
+    use ITraits\Iterator\Iterator;
 }
 
 ?>

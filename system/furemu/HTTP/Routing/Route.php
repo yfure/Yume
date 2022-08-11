@@ -1,15 +1,18 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Routing;
+namespace Yume\Fure\HTTP\Routing;
 
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\RegExp;
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\AoE;
+use Yume\Fure\Error;
+use Yume\Fure\RegExp;
+use Yume\Fure\Threader;
+
+use UnhandledMatchError;
 
 /*
  * Route
  *
- * @package Yume\Kama\Obi\HTTP\Routing
+ * @package Yume\Fure\HTTP\Routing
  */
 class Route implements RouteInterface
 {
@@ -25,6 +28,15 @@ class Route implements RouteInterface
      * @values Array
      */
     protected Array $headers = [];
+    
+    /*
+     * Route meta type.
+     *
+     * @access Protected
+     *
+     * @values Int
+     */
+    protected Int $meta = RouteAbstract::ANY;
     
     /*
      * Route name.
@@ -71,24 +83,24 @@ class Route implements RouteInterface
         array_map( array: explode( "|", $method ), callback: function( $name )
         {
             // If the method name is not available.
-            if( in_array( $name, $methods = AoE\App::config( "http.request.methods" ) ) === False )
+            if( in_array( $name, $methods = Threader\App::config( "http.request.methods" ) ) === False )
             {
-                throw new Trouble\TypeError( f( "The \$method parameter must have the value /{}/, {} given.", implode( "|", $methods ), $name ) );
+                throw new Error\TypeError( f( "The \$method parameter must have the value /{}/, {} given.", implode( "|", $methods ), $name ) );
             }
         });
         
         // Checks if the handler value matches.
         if( RegExp\RegExp::test( "/(?:\b(Array|String|Object|Callable)\b)/i", gettype( $handler ) ) === False )
         {
-            throw new Trouble\TypeError( f( "The \$handler parameter must have a value of type /Array|String|Object|Callable/i, {} is given.", gettype( $handler ) ) );
+            throw new Error\TypeError( f( "The \$handler parameter must have a value of type /Array|String|Object|Callable/i, {} is given.", gettype( $handler ) ) );
         }
         
         // Create regular expression for route.
-        $this->regexp = RegExp\RegExp::replace( AoE\App::config( "http.routing.regexp.segment" ), $path, fn( $match ) => $this->replace( $match ) );
+        $this->regexp = RegExp\RegExp::replace( Threader\App::config( "http.routing.regexp.segment" ), $path, fn( $match ) => $this->replace( $match ) );
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteInterface
+     * @inherit Yume\Fure\HTTP\Routing\RouteInterface
      *
      */
     public function getChild(): ? Routes
@@ -97,7 +109,7 @@ class Route implements RouteInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteInterface
+     * @inherit Yume\Fure\HTTP\Routing\RouteInterface
      *
      */
     public function getHandler(): Array | Object | String | Callable
@@ -106,7 +118,7 @@ class Route implements RouteInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteInterface
+     * @inherit Yume\Fure\HTTP\Routing\RouteInterface
      *
      */
     public function getHeader(): Array
@@ -115,7 +127,16 @@ class Route implements RouteInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteInterface
+     * @inherit Yume\Fure\HTTP\Routing\RouteInterface
+     *
+     */
+    public function getMeta(): Int
+    {
+        return( $this->meta );
+    }
+    
+    /*
+     * @inherit Yume\Fure\HTTP\Routing\RouteInterface
      *
      */
     public function getMethod(): String
@@ -124,7 +145,7 @@ class Route implements RouteInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteInterface
+     * @inherit Yume\Fure\HTTP\Routing\RouteInterface
      *
      */
     public function getName(): ? String
@@ -133,7 +154,7 @@ class Route implements RouteInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteInterface
+     * @inherit Yume\Fure\HTTP\Routing\RouteInterface
      *
      */
     public function getPath(): String
@@ -142,7 +163,7 @@ class Route implements RouteInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteInterface
+     * @inherit Yume\Fure\HTTP\Routing\RouteInterface
      *
      */
     public function getRegExp(): String
@@ -151,7 +172,7 @@ class Route implements RouteInterface
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouteInterface
+     * @inherit Yume\Fure\HTTP\Routing\RouteInterface
      *
      */
     public function getSegment(): Array
@@ -209,6 +230,17 @@ class Route implements RouteInterface
         return( $this );
     }
     
+    /*
+     * Set header for route.
+     *
+     * @access Public
+     *
+     * @params String $header
+     * @params Bool $replace
+     * @params Int $code
+     *
+     * @return Static
+     */
     final public function header( String $header, Bool $replace = True, Int $code = 0 ): Static
     {
         // Push header.
@@ -217,6 +249,38 @@ class Route implements RouteInterface
             "header" => $header,
             "code" => $code
         ];
+        return( $this );
+    }
+    
+    /*
+     * Add or change route meta.
+     *
+     * @access Public
+     *
+     * @params String|Int $type
+     *
+     * @return Static
+     */
+    final public function meta( Int | String $type = RouteAbstract::ANY ): Static
+    {
+        try {
+            $this->meta = match( is_string( $type ) ? strtolower( $type ) : $type )
+            {
+                // Shorthand mode.
+                "any" => RouteAbstract::ANY,
+                "auth" => RouteAbstract::AUTH,
+                "guest" => RouteAbstract::GUEST,
+                
+                // Longhand mode.
+                RouteAbstract::ANY,
+                RouteAbstract::AUTH,
+                RouteAbstract::GUEST => $type
+            };
+        }
+        catch( UnhandledMatchError $e )
+        {
+            throw new RouteError( [ $type, $this->path ], RouteError::UNHANDLED_META_TYPE, $e );
+        }
         return( $this );
     }
     

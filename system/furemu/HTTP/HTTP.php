@@ -1,7 +1,12 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP;
+namespace Yume\Fure\HTTP;
 
+/*
+ * HTTP
+ *
+ * @package Yume\Fure\HTTP
+ */
 abstract class HTTP
 {
     
@@ -64,6 +69,7 @@ abstract class HTTP
             }
         }
         
+        // Authorization header.
         if( isset( $headers['Authorization'] ) !== False )
         {
             if( isset( $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ) )
@@ -73,7 +79,7 @@ abstract class HTTP
             if( isset( $_SERVER['PHP_AUTH_USER'] ) )
             {
                 $basic_pass = isset( $_SERVER['PHP_AUTH_PW'] ) ? $_SERVER['PHP_AUTH_PW'] : "";
-                $headers['Authorization'] = "Basic " . base64_encode($_SERVER['PHP_AUTH_USER'] . ":" . $basic_pass);
+                $headers['Authorization'] = "Basic\x20" . base64_encode( $_SERVER['PHP_AUTH_USER'] . ":" . $basic_pass );
             } else
             if( isset( $_SERVER['PHP_AUTH_DIGEST'] ) )
             {

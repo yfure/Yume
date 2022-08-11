@@ -1,15 +1,15 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Cookies;
+namespace Yume\Fure\HTTP\Cookies;
 
-use Yume\Kama\Obi\AoE;
+use Yume\Fure\AoE;
 
 /*
  * CookieIterator
  *
  * Iterate over the cookies.
  *
- * @package Yume\Kama\Obi\HTTP\Cookies
+ * @package Yume\Fure\HTTP\Cookies
  */
 class CookieIterator extends AoE\Collection {}
 

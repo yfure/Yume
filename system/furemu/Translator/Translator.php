@@ -1,14 +1,14 @@
 <?php
 
-namespace Yume\Kama\Obi\Translator;
+namespace Yume\Fure\Translator;
 
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\AoE;
+use Yume\Fure\Error;
 
 /*
  * Translator
  *
- * @package Yume\Kama\Obi\Translator
+ * @package Yume\Fure\Translator
  */
 abstract class Translator
 {

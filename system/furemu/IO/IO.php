@@ -1,11 +1,11 @@
 <?php
 
-namespace Yume\Kama\Obi\IO;
+namespace Yume\Fure\IO;
 
 /*
  * IO
  *
- * @package Yume\Kama\Obi\IO
+ * @package Yume\Fure\IO
  */
 abstract class IO
 {

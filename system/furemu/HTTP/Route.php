@@ -1,11 +1,11 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP;
+namespace Yume\Fure\HTTP;
 
 /*
  * Route
  *
- * @package Yume\Kama\Obi\HTTP
+ * @package Yume\Fure\HTTP
  */
 final class Route extends Routing\RouteAbstract {}
 

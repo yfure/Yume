@@ -1,16 +1,17 @@
 <?php
 
-namespace Yume\Kama\Obi\IO\File;
+namespace Yume\Fure\IO\File;
 
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\IO;
+use Yume\Fure\AoE;
+use Yume\Fure\IO;
+use Yume\Fure\Threader;
 
 use DateTime;
 
 /*
  * File
  *
- * @package Yume\Kama\Obi\IO\File
+ * @package Yume\Fure\IO\File
  */
 abstract class FileAbstract
 {
@@ -49,7 +50,7 @@ abstract class FileAbstract
         }
         
         // Check if such a directory exists.
-        if( IO\Path::exists( $fpath = AoE\Stringable::pop( $file, "/" ) ) )
+        if( IO\Path::exists( $fpath = AoE\Stringer::pop( $file, "/" ) ) )
         {
             // Check if such directory is unreadable.
             if( IO\IO::readable( $fpath ) === False )
@@ -65,6 +66,8 @@ abstract class FileAbstract
                 {
                     throw new FileError( $file, FileError::NOT_READABLE );
                 }
+            } else {
+                throw new FileError( $file, FileError::NOT_FOUND );
             }
             
             // Add prefix base path.
@@ -163,7 +166,7 @@ abstract class FileAbstract
         $time = filemtime( path( $file ) );
         
         // Clone instance of DateTime Runtime class.
-        $date = ( clone AoE\Runtime::$app->object->dateTime )->setTimestamp( $time );
+        $date = ( clone Threader\Runtime::$app->object->dateTime )->setTimestamp( $time );
         
         // Return DateTime instance.
         return( $date );
@@ -201,7 +204,7 @@ abstract class FileAbstract
         }
         
         // Check if such a directory exists.
-        if( IO\Path::exists( $fpath = AoE\Stringable::pop( $file, "/" ) ) )
+        if( IO\Path::exists( $fpath = AoE\Stringer::pop( $file, "/" ) ) )
         {
             // Check if such directory is unwriteable.
             if( IO\IO::writeable( $fpath ) === False )

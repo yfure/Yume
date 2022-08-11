@@ -1,6 +1,6 @@
 <?php
 
-namespace Yume\Kama\Obi\Reflector;
+namespace Yume\Fure\Reflector;
 
 use ReflectionFunction;
 use Closure;
@@ -8,7 +8,7 @@ use Closure;
 /*
  * ReflectFuction
  *
- * @package Yume\Kama\Obi\Reflector
+ * @package Yume\Fure\Reflector
  */
 abstract class ReflectFunction
 {

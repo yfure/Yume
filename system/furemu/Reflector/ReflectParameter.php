@@ -1,9 +1,9 @@
 <?php
 
-namespace Yume\Kama\Obi\Reflector;
+namespace Yume\Fure\Reflector;
 
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\RegExp;
+use Yume\Fure\AoE;
+use Yume\Fure\RegExp;
 
 use ReflectionIntersectionType;
 use ReflectionType;
@@ -14,7 +14,7 @@ use Throwable;
 /*
  * ReflectParameter
  *
- * @package Yume\Kama\Obi\Reflector
+ * @package Yume\Fure\Reflector
  */
 abstract class ReflectParameter
 {

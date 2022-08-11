@@ -1,13 +1,13 @@
 <?php
 
-namespace Yume\Kama\Obi\IO;
+namespace Yume\Fure\IO;
 
 /*
  * File
  *
- * @extends Yume\Kama\Obi\IO\File\FileAbstract
+ * @extends Yume\Fure\IO\File\FileAbstract
  *
- * @package Yume\Kama\Obi\IO
+ * @package Yume\Fure\IO
  */
 abstract class File extends File\FileAbstract {}
 

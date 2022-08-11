@@ -1,17 +1,17 @@
 <?php
 
-namespace Yume\Kama\Obi\Services;
+namespace Yume\Fure\Services;
 
 /*
  * Services
  *
- * @package Yume\Kama\Obi\Services
+ * @package Yume\Fure\Services
  */
 abstract class Services implements ServicesInterface
 {
     
     /*
-     * @inherit Yume\Kama\Obi\Services\ServicesInterface
+     * @inherit Yume\Fure\Services\ServicesInterface
      *
      */
     abstract public static function boot(): Void;

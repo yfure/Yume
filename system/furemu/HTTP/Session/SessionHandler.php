@@ -1,9 +1,9 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Session;
+namespace Yume\Fure\HTTP\Session;
 
-use Yume\Kama\Obi\HTTP;
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\HTTP;
+use Yume\Fure\Error;
 
 use SessionHandler as PHPBuiltInSessionHandler;
 
@@ -12,7 +12,7 @@ use SessionHandler as PHPBuiltInSessionHandler;
  *
  * Just extending PHP's built-in Session Handler class.
  *
- * @package Yume\Kama\Obi\HTTP\Session
+ * @package Yume\Fure\HTTP\Session
  */
 final class SessionHandler extends PHPBuiltInSessionHandler
 {
@@ -38,7 +38,7 @@ final class SessionHandler extends PHPBuiltInSessionHandler
         if( extension_loaded( "mstring" ) === False && 
             extension_loaded( "openssl" ) === False )
         {
-            throw new Trouble\ExtensionError( "Multibyte String & OpenSSL" );
+            throw new Error\ExtensionError( "Multibyte String & OpenSSL" );
         }
     }
     
@@ -49,7 +49,7 @@ final class SessionHandler extends PHPBuiltInSessionHandler
     public function open( String $path, String $name ): Bool
     {
         // Get or generate random key string.
-        $this->key = $this->getKey( f( "KEY_{}", $name ) );
+        $this->key = $this->getKey( $name );
         
         // Return value from parent::open.
         return( parent::open( $path, $name ) );
@@ -99,8 +99,13 @@ final class SessionHandler extends PHPBuiltInSessionHandler
     
     protected function decode( String $key, String $data ): String
     {
+        // HMAC string.
         $ha = mb_substr( $data, 0, 32, "8bit" );
+        
+        // Iv string.
         $iv = mb_substr( $data, 32, 16, "8bit" );
+        
+        // Chipertext string.
         $ct = mb_substr( $data, 48, Null, "8bit" );
         
         // Generate a keyed hash value using the HMAC method.
@@ -113,7 +118,7 @@ final class SessionHandler extends PHPBuiltInSessionHandler
             return( openssl_decrypt( $data, "AES-256-CBC", mb_substr( $key, 0, 32, "8bit" ), OPENSSL_RAW_DATA, $iv ) );
         }
         
-        throw new Trouble\AuthenticationError( "Authentication failed, hash string is not equal." );
+        throw new Error\RuntimeError( "Authentication failed, hash string is not equal." );
     }
     
     /*
@@ -131,7 +136,7 @@ final class SessionHandler extends PHPBuiltInSessionHandler
         if( $cookie = HTTP\Cookies\Cookie::get( $name ) )
         {
             // Decodes key encoded with MIME base64.
-            $key = base64_decode( $cookie->value);
+            $key = base64_decode( $cookie->value );
         } else {
             
             // Generates cryptographically secure pseudo-random bytes.

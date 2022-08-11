@@ -1,8 +1,8 @@
 <?php
 
-namespace Yume\Kama\Obi\IO\Path;
+namespace Yume\Fure\IO\Path;
 
-use Yume\Kama\Obi\IO;
+use Yume\Fure\IO;
 
 /*
  * PathError
@@ -10,9 +10,9 @@ use Yume\Kama\Obi\IO;
  * DirectoryError will only be thrown
  * if there is an error in the directory.
  *
- * @extends Yume\Kama\Obi\IO\IOError
+ * @extends Yume\Fure\IO\IOError
  *
- * @package Yume\Kama\Obi\IO\Path
+ * @package Yume\Fure\IO\Path
  */
 class PathError extends IO\IOError
 {
@@ -62,7 +62,7 @@ class PathError extends IO\IOError
     public const NOT_WRITEABLE = 9880;
     
     /*
-     * @inherit Yume\Kama\Obi\Trouble\TroubleError
+     * @inherit Yume\Fure\Error\BaseError
      *
      */
     protected Array $flags = [

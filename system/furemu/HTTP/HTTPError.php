@@ -1,9 +1,9 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP;
+namespace Yume\Fure\HTTP;
 
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\Error;
 
-class HTTPError extends Trouble\RuntimeError {}
+class HTTPError extends Error\RuntimeError {}
 
 ?>

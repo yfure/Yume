@@ -1,17 +1,17 @@
 <?php
 
-namespace Yume\Kama\Obi\Environment;
+namespace Yume\Fure\Environment;
 
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\Error;
 
 /*
  * EnvironmentError
  *
- * @extends Yume\Kama\Obi\Trouble\TypeError
+ * @extends Yume\Fure\Error\TypeError
  *
- * @package Yume\Kama\Obi\Environment
+ * @package Yume\Fure\Environment
  */
-class EnvironmentError extends Trouble\TypeError
+class EnvironmentError extends Error\TypeError
 {
     
     /*
@@ -33,13 +33,22 @@ class EnvironmentError extends Trouble\TypeError
     public const DUPLICATE_SUPER_GLOBAL = 8785;
     
     /*
+     * If the json value type is invalid.
+     *
+     * @access Public Static
+     *
+     * @values Int
+     */
+    public const INVALID_ARRAY_VALUE = 8789;
+    
+    /*
      * If the variable prefix name is invalid.
      *
      * @access Public Static
      *
      * @values Int
      */
-    public const INVALID_PREFIX_NAME = 8786;
+    public const INVALID_PREFIX_NAME = 8793;
     
     /*
      * If the variable name is invalid.
@@ -48,7 +57,7 @@ class EnvironmentError extends Trouble\TypeError
      *
      * @values Int
      */
-    public const INVALID_NAME = 8787;
+    public const INVALID_NAME = 8795;
     
     /*
      * If the variable value is invalid type.
@@ -57,18 +66,19 @@ class EnvironmentError extends Trouble\TypeError
      *
      * @values Int
      */
-    public const INVALID_VALUE_TYPE = 8788;
+    public const INVALID_VALUE_TYPE = 8798;
     
     /*
-     * @inherit Yume\Kama\Obi\Trouble\TroubleError
+     * @inherit Yume\Fure\Error\BaseError
      *
      */
     protected Array $flags = [
         self::DUPLICATE_CONSTANT => "The constant name for the environment variable {} has been duplicated.",
         self::DUPLICATE_SUPER_GLOBAL => "Unable to override super global \$_ENV[{}]",
+        self::INVALID_ARRAY_VALUE => "The array value for \"{}\" must be valid value.",
         self::INVALID_PREFIX_NAME => "Environment prefix {} names must be all uppercase.",
         self::INVALID_NAME => "Environment variable names {} must be all uppercase.",
-        self::INVALID_VALUE_TYPE => "The value of the constant {} must have the value {}, {} is given.",
+        self::INVALID_VALUE_TYPE => "The value of the environment variable {} must have the value {}, {} is given.",
     ];
     
 }

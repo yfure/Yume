@@ -85,7 +85,7 @@ if( version_compare( PHP_VERSION, "8.0.0" ) > 0 )
          *
          * @return String
          */
-        'BASE_PATH' => fn() => preg_replace( "/[\/|\\\](public|bootstrap)/i", "", BASE_ROOT ),
+        'BASE_PATH' => fn() => preg_replace( "/[\/|\\\](public|bootstrap|system\/buffer)/i", "", BASE_ROOT ),
         
     ];
     

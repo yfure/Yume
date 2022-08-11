@@ -1,11 +1,11 @@
 <?php
 
-namespace Yume\Kama\Obi\Services;
+namespace Yume\Fure\Services;
 
 /*
  * ServiceInterface
  *
- * @package Yume\Kama\Obi\Services
+ * @package Yume\Fure\Services
  */
 interface ServicesInterface
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Routing;
+namespace Yume\Fure\HTTP\Routing;
 
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\Error;
 
 /*
  * RouteSegment
  *
- * @package Yume\Kama\Obi\HTTP\Routing
+ * @package Yume\Fure\HTTP\Routing
  */
 abstract class RouteSegment
 {

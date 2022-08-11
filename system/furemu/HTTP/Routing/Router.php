@@ -1,17 +1,18 @@
 <?php
 
-namespace Yume\Kama\Obi\HTTP\Routing;
+namespace Yume\Fure\HTTP\Routing;
 
-use Yume\Kama\Obi\AoE;
-use Yume\Kama\Obi\HTTP;
-use Yume\Kama\Obi\Reflector;
-use Yume\Kama\Obi\RegExp;
-use Yume\Kama\Obi\Trouble;
+use Yume\Fure\AoE;
+use Yume\Fure\HTTP;
+use Yume\Fure\Reflector;
+use Yume\Fure\RegExp;
+use Yume\Fure\Error;
+use Yume\Fure\Threader;
 
 /*
  * Router
  *
- * @package Yume\Kama\Obi\HTTP\Routing
+ * @package Yume\Fure\HTTP\Routing
  */
 class Router implements RouterInterface
 {
@@ -21,7 +22,7 @@ class Router implements RouterInterface
      *
      * @access Protected
      *
-     * @values Yume\Kama\Obi\HTTP\Routing\Routes
+     * @values Yume\Fure\HTTP\Routing\Routes
      */
     protected Routes $routes;
     
@@ -43,25 +44,28 @@ class Router implements RouterInterface
      */
     public function __construct()
     {
+        // Starting new session.
+        //HTTP\Session\Session::start();
+        
         // Create new Route Collection.
-        AoE\Runtime::$app->object->routes = $this->routes = new Routes;
+        Threader\Runtime::$app->object->routes = $this->routes = new Routes;
         
         // Get current route path.
-        $this->path = HTTP\Server\Request::uri();
+        $this->path = HTTP\HTTPRequest::uri();
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouterInterface
+     * @inherit Yume\Fure\HTTP\Routing\RouterInterface
      *
      */
     public function create(): Void
     {
         // Import the file containing the route.
-        AoE\Package::import( AoE\App::config( "http.routing.routes" ) );
+        AoE\Package::import( Threader\App::config( "http.routing.routes" ) );
     }
     
     /*
-     * @inherit Yume\Kama\Obi\HTTP\Routing\RouterInterface
+     * @inherit Yume\Fure\HTTP\Routing\RouterInterface
      *
      */
     public function dispatch(): Void
@@ -73,26 +77,48 @@ class Router implements RouterInterface
             extract( $result );
             
             // Check if server request method is allowed.
-            if( HTTP\Server\Request::method( $route->getMethod() ) )
+            if( HTTP\HTTPRequest::method( $route->getMethod() ) )
             {
+                // Handle route meta.
+                $this->handleMeta( $route );
+                
                 // Mapping route headers.
                 array_map( array: $route->getHeader(), callback: fn( $args ) => HTTP\HTTP::header( $args['header'], $args['replace'], $args['code'] ) );
                 
-                // ....
-                exit( AoE\Stringable::parse( $execute = match( $type = ucfirst( [ $type = gettype( $handler = $route->getHandler() ) ][0] === "object" ? ( is_callable( $route->getHandler() ) ? "callable" : "object" ) : $type ) )
+                // Get route handler.
+                $handler = $route->getHandler();
+                
+                // Get route handler type.
+                $type = gettype( $handler );
+                
+                // If type is is Object or Callable.
+                if( $type === "object" )
                 {
-                    // ....
+                    // If route handler is Callable.
+                    if( is_callable( $handler ) )
+                    {
+                        $type = "Callable";
+                    }
+                }
+                
+                // Matching handler type.
+                $execute = match( ucfirst( $type ) )
+                {
                     "Array" => $this->handleController( $route, $matches, $handler[0], isset( $handler[1] ) ? $handler[1] : Null ),
-                    
-                    // ...
                     "Object" => $this->handleController( $route, $matches, $handler ),
-                    
-                    // ...
                     "String" => $this->handleString( $route, $matches, $handler ),
-                    
-                    // ...
                     "Callable" => $this->handleCallable( $route, $matches, $handler )
-                }));
+                };
+                
+                // If handler returned value.
+                if( is_string( $execute ) || is_int( $execute ) || is_array( $execute ) )
+                {
+                    // Display output values.
+                    echo( AoE\Stringer::parse( $execute ) );
+                }
+                
+                // Close the program.
+                exit;
             }
             throw new RouteError( $this->path, RouteError::METHOD_NOT_ALLOWED );
         }
@@ -100,11 +126,49 @@ class Router implements RouterInterface
     }
     
     /*
+     * Handle route meta.
+     *
+     * @access Protected
+     *
+     * @params Yume\Fure\HTTP\Routing\Route
+     *
+     * @return Void
+     */
+    final protected function handleMeta( Route $route ): Void
+    {
+        // ...
+        $isAuth = HTTP\Authentication\Authentication::isAuth();
+        
+        switch( $route->getMeta() )
+        {
+            // ...
+            case RouteAbstract::AUTH:
+                
+                // Check if user is authenticated.
+                if( $isAuth !== True )
+                {
+                    // ...
+                }
+                break;
+            
+            // ...
+            case RouteAbstract::GUEST:
+                
+                // Check if user is not authenticated.
+                if( $isAuth !== False )
+                {
+                    // Error...
+                }
+                break;
+        }
+    }
+    
+    /*
      * Handle controller class.
      *
      * @access Protected
      *
-     * @params Yume\Kama\Obi\HTTP\Routing\Route $route
+     * @params Yume\Fure\HTTP\Routing\Route $route
      * @params Array $matches
      * @params Object|String $handler
      * @params String $method
@@ -119,9 +183,9 @@ class Router implements RouterInterface
         // Checks if Controller class implements Controller Interface.
         if( Reflector\ReflectClass::isImplements( $handler, HTTP\Controller\ControllerInterface::class, $reflect ) )
         {
-            if( method_exists( $reflect->name, $method = $method !== Null ? $method : AoE\App::config( "http.controller[default.method]" ) ) )
+            if( method_exists( $reflect->name, $method = $method !== Null ? $method : Threader\App::config( "http.controller[default.method]" ) ) )
             {
-                return( Reflector\ReflectMethod::invoke( $reflect, $method, $matches ) );
+                return( Reflector\ReflectMethod::invoke( $reflect, $method, [ ...$matches, "route" => $route ] ) );
             }
             throw new HTTP\Controller\ControllerError( [ $reflect->name, $method ], HTTP\Controller\ControllerError::METHOD_ERROR );
         }
@@ -133,7 +197,7 @@ class Router implements RouterInterface
      *
      * @access Protected
      *
-     * @params Yume\Kama\Obi\HTTP\Routing\Route $route
+     * @params Yume\Fure\HTTP\Routing\Route $route
      * @params Array $matches
      * @params Callable $handler
      *
@@ -141,7 +205,7 @@ class Router implements RouterInterface
      */
     final protected function handleCallable( Route $route, Array $matches, Callable $handler ): Mixed
     {
-        return( Reflector\ReflectFunction::invoke( $handler, $matches ) );
+        return( Reflector\ReflectFunction::invoke( $handler, [ ...$matches, "route" => $route ] ) );
     }
     
     /*
@@ -149,7 +213,7 @@ class Router implements RouterInterface
      *
      * @access Protected
      *
-     * @params Yume\Kama\Obi\HTTP\Routing\Route $route
+     * @params Yume\Fure\HTTP\Routing\Route $route
      * @params Array $matches
      * @params String $handler
      *
@@ -158,7 +222,7 @@ class Router implements RouterInterface
     final protected function handleString( Route $route, Array $matches, String $handler ): Mixed
     {
         // Controller namespace.
-        $cname = "Yume\\\Kama\\\App\\\HTTP\\\Controllers";
+        $cname = "Yume\\\App\\\HTTP\\\Controllers";
         
         // Regular Expression.
         $regexp = "/^(?:(?<Controller>$cname\\\[a-zA-Z_\x80-\xff][a-zA-Z0-9_\\\\x80-\xff]*[a-zA-Z0-9_\x80-\xff])\:\:(?<Method>[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*)|(?<Controller>$cname\\\[a-zA-Z_\x80-\xff][a-zA-Z0-9_\\\\x80-\xff]*[a-zA-Z0-9_\x80-\xff])|view\.(?<View>[a-zA-Z_\x80-\xff][a-zA-Z0-9-_\.\x80-\xff]*[a-zA-Z0-9_\x80-\xff]))$/iJ";
@@ -172,7 +236,7 @@ class Router implements RouterInterface
             // Return value.
             return( isset( $View ) ? $View : $this->handleController( $route, $matches, $Controller, isset( $Method ) ? $Method : Null ) );
         }
-        throw new RouteError( $handler, RouterError::INVALID_HANDLER_STRING );
+        throw new RouteError( $handler, RouteError::INVALID_HANDLER_STRING );
     }
     
     /*
@@ -180,7 +244,7 @@ class Router implements RouterInterface
      *
      * @access Protected
      *
-     * @params Yume\Kama\Obi\HTTP\Routing\Routes $routes
+     * @params Yume\Fure\HTTP\Routing\Routes $routes
      * @params String $parent
      *
      * @return Array|Bool

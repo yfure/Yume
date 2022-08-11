@@ -1,10 +1,10 @@
 <?php
 
-namespace Yume\Kama\Obi\AoE;
+namespace Yume\Fure\AoE;
 
 abstract class Package
 {
-    use Buffer\Package;
+    use ITraits\Package;
     
     /*
      * All packages installed.
@@ -14,7 +14,7 @@ abstract class Package
      * @values Array
      */
     public static Array $packages = [
-        \Yume\Kama\Obi::class
+        \Yume\Fure::class
     ];
     
 }
