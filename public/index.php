@@ -1,6 +1,6 @@
 <?php
 
-use Yume\Kama\Obi\AoE;
+use Yume\Fure\Threader;
 
 /*
  * Yume PHP Framework.
@@ -25,6 +25,9 @@ use Yume\Kama\Obi\AoE;
 // Show all error reports.
 error_reporting( E_ALL );
 
+// None.
+define( "None", False );
+
 // Get server document root.
 $root = $_SERVER['DOCUMENT_ROOT'];
 
@@ -35,13 +38,9 @@ $root = $_SERVER['DOCUMENT_ROOT'];
  * This includes the files required for the application without
  * explicitly including them with the include or require functions.
  */
-if( $root !== "" )
-{
-    require "$root/vendor/autoload.php";
-} else {
-    require "vendor/autoload.php";
-}
+require $root !== "" ? "$root/vendor/autoload.php" : "vendor/autoload.php";
 
-AoE\Runtime::start();
+// Start application.
+Threader\Runtime::start();
 
 ?>
