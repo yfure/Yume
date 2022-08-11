@@ -4,7 +4,8 @@
     "issues": "https://github.com/hxAri/Yume/issues",
     "require": {
         "php": "^8.0.6",
-        "phpseclib/phpseclib": "^3.0"
+        "phpseclib/phpseclib": "^3.0",
+        "rmccue/requests": "^2.0"
     },
     "license": "MiT",
     "authors": [
@@ -19,10 +20,8 @@
             "system/buffer/functions.php"
         ],
         "psr-4": {
-            "Yume\\Kama\\App\\": "app/",
-            "Yume\\Kama\\Obi\\Apuri\\": "app/",
-            "Yume\\Kama\\Obi\\": "system/furemu",
-            "Yume\\Kama\\Obi\\Furemu\\": "system/furemu/"
+            "Yume\\App\\": "app/",
+            "Yume\\Fure\\": "system/furemu/"
         }
     }
 }
