@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<!-- Site title -->
+		<title>@echo $this->title;</title>
+		
+		<!-- Include CSS file -->
+		<link rel="stylesheet" href="@:echo path( $this->css->file );" />
+		
+		<!-- Reading JS file -->
+		<script type="text/javascript">
+			@:echo IO\File::read( "assets/scripts/example.js" );
+		</script>
+		
+	</head>
+	<body>
+		<div class="header">
+			<div class="header-banner">
+				<Avatar 
+					url="assets/images/yume"
+					ext="JPG" />
+				<h6 class="header-title">
+					@echo $this->title;
+				</h6>
+			</div>
+		</div>
+		<div class="parent">
+			<Container>
+				<Col col="900">
+					<Row row="800">
+						@for $i = 0; $i < 70; $i++:
+							@match $i:
+								0 => 55 * 67
+							@emd
+							@do:
+								@i++;
+								@while $i < 80:
+									@switch $i:
+										case 79:
+											break;
+									@esd
+									@i++;
+								@ewd
+							@ewd $i < 10:
+						@efd
+					</Row>
+				</Col>
+			</Container>
+		</div>
+		<div class="footer">
+			
+		</div>
+	</body>
+</html>

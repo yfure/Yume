@@ -1,0 +1,2 @@
+[1660212485][19:08:05] Undefined property: Yume\App\Models\Test::$column /app/HTTP/Controllers/Test.php
+[1660212495][19:08:15] Undefined property: Yume\App\Models\Test::$columns /app/HTTP/Controllers/Test.php
