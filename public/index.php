@@ -28,6 +28,9 @@ error_reporting( E_ALL );
 // None.
 define( "None", False );
 
+// Yume application start.
+define( "APP_START", microtime( True ) );
+
 // Get server document root.
 $root = $_SERVER['DOCUMENT_ROOT'];
 
