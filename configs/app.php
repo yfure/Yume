@@ -19,7 +19,11 @@ return([
             "connection" => "yume",
             
             // Default database driver name.
-            "driver" => PDO::class,
+            "driver" => "PDO",
+            
+            // Default database server name.
+            "server" => "MySQL"
+            
         ],
         
         // List of all supported drivers and their configurations.
@@ -364,18 +368,23 @@ return([
     
     "view" => [
         "save" => [
-            "path" => "assets/views/{0}.view"
+            "path" => "assets/views/{0}.php"
         ],
         "cache" => [
-            "loaded" => "assets/caches/views/{0}/__view.{0}.loaded",
-            "parsed" => "assets/caches/views/{0}/__view.{0}.parsed"
+            "loaded" => "assets/caches/views/{0}/__view__.loaded",
+            "parsed" => "assets/caches/views/{0}/__view__.parsed"
         ],
-        "parsers" => [
-            Yume\Fure\View\Syntax\SyntaxComment::class,
-            Yume\Fure\View\Syntax\SyntaxOutput::class,
-        ],
-        "comment" => [
-            "remove" => False
+        "template" => [
+            "syntax" => [
+                "comment" => [
+                    "remove" => True
+                ]
+            ],
+            "parsers" => [
+                Yume\Fure\View\Syntax\SyntaxAssigment::class,
+                Yume\Fure\View\Syntax\SyntaxBranch::class,
+                Yume\Fure\View\Syntax\SyntaxPrint::class
+            ]
         ]
     ]
     
