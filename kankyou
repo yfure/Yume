@@ -7,13 +7,9 @@
 # @see configs/environment.path
 # 
 
-# Author Name.
-AUTHOR=hxAri
-
-# Application Name.
+# Application info.
 APP_NAME=Yume
-
-# Application Version.
+APP_AUTHOR=hxAri
 APP_VERSION=59.30.64
 
 # Localhost only.
