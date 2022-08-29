@@ -14,221 +14,152 @@ use Throwable;
  *
  * @package Yume\Fure\View
  */
-class View implements Stringable
+abstract class View
 {
     
     /*
-     * View file name.
+     * Format cachec loaded.
      *
-     * @access Protected
+     * @access Public Static
      *
-     * @values String
+     * @values Int
      */
-    protected String $path;
+    public const F_CACHE_LOADED = 7636;
     
     /*
-     * View file contents.
+     * Format cachec parsed.
      *
-     * @access Protected
+     * @access Public Static
      *
-     * @values String
+     * @values Int
      */
-    protected String $view;
+    public const F_CACHE_PARSED = 7868;
+    
+    use \Yume\Fure\AoE\ITraits\Config;
     
     /*
-     * View data.
+     * Check if the view file has been cached.
      *
-     * @access Protected
+     * @access Public Static
      *
-     * @values Object
+     * @params String $view
+     * @params Int $flags
+     *
+     * @return Bool
      */
-    protected Object $data;
-    
-    protected Array $parser = [];
-    
-    use AoE\ITraits\Config;
-    
-    /*
-     * Construct method of class View.
-     *
-     * @access Public Instance
-     *
-     * @params String $path
-     * @params Array $data
-     *
-     * @return Void
-     */
-    public function __construct( String $path, Array $data = [] )
+    public static function cached( String $view ): Bool
     {
-        if( $data Instanceof AoE\Data === False )
+        // Check if the cache file exists.
+        if( self::exists( $view, self::F_CACHE_LOADED ) )
         {
-            $data = new AoE\Data( $data );
+            // Check if cache files are the same size.
+            if( IO\File::size( self::format( $view, self::F_CACHE_LOADED ) ) === IO\File::size( self::format( $view ) ) )
+            {
+                // Check if cache files have the same content.
+                return( self::reader( $view, self::F_CACHE_LOADED ) === self::reader( $view ) );
+            }
         }
-        $this->data = $data;
-        $this->path = $path;
-        try {
-            $this->view = IO\File::read( f( View::config( "save.path" ), $path ) );
+        return( False );
+    }
+    
+    /*
+     * Check if the view file has been parsed.
+     *
+     * @access Public Static
+     *
+     * @params String $view
+     *
+     * @return Bool
+     */
+    public static function parsed( String $view ): Bool
+    {
+        return( self::exists( $view, self::F_CACHE_PARSED ) );
+    }
+    
+    /*
+     * Check if the view file exists.
+     *
+     * @access Public Static
+     *
+     * @params String $view
+     * @params Int $flags
+     *
+     * @return Bool
+     */
+    public static function exists( String $view, Int $flags = 0 ): Bool
+    {
+        return( IO\File::exists( self::format( $view, $flags ) ) );
+    }
+    
+    /*
+     * Format file view name.
+     *
+     * @access Public Static
+     *
+     * @params String $view
+     * @params Int $flags
+     *
+     * @return String
+     */
+    public static function format( String $view, Int $flags = 0 ): String
+    {
+        // View path selection.
+        $path = match( $flags )
+        {
+            // View cached.
+            self::F_CACHE_LOADED => self::config( "cache.loaded" ),
+            
+            // View cache parsed.
+            self::F_CACHE_PARSED => self::config( "cache.parsed" ),
+            
+            // View.
+            default => self::config( "save.path" )
+        };
+        return( f( $path, $view ) );
+    }
+    
+    /*
+     * Read view contents.
+     *
+     * @access Public Static
+     *
+     * @params String $view
+     * @params Int $flags
+     *
+     * @return String
+     */
+    public static function reader( String $view, Int $flags = 0 ): String
+    {
+        try
+        {
+            return( IO\File::read( self::format( $view, $flags ) ) );
         }
         catch( IO\IOError $e )
         {
-            throw new ViewError( $e->getMessage(), 0, $e );
-        }
-        if( IO\File::exists( View::config( "cache.parsed" ), $this->path ) )
-        {
-            $viewLoadedCacheSize = IO\File::size( f( View::config( "cache.loaded" ), $this->path ) );
-            $viewLoadesSize = IO\File::size( f( View::config( "save.path" ), $this->path ) );
-            
-            if( $viewLoadedCacheSize !== $viewLoadesSize )
-            {
-                $this->parse();
-            }
-        } else {
-            $this->parse();
+            throw new ViewError( $view, ViewError::READ_ERROR, $e );
         }
     }
     
-    public function execute(): Mixed
+    /*
+     * Create or overwrite view file.
+     *
+     * @access Public Static
+     *
+     * @params String $view
+     * @params String $content
+     * @params Int $flags
+     *
+     * @return Void
+     */
+    public static function writer( String $view, String $content, Int $flags = 0 ): Void
     {
-        // ...
-        ob_start();
-        
         try {
-            
-            // ...
-            include( path( f( View::config( "cache.parsed" ), $this->path ) ) );
+            IO\File::write( self::format( $view, $flags ), $content );
         }
-        catch( Throwable $e )
+        catch( IO\IOError $e )
         {
-            // ...
-            ob_clean();
-            
-            // ...
-            throw new ViewError(
-                $e->getMessage(),
-                $e->getCode(),
-                $e
-            );
+            throw new ViewError( $view, ViewError::SAVE_ERROR, $e );
         }
-        
-        // ...
-        return( str_replace( [ "\t", "\n" ], "", ob_get_clean() ) );
-    }
-    
-    public function getParsed(): String
-    {
-        return( $this->parsed );
-    }
-    
-    public function __toString(): String
-    {
-        return( $this->execute() );
-    }
-    
-    protected function parse(): Void
-    {
-        // ...
-        $loaded = f( View::config( "cache.loaded" ), $this->path );
-        $parsed = f( View::config( "cache.parsed" ), $this->path );
-        
-        // ...
-        if( IO\Path::exists( AoE\Stringer::pop( $parsed, "/" ) ) === False )
-        {
-            IO\Path::mkdir( AoE\Stringer::pop( $parsed, "/" ) );
-        }
-        
-        // ...
-        IO\File::write( $loaded, $this->view );
-        IO\File::write( $parsed, $this->parsed = $this->parser( $this->view ) );
-    }
-    
-    protected function parser( String $content ): String
-    {
-        // Replace tabs as spaces.
-        $parsed = str_replace( "\t", "\x20\x20\x20\x20", $content );
-        $regexp = [
-            [
-                "indent" => True,
-                "regexp" => implode( "", [
-                    "/^(?:(?<doWhile>",
-                        "(?<indent>(\s|\t){0,})",
-                        "\@(?<token>(do)\b)(?<opening>\:)(?<invalid>[^\n]*)",
-                            "(?<state>(\n\k{indent}(\s{2,4,}|\t{1,})[^\n]*){0,})",
-                        "(?<end>(\n\k{indent})*)",
-                        "\@(?<while>while\b([\s|\t]*)(?<params>[^\:]*)(?<closing>\:)(?<wInvalid>[^\n]*))",
-                    "))$/ms"
-                ]),
-                "handler" => function( AoE\Data $match )
-                {
-                    // Re-parse the statement.
-                    $match->state = $this->parser( $match->state );
-                    
-                    // Return parsed value.
-                    return( f( "{indent}<?php do { ?>{state}\n{indent}<?php } while( {params} ); ?>", [
-                        "indent" => $match->indent,
-                        "params" => $match->params,
-                        "state" => $match->state,
-                    ]));
-                }
-            ],
-            [
-                "indent" => True,
-                "regexp" => implode( "", [
-                    "/^(?:(?<syntax>",
-                        "(?<indent>(\s|\t){0,})",
-                        "\@(?<token>(if|for|foreach|match|while)\b)([\s|\t]*)(?<params>[^\:]*)(?<opening>\:)(?<invalid>[^\n]*)",
-                            "(?<state>(\n\k{indent}(\s{2,4,}|\t{1,})[^\n]*){0,})",
-                        "(?<end>(\n\k{indent})*)",
-                    "))$/ms"
-                ]),
-                "handler" => function( AoE\Data $match )
-                {
-                    // Re-parse the statement.
-                    $match->state = $this->parser( $match->state );
-                    
-                    // The suffix for match blocks.
-                    $match->point = "";
-                    
-                    // If token name is "match"
-                    if( $match->token === "match" )
-                    {
-                        $match->point = ";";
-                        $match->token = "echo match";
-                    }
-                    
-                    // Return parsed value.
-                    return( f( "{indent}<?php {token}( {params} ) { ?>{state}\n{indent}<?php }{point} ?>{end}", [
-                        "indent" => $match->indent,
-                        "params" => $match->params,
-                        "token" => $match->token,
-                        "state" => $match->state,
-                        "point" => $match->point,
-                        "end" => $match->end
-                    ]));
-                }
-            ]
-        ];
-        /*
-        // Mapping regexp.
-        array_map( array: $regexp, callback: function( $per ) use( &$parsed )
-        {
-            // Parse view per regexp.
-            $parsed = RegExp\RegExp::replace( $per['regexp'], $parsed, function( Array $match ) use( $per )
-            {
-                return( $per['handler']( new AoE\Data( RegExp\RegExp::clear( $match, True ) ) ) );
-            });    
-        });
-        */
-        // Mapping syntax.
-        array_map( array: View::config( "parsers" ), callback: function( $parser ) use( &$parsed )
-        {
-            // ...
-            $this->parser[$parser] = new $parser( fn( String $params ) => $this->parser( $params ), $parsed, $this->path );
-            
-            // ...
-            $parsed = $this->parser[$parser]->render();
-        });
-        
-        return( $parsed );
     }
     
 }

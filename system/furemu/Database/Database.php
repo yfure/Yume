@@ -6,6 +6,7 @@ use Yume\Fure\AoE;
 use Yume\Fure\Environment;
 use Yume\Fure\Error;
 use Yume\Fure\Reflector;
+use Yume\Fure\RegExp;
 use Yume\Fure\Threader;
 
 /*
@@ -75,11 +76,25 @@ abstract class Database implements AoE\Intafesu\Unchangeable
      */
     private static function create( String $name, AoE\Data $object ): DatabaseDriverInterface
     {
+        
         // Check if the driver is available.
         if( self::$configs->drivers->__isset( $object->driver ) )
         {
             // Get database driver configuration.
             $driver = self::$configs->drivers->{ $object->driver };
+            
+            // Check if database driver is PDO.
+            if( $object->driver === "PDO" )
+            {
+                // If database server name is avaible.
+                if( $object->__isset( "server" ) )
+                {
+                    // Use default database server.
+                    $object->server = self::$configs->default->server;
+                }
+                // Replace pdo class name with server name.
+                $driver->class = RegExp\RegExp::replace( "/\bPDOConnection$/", $driver->class, f( "PDO{}Connection", $object->server ) );
+            }
             
             // Return class instance from driver.
             return( Reflector\ReflectClass::instance( $driver->class, [ $name, $driver, $object ] ) );

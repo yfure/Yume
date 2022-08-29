@@ -19,6 +19,28 @@ abstract class Stringer
 {
     
     /*
+     * Escape string.
+     *
+     * @access Public Static
+     *
+     * @params String $string
+     *
+     * @return String
+     */
+    public static function escape( String $string ): String
+    {
+        return( RegExp\RegExp::replace( "/\\\(\S)/", $string, function( $match )
+        {
+            // If the value is not single or double quote.
+            if( $match[1] !== "\"" && $match[1] !== "'" )
+            {
+                return( f( "\\\\{1}", $match ) );
+            }
+            return( $match[0] );
+        }));
+    }
+    
+    /*
      * Check if check if letter is upper or lower.
      *
      * @access Public Static
@@ -61,12 +83,20 @@ abstract class Stringer
             // If format key name based on key name.
             if( isset( $matchs['Name'] ) )
             {
-                // Check if format key name is exists.
-                if( isset( $format[$matchs['Name']] ) )
+                // 
+                if( Numerator::is( $matchs['Name'] ) )
                 {
-                    return( self::parse( $format[$matchs['Name']] ) );
+                    $matchs['Name'] = ( Int ) $matchs['Name'];
+                    
+                    // Check if format key name is exists.
+                    if( isset( $format[$matchs['Name']] ) )
+                    {
+                        return( self::parse( $format[$matchs['Name']] ) );
+                    }
+                    throw new Error\IndexError( $matchs['Name'] );
+                } else {
+                    return( self::parse( ify( $matchs['Name'], $format ) ) );
                 }
-                throw new Error\KeyError( $matchs['Name'] );
             } else {
                 
                 // Check if index array is exists.
@@ -77,6 +107,20 @@ abstract class Stringer
                 throw new Error\IndexError( $i++ );
             }
         }));
+    }
+    
+    /*
+     * Checks if string is enclosed by double or single quote.
+     *
+     * @access Public Static
+     *
+     * @params String $string
+     *
+     * @return Bool
+     */
+    public static function isQuoted( String $string ): Bool
+    {
+        return( RegExp\RegExp::test( "/^(?:(\"[^\"]*|\'[^\']*))$/" ) );
     }
     
     /*

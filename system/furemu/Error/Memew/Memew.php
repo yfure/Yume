@@ -51,11 +51,11 @@ abstract class Memew
         // Create new Sutakku claass instance.
         $sutakku = new Sutakku\Sutakku( $stack );
         
-        // Set header into JSON.
-        HTTP\HTTP::header( "Content-Type: application/json", True );
-        
         // Display exception output.
-        echo f( "\n{}\n{}", $throw::class, AoE\Tree::tree([ Throwable::class => $sutakku->getStacks() ]) );
+        echo f( "<pre>\n{}\n{}", [
+            $throw::class, 
+            htmlspecialchars( AoE\Tree::tree([ Throwable::class => $sutakku->getStacks() ]) )
+        ]);
     }
     
 }

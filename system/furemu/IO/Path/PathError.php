@@ -66,11 +66,11 @@ class PathError extends IO\IOError
      *
      */
     protected Array $flags = [
-        self::NOT_EXECUTEABLE => "{}",
-        self::NOT_DIRECTORY => "{}",
-        self::NOT_FOUND => "{}",
-        self::NOT_READABLE => "{}",
-        self::NOT_WRITEABLE => "{}",
+        self::NOT_EXECUTEABLE => "Path {} cannot be executed.",
+        self::NOT_DIRECTORY => "Path {} is not a directory.",
+        self::NOT_FOUND => "Path {} not found.",
+        self::NOT_READABLE => "Path {} cannot be read.",
+        self::NOT_WRITEABLE => "Path {} is not writable.",
     ];
     
 }

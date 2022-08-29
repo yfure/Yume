@@ -204,43 +204,43 @@ abstract class FileAbstract
         }
         
         // Check if such a directory exists.
-        if( IO\Path::exists( $fpath = AoE\Stringer::pop( $file, "/" ) ) )
+        if( IO\Path::exists( $fpath = AoE\Stringer::pop( $file, "/" ) ) === False )
         {
-            // Check if such directory is unwriteable.
-            if( IO\IO::writeable( $fpath ) === False )
+            IO\Path::mkdir( $fpath );
+        }
+        
+        // Check if such directory is unwriteable.
+        if( IO\IO::writeable( $fpath ) === False )
+        {
+            throw new IO\Path\PathError( $fpath, IO\Path\PathError::NOT_WRITEABLE );
+        }
+        
+        // Check if such a file exists.
+        if( self::exists( $file ) )
+        {
+            // Check if such files are unwriteable.
+            if( IO\IO::writeable( $file ) === False )
             {
-                throw new IO\Path\PathError( $fpath, IO\Path\PathError::NOT_WRITEABLE );
+                throw new FileError( $file, FileError::NOT_WRITEABLE );
             }
+        }
+        
+        // Add prefix base path.
+        $fname = path( $file );
+        
+        // File contents.
+        $fdata = $fdata ? $fdata : "";
+        
+        // Open file.
+        if( $fopen = fopen( $fname, $fmode ) )
+        {
+            // Binary-safe file write.
+            fwrite( $fopen, $fdata );
             
-            // Check if such a file exists.
-            if( self::exists( $file ) )
-            {
-                // Check if such files are unwriteable.
-                if( IO\IO::writeable( $file ) === False )
-                {
-                    throw new FileError( $file, FileError::NOT_WRITEABLE );
-                }
-            }
-            
-            // Add prefix base path.
-            $fname = path( $file );
-            
-            // File contents.
-            $fdata = $fdata ? $fdata : "";
-            
-            // Open file.
-            if( $fopen = fopen( $fname, $fmode ) )
-            {
-                // Binary-safe file write.
-                fwrite( $fopen, $fdata );
-                
-                // Closes an open file pointer.
-                fclose( $fopen );
-            } else {
-                // Failed write file.
-            }
+            // Closes an open file pointer.
+            fclose( $fopen );
         } else {
-            throw new IO\Path\PathError( $fpath, IO\Path\PathError::NOT_FOUND );
+            throw new FileError( f( "Failed write file {}.", $fname ) );
         }
     }
 
