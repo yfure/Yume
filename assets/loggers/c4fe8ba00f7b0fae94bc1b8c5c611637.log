@@ -1,9 +1,0 @@
-[1661642444][08:20:44] Undefined variable $i /assets/caches/views/welcome/__view__.parsed
-[1661642485][08:21:25] Undefined variable $i /assets/caches/views/welcome/__view__.parsed
-[1661642500][08:21:40] Undefined variable $i /assets/caches/views/welcome/__view__.parsed
-[1661642817][08:26:57] Undefined variable $user /assets/caches/views/welcome/__view__.parsed
-[1661690979][21:49:39] preg_replace_callback(): Empty regular expression /system/furemu/RegExp/RegExp.php
-[1661695275][23:01:15] Undefined array key "match.indent" /system/furemu/AoE/Stringer.php
-[1661695306][23:01:46] Undefined array key "match.indent" /system/furemu/AoE/Stringer.php
-[1661695358][23:02:38] Undefined array key "match.indent" /system/furemu/AoE/Stringer.php
-[1661697512][23:38:32] Undefined variable $self /system/furemu/View/Syntax/SyntaxBranch.php
