@@ -1,0 +1,6 @@
+[1661725853][07:30:53] preg_replace_callback(): Compilation failed: missing closing parenthesis at offset 73 /system/furemu/RegExp/RegExp.php
+[1661726275][07:37:55] Undefined array key "value" /system/furemu/View/Syntax/SyntaxPrint.php
+[1661726344][07:39:04] Undefined array key "value" /system/furemu/View/Syntax/SyntaxPrint.php
+[1661737099][10:38:19] Undefined variable $syntax /system/furemu/View/Syntax/SyntaxBranch.php
+[1661760825][17:13:45] preg_replace_callback(): Compilation failed: missing closing parenthesis at offset 81 /system/furemu/RegExp/RegExp.php
+[1661763490][17:58:10] Undefined variable $syntax /system/furemu/View/Syntax/SyntaxBranch.php

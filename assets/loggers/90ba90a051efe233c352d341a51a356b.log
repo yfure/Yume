@@ -1,0 +1,3 @@
+[1661513879][20:37:59] preg_replace_callback(): Compilation failed: unmatched closing parenthesis at offset 52 /system/furemu/RegExp/RegExp.php
+[1661513959][20:39:19] preg_replace_callback(): Compilation failed: unmatched closing parenthesis at offset 52 /system/furemu/RegExp/RegExp.php
+[1661514471][20:47:51] preg_replace_callback(): Compilation failed: invalid range in character class at offset 34 /system/furemu/RegExp/RegExp.php
