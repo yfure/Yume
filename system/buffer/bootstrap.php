@@ -21,7 +21,7 @@ if( version_compare( PHP_VERSION, "8.0.0" ) > 0 )
          *
          * @values Bool
          */
-        'CLI' => php_sapi_name() === "cli",
+        "CLI" => php_sapi_name() === "cli",
         
         /*
          * Dynamically base url.
@@ -30,7 +30,7 @@ if( version_compare( PHP_VERSION, "8.0.0" ) > 0 )
          *
          * @return String
          */
-        'BASE_URL' => function() {
+        "BASE_URL" => function() {
             
             // Default base url.
             $baseURL = "http";
@@ -65,7 +65,7 @@ if( version_compare( PHP_VERSION, "8.0.0" ) > 0 )
          *
          * @return String
          */
-        'BASE_ROOT' => function() {
+        "BASE_ROOT" => function() {
             
             // The core of a hierarchically structured file system.
             // Get document path root server.
@@ -85,8 +85,14 @@ if( version_compare( PHP_VERSION, "8.0.0" ) > 0 )
          *
          * @return String
          */
-        'BASE_PATH' => fn() => preg_replace( "/[\/|\\\](public|bootstrap|system\/buffer)/i", "", BASE_ROOT ),
+        "BASE_PATH" => fn() => preg_replace( "/[\/|\\\](public|bootstrap|system\/buffer)/i", "", BASE_ROOT ),
         
+        /*
+         * Middle dot.
+         *
+         * @values String
+         */
+        "INTERPUNCH" => "\xc2\xb7"
     ];
     
     foreach( $constants as $name => $value )
