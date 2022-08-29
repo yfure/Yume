@@ -7,11 +7,11 @@ use Yume\Fure\Database;
 /*
  * Test Model
  *
- * @extends Yume\Fure\Database\Model\PDOMySQLModel
+ * @extends Yume\Fure\Database\Model\PDOModel
  *
  * @package Yume\App\Models
  */
-final class Test extends Database\Driver\PDO\PDOMySQLModel
+final class Test extends Database\Driver\PDO\PDOModel
 {
     
     /*
