@@ -5,7 +5,7 @@ Yume is a simple framework for building Websites built using the PHP Programming
 
 # Install
 ```
-composer create-project hxari/yume
+composer create-project yume/yume
 ```
 
 # Running
