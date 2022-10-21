@@ -1,30 +1,34 @@
 {
-	"name": "yume/yume",
+	"name": "yfure/yume",
 	"type": "project",
-	"issues": "https://github.com/yfure/Yume/issues",
-	"require": {
-		"php": "^8.0.6",
-		"phpseclib/phpseclib": "^3.0",
-		"rmccue/requests": "^2.0"
-	},
-	"license": "MiT",
+	"description": "The Yume App.",
+	"keywords": [
+		"framework",
+		"sasayaki",
+		"yume"
+	],
+	"license": "MIT",
 	"authors": [
 		{
-			"name": "hxAri",
+			"name": "Ari Setiawan",
 			"email": "ari160824@gmail.com"
 		}
 	],
-	"autoload": {
-		"files": [
-			"system/buffer/bootstrap.php",
-			"system/buffer/functions.php"
-		],
-		"psr-4": {
-			"Yume\\App\\": "app/",
-			"Yume\\Fure\\": "system/furemu/"
-		}
+	"require": {
+		"php": "^8.1.10",
+		"yfure/framework": ""
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^9"
-	}
+		"phpunit/phpunit": "^9.5.10"
+	},
+	"autoload": {
+		"files": {
+			"/system/buffer/bootstrap.php"
+		},
+		"psr-4": {
+			"Yume\\App\\": "app/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
 }
