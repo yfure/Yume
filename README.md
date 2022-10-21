@@ -8,7 +8,7 @@ package is incomplete or incomplete.
 
 # Install
 ```sh
-composer create-project yume/yume
+composer create-project yfure/yume
 ```
 
 # Running
