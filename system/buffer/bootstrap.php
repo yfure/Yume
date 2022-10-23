@@ -18,7 +18,7 @@ if( version_compare( PHP_VERSION, YUME_PHP_VERSION, ">" ) )
 	define( "BASE_PATH", str_replace( "/", DIRECTORY_SEPARATOR, __DIR__ ) );
 	
 	// Load application environment variables.
-	Yume\Fure\Support\Kankyou\Kankyou::self()->load();
+	Yume\Fure\Support\Env\Env::self()->load();
 }
 else {
 	exit( sprintf( "Your PHP Version is %s, You need PHP Version %s or higher to run Yume.", PHP_VERSION, YUME_PHP_VERSION ) );
