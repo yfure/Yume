@@ -1,6 +1,58 @@
 #!/usr/bin/env php
 <?php
 
+/*
+ * Yume PHP Framework
+ * Command Line Interface Tool.
+ *
+ * Sasayaki is a versatile Command Line Tool built into the
+ * Yume Framework, you can do various things with Sasayaki such as,
+ * create or delete controllers, models, views, or templates, create
+ * database migrations, clear caches, dump route caches, view loggers,
+ * change variable values, environment, and create a new token for app.
+ *
+ * If you are confused you can visit the official documentation page or
+ * use the --help or -h options to display all the options available to
+ * the tool when running the tool.
+ *
+ * To run CLI-Server so that the hostname and port match the environment
+ * variable values, please type the command below.
+ *
+ * php sasayaki serve (Default port)
+ * php sasayaki serve 127.0.0.1:8080 (Manual port)
+ */
 
+use Yume\Fure\App;
+use Yume\Fure\CLI;
+
+/*
+ * Yume application start time.
+ *
+ * This will be used by the framework to check how fast
+ * the application is running or compiling.
+ */
+define( "YUME_START", microtime( True ) );
+
+/*
+ * Register Auto Load.
+ *
+ * Automatic loading of files required for a project or application.
+ * This includes the files required for the application without
+ * explicitly including them with the include or require functions.
+ */
+require( __DIR__ . "/../vendor/autoload.php" );
+
+/*
+ * Checks the context of the application whether it is running on
+ * the server or the command line (CLI).
+ *
+ */
+if( YUME_CONTEXT_CLI )
+{
+	CLI\CLI::self( App\App::self() )->execute();
+}
+else {
+	exit( "Command Line Tools (CLI) cannot be run on the Web Server." );
+}
 
 ?>

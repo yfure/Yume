@@ -4,7 +4,8 @@
  * Bootstrap The Application.
  *
  * This process compares the minimum version of PHP used,
- * creates constants including application base path constants.
+ * creates constants including application base path constants,
+ * application context and framework version.
  */
 
 define( "YUME_VERSION", "3.0.4" );
@@ -12,6 +13,9 @@ define( "YUME_PHP_VERSION", "8.1.10" );
 
 // Define Yume application context.
 define( "YUME_CONTEXT", PHP_SAPI );
+define( "YUME_CONTEXT_CLI", PHP_SAPI === "cli" );
+define( "YUME_CONTEXT_CLI_SERVER", PHP_SAPI === "cli-server" );
+define( "YUME_CONTEXT_WEB", PHP_SAPI === "cli-server" || PHP_SAPI === "web"  );
 
 // Check whether the php version used is standard.
 if( version_compare( PHP_VERSION, YUME_PHP_VERSION, ">" ) )
