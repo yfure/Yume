@@ -24,7 +24,7 @@ if( version_compare( PHP_VERSION, YUME_PHP_VERSION, ">" ) )
 	if( defined( "BASE_PATH" ) === False )
 	{
 		// Define base path application.
-		define( "BASE_PATH", str_replace( "/", DIRECTORY_SEPARATOR, $_SERVER['DOCUMENT_ROOT'] ) );
+		define( "BASE_PATH", str_replace( "/", DIRECTORY_SEPARATOR, $_SERVER['DOCUMENT_ROOT'] !== "" ? $_SERVER['DOCUMENT_ROOT'] : substr( __DIR__, 0, - strlen( "/system/buffer" ) ) ) );
 	}
 }
 else {

@@ -40,7 +40,7 @@ define( "YUME_START", microtime( True ) );
  * This includes the files required for the application without
  * explicitly including them with the include or require functions.
  */
-require( __DIR__ . "/../vendor/autoload.php" );
+require( __DIR__ . "/vendor/autoload.php" );
 
 /*
  * Checks the context of the application whether it is running on

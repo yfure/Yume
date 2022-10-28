@@ -21,17 +21,51 @@
 
 use Yume\Fure\App;
 
+/*
+ * Yume application start time.
+ *
+ * This will be used by the framework to check how fast
+ * the application is running or compiling.
+ */
 define( "YUME_START", microtime( True ) );
 
-/*
- * Register Auto Load.
- *
- * Automatic loading of files required for a project or application.
- * This includes the files required for the application without
- * explicitly including them with the include or require functions.
- */
-require( $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php" );
-
-App\App::self();
+// Check if the application is under maintenance.
+if( file_exists( $maintenance = __DIR__ . "/../assets/furemu/views/maintenance.php" ) )
+{
+	/*
+	 * Application maintenance.
+	 *
+	 * If the application is in maintenance / demo mode via the `down` command
+	 * we will load this file so that any pre-rendered content can be shown
+	 * instead of starting the framework, which could cause an exception.
+	 */
+	require( $maintenance );
+}
+else {
+	
+	// Check if the autoload file exists.
+	if( file_exists( $autoload = __DIR__ . "/../vendor/autoload.php" ) )
+	{
+		/*
+		 * Register Auto Load.
+		 *
+		 * Automatic loading of files required for a project or application.
+		 * This includes the files required for the application without
+		 * explicitly including them with the include or require functions.
+		 */
+		require( $autoload );
+	}
+	else {
+		exit( sprintf( "File %s not found.", $autoload ) );
+	}
+	
+	/*
+	 * Starting Application.
+	 *
+	 * Time to run the app!
+	 * Relax your life!
+	 */
+	App\App::self()->run();
+}
 
 ?>
