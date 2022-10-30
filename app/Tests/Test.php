@@ -8,13 +8,13 @@ try {
 		{
 			// ...
 		}
-		public function fun( Int $i, Int|Bool $x, Array|Yume\Fure\Support\Data\DataInterface $y, Iterator & Yume\Fure\Support\Data\DataInterface $z )
+		public function fun( Int $i, Int|Bool $x, Array|Null|Yume\Fure\Support\Data\DataInterface $y, Iterator & Yume\Fure\Support\Data\DataInterface $z )
 		{
 			// ...
 		}
 	}
 	
-	function fun( Int $i, Int|Bool $x, Array|Yume\Fure\Support\Data\DataInterface $y, Iterator & Yume\Fure\Support\Data\DataInterface $z )
+	function fun( Int $i, Int|Bool $x, Array|Null|Yume\Fure\Support\Data\DataInterface $y, Iterator & Yume\Fure\Support\Data\DataInterface $z )
 	{
 		// ...
 	}
@@ -29,7 +29,7 @@ try {
 	$i = new ReflectionParameter( param: "i", function: [ $fun, "fun" ]);
 	
 	// Testing!
-	$r = Yume\Fure\Support\Reflect\ReflectParameter::builder(
+	$p = Yume\Fure\Support\Reflect\ReflectParameter::builder(
 		reflect: $ref,
 		arguments: [
 			0
@@ -83,11 +83,11 @@ try {
 		]
 	);
 	
-	var_dump([ $r ]);
+	var_dump([ $p ]);
 }
 catch( Throwable $e )
 {
-	echo path( remove: True, path: f( "<pre>{}: {}\nin file {}\non line {}\n{}", ...[
+	echo path( remove: True, path: f( "\x1b[1;32m{}\x1b[1;33m: \x1b[0;37m{} in file \x1b[1;36m{} \x1b[0;37mon line \x1b[1;31m{}\n\x1b[1;30m{}\n", ...[
 		$e::class,
 		$e->getMessage(),
 		$e->getFile(),
