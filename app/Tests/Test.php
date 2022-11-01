@@ -1,99 +1,48 @@
 <?php
 
+namespace Yume\App\Tests;
+
+use Generator;
+use Throwable;
+
+use Yume\Fure\Support;
+use Yume\Fure\Util;
+
 try {
 	
-	class Fun
+	// Get all declared functions.
+	$functions = get_defined_functions();
+	
+	// Mapping Internal and User functions.
+	$functions = Util\Arr::map( $functions, function( $i, $index, $defined )
 	{
-		public function __invoke( $i, $x, $y, $z )
+		return( Util\Arr::map( $defined, function( $i, $index, $function )
 		{
-			// ...
-		}
-		public function fun( Int $i, Int|Bool $x, Array|Null|Yume\Fure\Support\Data\DataInterface $y, Iterator & Yume\Fure\Support\Data\DataInterface $z )
-		{
-			// ...
-		}
-	}
+			try
+			{
+				$param = Null;
+				$type = Support\Reflect\ReflectParameter::getType( $function, 0, $param );
+				
+				return([
+					"name" => $param->getName(),
+					"func" => $function,
+					"type" => $type ? $type->__toString() : Null
+				]);
+			}
+			catch( Throwable $e )
+			{
+				return( f( "Function {} has no parameter", $function ) );
+			}
+		}));
+	});
 	
-	function fun( Int $i, Int|Bool $x, Array|Null|Yume\Fure\Support\Data\DataInterface $y, Iterator & Yume\Fure\Support\Data\DataInterface $z )
-	{
-		// ...
-	}
-	
-	// Instance class.
-	$fun = new Fun;
-	
-	// Reference.
-	$ref = [];
-	
-	// Parameters.
-	$i = new ReflectionParameter( param: "i", function: [ $fun, "fun" ]);
-	
-	// Testing!
-	$p = Yume\Fure\Support\Reflect\ReflectParameter::builder(
-		reflect: $ref,
-		arguments: [
-			0
-		],
-		parameter: [
-			"array.define" => [
-				"function" => [
-					"fun"
-				],
-				"reflect" => $i,
-				"param" => "x"
-			],
-			"array.string" => [
-				"function" => [
-					"Fun",
-					"fun"
-				],
-				"reflect" => $i,
-				"param" => "x"
-			],
-			"array.object.invoke" => [
-				"function" => [
-					$fun
-				],
-				"reflect" => $i,
-				"param" => "i"
-			],
-			"array.object.method" => [
-				"function" => [
-					$fun,
-					"fun"
-				],
-				"reflect" => $i,
-				"param" => "y"
-			],
-			"object" => [
-				"function" => $fun,
-				"reflect" => $i,
-				"param" => "z"
-			],
-			"string" => [
-				"function" => "fun",
-				"reflect" => $i,
-				"param" => "z"
-			],
-			"string.static" => [
-				"function" => "Fun::fun",
-				"reflect" => $i,
-				"param" => "z"
-			]
-		]
-	);
-	
-	var_dump([ $p ]);
+	var_dump( $functions );
+	echo "\x1b[1;37mTest\x20\x1b[1;32mPassed!\n";
 }
 catch( Throwable $e )
 {
-	echo path( remove: True, path: f( "\x1b[1;32m{}\x1b[1;33m: \x1b[0;37m{} in file \x1b[1;36m{} \x1b[0;37mon line \x1b[1;31m{}\n\x1b[1;30m{}\n", ...[
-		$e::class,
-		$e->getMessage(),
-		$e->getFile(),
-		$e->getLine(),
-		$e->getTrace()
-	]));
+	/** PRINT EXCEPTION THROWN */
+	e( $e );
 }
 
 ?>
