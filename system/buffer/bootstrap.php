@@ -9,7 +9,7 @@
  */
 
 // Yume application info.
-define( "YUME_VERSION", "3.0.4" );
+define( "YUME_VERSION", "3.0.5" );
 define( "YUME_PHP_VERSION", "8.1.10" );
 
 // Check whether the php version used is standard.
