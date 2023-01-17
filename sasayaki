@@ -22,8 +22,7 @@
  * php sasayaki serve 127.0.0.1:8080 (Manual port)
  */
 
-use Yume\Fure\App;
-use Yume\Fure\CLI;
+use Yume\Fure\App\App;
 
 /*
  * Yume application start time.
@@ -49,10 +48,16 @@ require( __DIR__ . "/vendor/autoload.php" );
  */
 if( YUME_CONTEXT_CLI )
 {
-	CLI\CLI::self( App\App::self() )->execute();
+	/*
+	 * Starting Application.
+	 *
+	 * Time to run the app!
+	 * Relax your life!
+	 */
+	App::self()->run();
 }
 else {
-	exit( "Command Line Tools (CLI) cannot be run on the Web Server." );
+	exit( "Command Line Tools (CLI) cannot be run on the Web or Cli Server." );
 }
 
 ?>

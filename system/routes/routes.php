@@ -1,21 +1,19 @@
 <?php
 
-use Yume\App\HTTP\Controllers;
+use Yume\App\HTTP\Controllers\Welcome;
 
-use Yume\Fure\HTTP;
+use Yume\Fure\HTTP\Route\Route;
+use Yume\Fure\HTTP\Route\RoutePath;
 
-HTTP\Route\Route::get(
-	"/",
-	Controllers\Welcome::class,
-	function()
+Route::get(
+	path: "/",
+	handler: Welcome::class,
+	children: function()
 	{
-		HTTP\Route\Route::get(
-			"*", 
-			function()
-			{
-				// ...
-			}
-		);
+		Route::get( "test", function()
+		{
+			echo "Hello World!";
+		});
 	}
 );
 

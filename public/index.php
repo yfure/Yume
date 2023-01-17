@@ -19,7 +19,7 @@
  * please see the original for more details.
  */
 
-use Yume\Fure\App;
+use Yume\Fure\App\App;
 
 /*
  * Yume application start time.
@@ -65,7 +65,7 @@ else {
 	 * Time to run the app!
 	 * Relax your life!
 	 */
-	App\App::self()->run();
+	App::self()->run();
 }
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 return(
-	new Yume\Fure\App\Config\Config( "App", [
+	new Yume\Fure\Config\Config( "App", [
 		
 		/** APPLICATION INFORMATION */
 		"app.name" => env( "APP_NAME", "Yume" ),

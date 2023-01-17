@@ -23,7 +23,7 @@
 	},
 	"autoload": {
 		"files": [
-			"/system/buffer/bootstrap.php"
+			"system/buffer/bootstrap.php"
 		],
 		"psr-4": {
 			"Yume\\App\\": "app/"
