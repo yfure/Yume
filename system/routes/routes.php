@@ -10,10 +10,7 @@ Route::get(
 	handler: Welcome::class,
 	children: function()
 	{
-		Route::get( "test", function()
-		{
-			echo "Hello World!";
-		});
+		Route::get( "test", fn() => view( "test", [] ) );
 	}
 );
 

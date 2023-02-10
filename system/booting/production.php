@@ -17,4 +17,18 @@ ini_set( "display_startup_errors", 0 );
  */
 error_reporting( 0 );
 
+/*
+ * DEBUG MODE
+ *
+ * Allow the app to be in debug mode.
+ */
+define( "YUME_DEBUG", False );
+
+/*
+ * DEBUG BACKTRACE
+ *
+ * Show application error backtrace.
+ */
+define( "YUME_DEBUG_BACKTRACE", False );
+
 ?>
