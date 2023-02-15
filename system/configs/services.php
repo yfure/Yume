@@ -12,11 +12,10 @@ return(
 		 * You can add your own custom Service Provider
 		 * class or from a library you have added.
 		 *
-		 *
-		Yume\Fure\Cache\CacheServiceProvider::class,
-		Yume\Fure\Database\DatabasServicesProvider::class,
-		Yume\Fure\HTTP\Server\ServerServiceProvider::class,
-		*/Yume\Fure\Logger\LoggerServiceProvider::class
+		 */
+		Yume\App\Providers\AppServiceProvider::class,
+		Yume\App\Providers\CacheServiceProvider::class,
+		Yume\App\Providers\ConfigServiceProvider::class
 	])
 );
 
