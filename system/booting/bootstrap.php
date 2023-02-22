@@ -8,13 +8,13 @@
  * application context and framework version.
  */
 
-// Yume application info.
-define( "YUME_VERSION", "3.0.6" );
-define( "YUME_PHP_VERSION", "8.1.10" );
-
-// Check whether the php version used is standard.
-if( version_compare( PHP_VERSION, YUME_PHP_VERSION, ">" ) )
+// Start bootstraping application.
+Yume\Fure\Util\Timer::calculate( "bootstrap", function()
 {
+	// Yume application info.
+	define( "YUME_VERSION", "3.0.6" );
+	define( "YUME_PHP_VERSION", "8.1.10" );
+	
 	// Yume Constants.
 	$constant = [
 		
@@ -45,12 +45,6 @@ if( version_compare( PHP_VERSION, YUME_PHP_VERSION, ">" ) )
 			define( $const, $value );
 		}
 	}
-	
-	// Unset constant variable.
-	unset( $constant );
-}
-else {
-	exit( sprintf( "Your PHP Version is %s, You need PHP Version %s or higher to run Yume.", PHP_VERSION, YUME_PHP_VERSION ) );
-}
+});
 
 ?>
