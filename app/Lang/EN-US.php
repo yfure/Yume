@@ -119,7 +119,7 @@ return(
 			"SyntaxError" => [],
 			"TemplateError" => [
 				"CLOSING_ERROR" => "Invalid closing syntax \"{}\", unsupported multiple line for single line syntax",
-				"INDENTATION_ERROR" => "Unexpected template indentation level",
+				"INDENTATION_ERROR" => "Unexpected template indentation level for \"{}\"",
 				"SYNTAX_ERROR" => "Invalid template syntax \"{}\"",
 				"TOKEN_ERROR" => "Unexpected token @{}",
 				"UNITIALIZED_TOKEN_ERROR" => "Syntax Template Class \"{}\" must initialize token name"
