@@ -14,7 +14,6 @@ return(
 		 *
 		 */
 		Yume\App\Providers\AppServiceProvider::class,
-		Yume\App\Providers\CacheServiceProvider::class,
 		Yume\App\Providers\ConfigServiceProvider::class
 	])
 );
