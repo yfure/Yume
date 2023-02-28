@@ -34,7 +34,11 @@ composer create-project yfure/yume
 
 ## Starting
 ```sh
-php -S 127.0.0.1:8004 public/index.php
+php sasayaki serve
+```
+or
+```sh
+php sasayaki serve --host 127.0.0.1 --port 8080
 ```
 
 ## Contribute
