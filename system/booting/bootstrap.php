@@ -9,11 +9,32 @@
  */
 
 // Start bootstraping application.
-Yume\Fure\Util\Timer::calculate( "bootstrap", function()
+Yume\Fure\Util\Timer::calculate( "bootstrap", function(): Void
 {
 	// Yume application info.
 	define( "YUME_VERSION", "3.0.6" );
 	define( "YUME_PHP_VERSION", "8.1.10" );
+	
+	// Get application base path.
+	$BASE_PATH = $_SERVER['DOCUMENT_ROOT'] ?? "";
+	$BASE_PATH = $_SERVER['DOCUMENT_ROOT'] !== "" ? $BASE_PATH : __DIR__;
+	
+	// Path must be remove.
+	$SUBSTR_LENGTH = "/system/booting";
+	
+	// If application running on cli-server/ web-server.
+	if( strpos( $BASE_PATH = str_replace( "\\", "/", $BASE_PATH ), $SUBSTR_LENGTH ) === False )
+	{
+		// If appilaction running on cli-server
+		// But the public path as root directory.
+		if( strpos( $BASE_PATH, "/public" ) !== False )
+		{
+			$SUBSTR_LENGTH = "/public";
+		}
+		else {
+			$SUBSTR_LENGTH = "";
+		}
+	}
 	
 	// Yume Constants.
 	$constant = [
@@ -32,7 +53,7 @@ Yume\Fure\Util\Timer::calculate( "bootstrap", function()
 		"STOP_ITERATION" => 160824020125,
 		
 		// Base path application.
-		"BASE_PATH" => str_replace( "/", DIRECTORY_SEPARATOR, $_SERVER['DOCUMENT_ROOT'] !== "" ? $_SERVER['DOCUMENT_ROOT'] : substr( __DIR__, 0, - strlen( "/system/buffer" ) ) )
+		"BASE_PATH" => str_replace( [ "/", "\\" ], DIRECTORY_SEPARATOR, $SUBSTR_LENGTH === "" ? $BASE_PATH : substr( $BASE_PATH, 0, - strlen( $SUBSTR_LENGTH ) ) )
 	];
 	
 	// Mapping constants.
@@ -45,6 +66,7 @@ Yume\Fure\Util\Timer::calculate( "bootstrap", function()
 			define( $const, $value );
 		}
 	}
+	unset( $BASE_PATH );
 });
 
 ?>

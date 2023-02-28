@@ -51,17 +51,49 @@ return(
 		"license" => "MIT",
 		
 		/*
+		 * Inheritable configuration.
+		 *
+		 */
+		"[inherit]" => [],
+		
+		/*
+		 * Command Register.
+		 *
+		 */
+		"commands" => [
+			Yume\Fure\HTTP\Server\CLI\Serve::class
+		],
+		
+		/*
+		 * Server CLI.
+		 *
+		 */
+		"server" => [
+			"host" => env( "SERVER_HOST", "127.0.0.1" ),
+			"port" => env( "SERVER_PORT", 8004 )
+		],
+		
+		/*
+		 * Services Provider Classes.
+		 *
+		 * It is hoped not to delete the default
+		 * Service Provider that has been set.
+		 *
+		 * You can add your own custom Service Provider
+		 * class or from a library you have added.
+		 *
+		 */
+		"services" => [
+			Yume\App\Providers\AppServiceProvider::class,
+			Yume\App\Providers\ConfigServiceProvider::class
+		],
+		
+		/*
 		 * Application version.
 		 *
 		 * @default None
 		 */
-		"version" => env( "APP_VERSION", "None" ),
-		
-		/*
-		 * Inheritable configuration.
-		 *
-		 */
-		"[inherit]" => []
+		"version" => env( "APP_VERSION", "Unititialized" ),
 		
 	])
 );
