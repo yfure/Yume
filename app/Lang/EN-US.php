@@ -25,10 +25,8 @@ return(
 				/*
 				 * Yume's default views translation.
 				 *
-				 * @include exception
 				 * @include welcome
 				 */
-				"exception" => [],
 				"welcome" => []
 			],
 			"fure" => [
@@ -171,7 +169,7 @@ return(
 				"http.stream.StreamBufferError" => [
 					"SEEK_ERROR" => "^yume.fure[http.stream.StreamError].SEEK_ERROR",
 					"TELL_ERROR" => "^yume.fure[http.stream.StreamError].TELL_ERROR"
-				]
+				],
 				
 				/*
 				 * Logger Error Translations.
