@@ -1,7 +1,12 @@
 <?php
 
+/*
+ * ...
+ *
+ * @return Yume\Fure\Support\Config\Config
+ */
 return(
-	new Yume\Fure\Config\Config( "Cache", [
+	new Yume\Fure\Support\Config\Config( "Cache", [
 		
 		/*
 		 * For cache we also have several adapters

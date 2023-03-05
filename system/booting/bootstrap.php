@@ -1,5 +1,7 @@
 <?php
 
+use Yume\Fure\Util\Timer;
+
 /*
  * Bootstrap The Application.
  *
@@ -7,9 +9,7 @@
  * creates constants including application base path constants,
  * application context and framework version.
  */
-
-// Start bootstraping application.
-Yume\Fure\Util\Timer::calculate( "bootstrap", function(): Void
+Timer\Timer::execute( "bootstrap", function(): Void
 {
 	// Yume application info.
 	define( "YUME_VERSION", "3.0.6" );
@@ -46,11 +46,14 @@ Yume\Fure\Util\Timer::calculate( "bootstrap", function(): Void
 		"YUME_CONTEXT_WEB" => PHP_SAPI === "cli-server" || PHP_SAPI === "web",
 		
 		// Yume application environment mode.
-		"YUME_DEVELOPMENT" => 160824,
-		"YUME_PRODUCTION" => 201205,
+		"YUME_DEVELOPMENT" => 896051,
+		"YUME_PRODUCTION" => 935997,
+		
+		// Constant for stop execution.
+		"STOP_EXECUTION" => 113207592990,
 		
 		// Constant for stop iteration.
-		"STOP_ITERATION" => 160824020125,
+		"STOP_ITERATION" => 129881116207,
 		
 		// Base path application.
 		"BASE_PATH" => str_replace( [ "/", "\\" ], DIRECTORY_SEPARATOR, $SUBSTR_LENGTH === "" ? $BASE_PATH : substr( $BASE_PATH, 0, - strlen( $SUBSTR_LENGTH ) ) )
@@ -66,7 +69,6 @@ Yume\Fure\Util\Timer::calculate( "bootstrap", function(): Void
 			define( $const, $value );
 		}
 	}
-	unset( $BASE_PATH );
 });
 
 ?>

@@ -1,12 +1,17 @@
 <?php
 
-use Yume\Fure\Config;
 use Yume\Fure\Logger;
 use Yume\Fure\Logger\Handler;
-use Yume\Fure\Support\Path;
+use Yume\Fure\Support\Config;
+use Yume\Fure\Util\File\Path;
 
+/*
+ * ...
+ *
+ * @return Yume\Fure\Support\Config\Config
+ */
 return(
-	new Yume\Fure\Config\Config( "Logger", [
+	new Yume\Fure\Support\Config\Config( "Logger", [
 		"date" => [
 			"format" => "d-m-Y H:i:s"
 		],
@@ -47,7 +52,7 @@ return(
 				 * Path stored logs.
 				 *
 				 */
-				"path" => Path\PathName::ASSET_LOGGING->value,
+				"path" => Path\Paths::ASSET_LOGGING->value,
 				
 				/*
 				 * Default file permission.

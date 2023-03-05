@@ -1,17 +1,12 @@
 <?php
 
-use Yume\Fure\Config;
-use Yume\Fure\View;
-use Yume\Fure\View\Template;
-use Yume\Fure\View\Template\Parser;
-use Yume\Fure\View\Template\Process;
-
 /*
  * Views Configuration.
  *
+ * @return Yume\Fure\Support\Config\Config
  */
 return(
-	new Config\Config( "View", [
+	new Yume\Fure\Support\Config\Config( "View", [
 		
 		/*
 		 * Views extension name.
@@ -66,6 +61,7 @@ return(
 				
 				/*
 				 * Erase every computer that starts with a hash symbol.
+				 *
 				 * If you set this to False then the rules will
 				 * follow the HTML comment settings.
 				 *
@@ -86,12 +82,9 @@ return(
 			 *
 			 */
 			"configs" => [
-				Yume\Fure\View\Template\TemplateSyntaxComponent::class => [
-				],
-				Yume\Fure\View\Template\TemplateSyntaxHTML::class => [
-				],
-				Yume\Fure\View\Template\TemplateSyntaxPHP::class => [
-				]
+				Yume\Fure\View\Template\TemplateSyntaxComponent::class => [],
+				Yume\Fure\View\Template\TemplateSyntaxHTML::class => [],
+				Yume\Fure\View\Template\TemplateSyntaxPHP::class => []
 			],
 			
 			/*

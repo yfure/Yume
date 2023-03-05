@@ -3,9 +3,10 @@
 /*
  * Configuration for Error and Exception.
  *
+ * @return Yume\Fure\Support\Config\Config
  */
 return(
-	new Yume\Fure\Config\Config( "Error", [
+	new Yume\Fure\Support\Config\Config( "Error", [
 		
 		"handler" => [
 			
@@ -23,18 +24,18 @@ return(
 			 * View file so errors can be easily understood, by default
 			 * Yume only generates it for exceptions.
 			 * 
-			 * @default Yume\\Fure\\Error\\Erahandora\\Erahandora::trigger
+			 * @default Yume\\Fure\\Support\\Erahandora\\Erahandora::trigger
 			 */
-			"trigger" => env( "TRIGGER_HANDLER", "Yume\\Fure\\Error\\Erahandora\\Erahandora::trigger" ),
+			"trigger" => env( "TRIGGER_HANDLER", "Yume\\Fure\\Support\\Erahandora\\Erahandora::trigger" ),
 			
 			/*
 			 * Default exception handler.
 			 * This is only use when the environment
 			 * variable EXCEPTION_HANDLER does not set on .env file.
 			 * 
-			 * @default Yume\\Fure\\Error\\Erahandora\\Erahandora::exception
+			 * @default Yume\\Fure\\Support\\Erahandora\\Erahandora::exception
 			 */
-			"exception" => env( "EXCEPTION_HANDLER", "Yume\\Fure\\Error\\Erahandora\\Erahandora::exception" ),
+			"exception" => env( "EXCEPTION_HANDLER", "Yume\\Fure\\Support\\Erahandora\\Erahandora::exception" ),
 		],
 		
 		/*
@@ -55,6 +56,8 @@ return(
 		 *
 		 * Be careful when you want to change the contents of a View,
 		 * it is highly recommended to make a copy.
+		 *
+		 * When the view error not found, it will dump errors.
 		 *
 		 * @default errors/exception
 		 */

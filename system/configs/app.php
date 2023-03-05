@@ -3,10 +3,10 @@
 /*
  * Application configuration.
  *
- * @return Yume\Fure\Config\Config
+ * @return Yume\Fure\Support\Config\Config
  */
 return(
-	new Yume\Fure\Config\Config( "App", [
+	new Yume\Fure\Support\Config\Config( "App", [
 		
 		/*
 		 * Application name.
@@ -61,6 +61,7 @@ return(
 		 *
 		 */
 		"commands" => [
+			Yume\Fure\CLI\Command\Help\Help::class,
 			Yume\Fure\HTTP\Server\CLI\Serve::class
 		],
 		
