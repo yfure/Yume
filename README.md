@@ -1,6 +1,6 @@
 # The Yume Framework
 
-![Yume · Logo](https://raw.githubusercontent.com/hxAri/hxAri/main/assets/images/1653507383%3B6bi9u6QnWb.png)
+![Yume · Logo](https://raw.githubusercontent.com/hxAri/hxAri/main/public/images/1653507383%3B6bi9u6QnWb.png)
 
 ## Abouts
 Yume is a simple framework for building a website fast without any hassle, it is built with the most popular server language, namely Hypertext Preprocessor **PHP**.
