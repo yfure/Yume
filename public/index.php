@@ -3,11 +3,12 @@
 /*
  * Yume PHP Framework.
  *
- * @author hxAri
+ * @author Ari Setiawan
  * @create 05.02-2022
  * @update -
  * @github https://github.com/yfure/Yume
  *
+ * Copyright (c) 2022 Ari Setiawan
  * Copyright (c) 2022 Yume Framework
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,7 +30,7 @@
  * SOFTWARE.
  */
 
-use Yume\Fure\App\App;
+use Yume\Fure\App;
 
 /*
  * Yume application start time.
@@ -63,7 +64,14 @@ else {
 		 * This includes the files required for the application without
 		 * explicitly including them with the include or require functions.
 		 */
-		require( $autoload );
+		try
+		{
+			require( $autoload );
+		}
+		catch( Throwable $e )
+		{
+			echo $e->getMessage();
+		}
 	}
 	else {
 		exit( sprintf( "File %s not found.", $autoload ) );
@@ -75,7 +83,7 @@ else {
 	 * Time to run the app!
 	 * Relax your life!
 	 */
-	App::self()->run();
+	App\App::self()->run();
 }
 
 ?>
