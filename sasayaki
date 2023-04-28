@@ -9,6 +9,8 @@
  * @update -
  * @github https://github.com/yfure/Yume
  *
+ * Sasayaki is a command line interface tool for Yume Framework.
+ *
  * Copyright (c) 2022 Ari Setiawan
  * Copyright (c) 2022 Yume Framework
  *
@@ -31,8 +33,8 @@
  * SOFTWARE.
  */
 
-use Yume\Fure\App;
 use Yume\Fure\CLI;
+use Yume\Fure\Main;
 
 /*
  * Yume application start time.
@@ -59,7 +61,7 @@ require( __DIR__ . "/vendor/autoload.php" );
 if( YUME_CONTEXT_CLI )
 {
 	# Instantiating application.
-	App\App::self();
+	Main\Main::self();
 	
 	# Running CLI Tool.
 	CLI\CLI::self()->start();
