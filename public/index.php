@@ -30,7 +30,7 @@
  * SOFTWARE.
  */
 
-use Yume\Fure\App;
+use Yume\Fure\Main;
 
 /*
  * Yume application start time.
@@ -83,7 +83,7 @@ else {
 	 * Time to run the app!
 	 * Relax your life!
 	 */
-	App\App::self()->run();
+	Main\Main::self()->run();
 }
 
 ?>

@@ -60,12 +60,12 @@ require( __DIR__ . "/vendor/autoload.php" );
  */
 if( YUME_CONTEXT_CLI )
 {
-	# Instantiating application.
-	Main\Main::self();
-	
-	# Running CLI Tool.
-	CLI\CLI::self()->start();
-	CLI\CLI::self()->stop();
+	// Starting CLI Tool.
+	CLI\CLI::self()->start(
+		
+		//Instantiating application.
+		Main\Main::self()
+	);
 }
 else {
 	exit( "Command Line Tools (CLI) cannot be run on the Web or CLI Server." );
