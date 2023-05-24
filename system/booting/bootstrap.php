@@ -19,11 +19,14 @@ $BASE_PATH = $_SERVER['DOCUMENT_ROOT'] !== "" ? $BASE_PATH : __DIR__;
 // Path must be remove.
 $SUBSTR_LENGTH = "/system/booting";
 
-// If application running on cli-server/ web-server.
+// Check if application running on cli-server/ web-server.
 if( strpos( $BASE_PATH = str_replace( "\\", "/", $BASE_PATH ), $SUBSTR_LENGTH ) === False )
 {
-	// If appilaction running on cli-server
-	// But the public path as root directory.
+	/*
+	 * If appilaction running on cli-server
+	 * but the public path as root directory.
+	 *
+	 */
 	if( strpos( $BASE_PATH, "/public" ) !== False )
 	{
 		$SUBSTR_LENGTH = "/public";
@@ -45,12 +48,6 @@ $constant = [
 	// Yume application environment mode.
 	"YUME_DEVELOPMENT" => 896051,
 	"YUME_PRODUCTION" => 935997,
-	
-	// Constant for stop execution.
-	"STOP_EXECUTION" => 113207592990,
-	
-	// Constant for stop iteration.
-	"STOP_ITERATION" => 129881116207,
 	
 	// Base path application.
 	"BASE_PATH" => str_replace( [ "/", "\\" ], DIRECTORY_SEPARATOR, $SUBSTR_LENGTH === "" ? $BASE_PATH : substr( $BASE_PATH, 0, - strlen( $SUBSTR_LENGTH ) ) )
