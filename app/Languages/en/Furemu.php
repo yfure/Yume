@@ -4,10 +4,13 @@
  * The Yume Framework Translations.
  *
  * This is a translation for English.
+ * This is just include all Error messages.
  *
  * @author Ari Setiawan (hxAri)
  * @github https://github.com/hxAri
+ * @source https://github.com/yfure/Yume/blob/main/app/Languages/en/Furemu.php
  * @e-mail hxari@proton.me
+ *
  */
 return([
 	"yume" => [
