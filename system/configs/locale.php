@@ -15,6 +15,7 @@ return([
 	 * @values inherit:Yume\Fure\Locale\Locale::DEFAULT_TIMEZONE
 	 */
 	"timezone" => env( "LOCALE_TIMEZONE", Yume\Fure\Locale\Locale::DEFAULT_TIMEZONE )
+	
 ]);
 
 ?>
