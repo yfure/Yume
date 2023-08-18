@@ -1,6 +1,0 @@
-
-@use Yume\Fure\Util;
-
-#!DOCTYPE/html
-@html lang[env( "LOCALE_LANGUAGE", "EN-US" )]:
-	pass

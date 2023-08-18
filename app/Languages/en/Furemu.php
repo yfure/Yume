@@ -16,6 +16,7 @@ return([
 	"yume" => [
 		"fure" => [
 			//...import( Yume\Fure\Locale\Translation\en\Cache::class ),
+			//...import( Yume\Fure\Locale\Translation\en\CLI::class ),
 			//...import( Yume\Fure\Locale\Translation\en\Cookie::class ),
 			//...import( Yume\Fure\Locale\Translation\en\Env::class ),
 			...import( Yume\Fure\Locale\Translation\en\Error::class ),

@@ -1,0 +1,6 @@
+
+# Avoid Important Yume Directories.
+storage/caching/*
+storage/logging/*
+storage/furemu/*
+vendor/*

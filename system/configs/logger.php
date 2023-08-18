@@ -1,8 +1,5 @@
 <?php
 
-use Yume\Fure\IO\Path;
-use Yume\Fure\Logger;
-
 return([
 	
 	/*
@@ -10,7 +7,7 @@ return([
 	 *
 	 * @include format
 	 */
-	"date" => [
+	"datetime" => [
 		"format" => "\x64\x2c\x20\x44\x20\x4d\x20\x59\x20\x48\x3a\x69\x3a\x73"
 	],
 	
@@ -28,7 +25,7 @@ return([
 		 * create your own according to your wishes.
 		 *
 		 */
-		Handler\FileHandler::class => [
+		Yume\Fure\Logger\Handler\FileHandler::class => [
 			
 			/*
 			 * Default file extension name.
@@ -43,21 +40,21 @@ return([
 			 * @values Array<Yume\Fure\Logger\LoggerLevel>
 			 */
 			"handles" => [
-				Logger\LoggerLevel::Alert,
-				Logger\LoggerLevel::Critical,
-				Logger\LoggerLevel::Debug,
-				Logger\LoggerLevel::Emergency,
-				Logger\LoggerLevel::Error,
-				Logger\LoggerLevel::Info,
-				Logger\LoggerLevel::Notice,
-				Logger\LoggerLevel::Warning
+				Yume\Fure\Logger\LoggerLevel::Alert,
+				Yume\Fure\Logger\LoggerLevel::Critical,
+				Yume\Fure\Logger\LoggerLevel::Debug,
+				Yume\Fure\Logger\LoggerLevel::Emergency,
+				Yume\Fure\Logger\LoggerLevel::Error,
+				Yume\Fure\Logger\LoggerLevel::Info,
+				Yume\Fure\Logger\LoggerLevel::Notice,
+				Yume\Fure\Logger\LoggerLevel::Warning
 			],
 			
 			/*
 			 * Path stored logs.
 			 *
 			 */
-			"path" => Path\Paths::StorageLogging->value,
+			"path" => env( "LOGGER_PATH", Yume\Fure\IO\Path\Paths::StorageLogging->value ),
 			
 			/*
 			 * Default file permission.

@@ -16,8 +16,8 @@ return([
 	 * @values Array<String>
 	 */
 	"commands" => [
-		Yume\Fure\CLI\Command\Help\Help::class,
-		
+		Yume\Fure\CLI\Command\Helper\Help::class,
+		Yume\Fure\CLI\Command\Helper\Helper::class
 	],
 	
 	/*
@@ -36,7 +36,7 @@ return([
 	 * @values Array
 	 */
 	"services" => [
-		Yume\Fure\
+		Yume\Fure\Logger\LoggerServiceProvider::class
 	]
 	
 ]);
