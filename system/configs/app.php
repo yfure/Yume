@@ -7,7 +7,7 @@ return([
 	 *
 	 * @values String
 	 */
-	"name" => env( "APP_NAME", "Yume" ),
+	"name" => env( "APP_NAME", "The Yume Framework" ),
 	"version" => env( "APP_VERSION", "4.4.0" ),
 	
 	/*

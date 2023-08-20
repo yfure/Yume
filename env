@@ -13,12 +13,15 @@
 # Some variables are commented out, you can remove the hash
 # symbol at the beginning of the variable definition to enable it.
 #
+# @see Yume\Fure\Util\Type
+#  See list of types allowed type to define environment variable.
+#
 
 # --------------------------------------------------------------------
 # APPLICATION
 # --------------------------------------------------------------------
 
-APP_NAME = Yume;
+APP_NAME = The Yume Framework;
 APP_VERSION = 4.4.0;
 
 # --------------------------------------------------------------------
@@ -48,6 +51,13 @@ APP_VERSION = 4.4.0;
 # --------------------------------------------------------------------
 
 # ENVIRONMENT = development;
+
+# --------------------------------------------------------------------
+# ERROR
+# --------------------------------------------------------------------
+
+# E-TRIGGER-HANDLER = Yume\\Fure\\Error\\Erahandora::trigger;
+# E-EXCEPTION-HANDLER = Yume\\Fure\\Error\\Erahandora::exception;
 
 # --------------------------------------------------------------------
 # LOCALIZATION
@@ -86,7 +96,7 @@ SERVER-PORT = 8080;
 # --------------------------------------------------------------------
 # TOKENIZATION
 # --------------------------------------------------------------------
-# ....
+# This is will automatically generate by Yume Framework.
 # --------------------------------------------------------------------
 
 #[String]

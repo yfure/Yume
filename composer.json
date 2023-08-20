@@ -20,7 +20,8 @@
     },
     "autoload": {
         "files": [
-            "system\/booting\/bootstrap.php"
+            "system\/booting\/bootstrap.php",
+            "app\/Helpers\/helper.php"
         ],
         "psr-4": {
             "Yume\\App\\": "app\/"
