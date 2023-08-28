@@ -26,6 +26,7 @@ return([
 			//...import( Yume\Fure\Locale\Translation\en\Path::class ),
 			//...import( Yume\Fure\Locale\Translation\en\RegExp::class ),
 			//...import( Yume\Fure\Locale\Translation\en\Router::class ),
+			//...import( Yume\Fure\Locale\Translation\en\Service::class ),
 			//...import( Yume\Fure\Locale\Translation\en\Session::class ),
 			//...import( Yume\Fure\Locale\Translation\en\Stream::class ),
 			//...import( Yume\Fure\Locale\Translation\en\::class )
