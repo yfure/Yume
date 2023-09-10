@@ -83,7 +83,7 @@ else {
 	 * Time to run the app!
 	 * Relax your life!
 	 */
-	Main\Main::self()->run();
+	Main\Main::self()->main();
 }
 
 ?>
