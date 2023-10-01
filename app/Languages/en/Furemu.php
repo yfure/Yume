@@ -15,20 +15,19 @@
 return([
 	"yume" => [
 		"fure" => [
+			...import( Yume\Fure\Locale\Translation\en\Buffer::class ),
 			//...import( Yume\Fure\Locale\Translation\en\Cache::class ),
 			//...import( Yume\Fure\Locale\Translation\en\CLI::class ),
 			//...import( Yume\Fure\Locale\Translation\en\Cookie::class ),
-			//...import( Yume\Fure\Locale\Translation\en\Env::class ),
+			...import( Yume\Fure\Locale\Translation\en\Env::class ),
 			...import( Yume\Fure\Locale\Translation\en\Error::class ),
-			//...import( Yume\Fure\Locale\Translation\en\File::class ),
-			//...import( Yume\Fure\Locale\Translation\en\Json::class ),
-			//...import( Yume\Fure\Locale\Translation\en\Logger::class ),
-			//...import( Yume\Fure\Locale\Translation\en\Path::class ),
-			//...import( Yume\Fure\Locale\Translation\en\RegExp::class ),
+			...import( Yume\Fure\Locale\Translation\en\File::class ),
+			...import( Yume\Fure\Locale\Translation\en\Logger::class ),
+			...import( Yume\Fure\Locale\Translation\en\Path::class ),
 			//...import( Yume\Fure\Locale\Translation\en\Router::class ),
-			//...import( Yume\Fure\Locale\Translation\en\Service::class ),
+			...import( Yume\Fure\Locale\Translation\en\Service::class ),
 			//...import( Yume\Fure\Locale\Translation\en\Session::class ),
-			//...import( Yume\Fure\Locale\Translation\en\Stream::class ),
+			...import( Yume\Fure\Locale\Translation\en\Stream::class ),
 			//...import( Yume\Fure\Locale\Translation\en\::class )
 		]
 	]
