@@ -11,7 +11,7 @@
     "authors": [
         {
             "name": "Ari Setiawan",
-            "email": "ari160824@gmail.com"
+            "email": "hxari@proton.me"
         }
     ],
     "require": {
@@ -27,5 +27,8 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require-dev": {
+        "openswoole/ide-helper": "~22.0.1"
+    }
 }

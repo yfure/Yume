@@ -27,11 +27,7 @@ return([
 		 */
 		Yume\Fure\Logger\Handler\FileHandler::class => [
 			
-			/*
-			 * Default file extension name.
-			 *
-			 * @default log
-			 */
+			/** Default file extension name */
 			"extension" => "log",
 			
 			/*
@@ -50,10 +46,7 @@ return([
 				Yume\Fure\Logger\LoggerLevel::Warning
 			],
 			
-			/*
-			 * Path stored logs.
-			 *
-			 */
+			/** Path stored logs */
 			"path" => env( "LOGGER_PATH", Yume\Fure\IO\Path\Paths::StorageLogging->value ),
 			
 			/*

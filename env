@@ -50,21 +50,21 @@ APP_VERSION = 4.4.0;
 # ENVIRONMENT
 # --------------------------------------------------------------------
 
-# ENVIRONMENT = development;
+# ENVIRONMENT = production;
 
 # --------------------------------------------------------------------
 # ERROR
 # --------------------------------------------------------------------
 
-# E-TRIGGER-HANDLER = Yume\\Fure\\Error\\Erahandora::trigger;
-# E-EXCEPTION-HANDLER = Yume\\Fure\\Error\\Erahandora::exception;
+# E-TRIGGER-HANDLER = Yume\\Fure\\Error\\Erahandora\\Erahandora::trigger;
+# E-EXCEPTION-HANDLER = Yume\\Fure\\Error\\Erahandora\\Erahandora::exception;
 
 # --------------------------------------------------------------------
 # LOCALIZATION
 # --------------------------------------------------------------------
 
-LOCALE-LANGUAGE = en;
-LOCALE-TIMEZONE = Asia/Jakarta;
+# LOCALE-LANGUAGE = en;
+# LOCALE-TIMEZONE = Asia/Tokyo;
 
 # --------------------------------------------------------------------
 # LOGGER
@@ -72,6 +72,12 @@ LOCALE-TIMEZONE = Asia/Jakarta;
 
 # LOGGER-PATH=/storage/logging;
 # LOGGER-THRESHOLD=4;
+
+# --------------------------------------------------------------------
+# PHP
+# --------------------------------------------------------------------
+
+# PHP-BINARY=/usr/bin/php
 
 # --------------------------------------------------------------------
 # RESPONSE
@@ -84,8 +90,8 @@ LOCALE-TIMEZONE = Asia/Jakarta;
 # SERVER
 # --------------------------------------------------------------------
 
-SERVER-HOST = 127.0.0.1;
-SERVER-PORT = 8080;
+# SERVER-HOST = 127.0.0.1;
+# SERVER-PORT = 8004;
 
 # --------------------------------------------------------------------
 # SESSION
@@ -99,11 +105,7 @@ SERVER-PORT = 8080;
 # This is will automatically generate by Yume Framework.
 # --------------------------------------------------------------------
 
-#[String]
 # TOKEN;
-#[String]
 # TOKEN-HASH = SHA512;
-#[String]
 # TOKEN-SALT = ;
-#[Int]
 # TOKEN-RANDOM-BYTES = 64;

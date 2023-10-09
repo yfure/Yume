@@ -1,0 +1,5 @@
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ public/index.php [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
