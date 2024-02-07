@@ -30,15 +30,14 @@ $BASE_PATH = $_SERVER['DOCUMENT_ROOT'] !== "" ? $BASE_PATH : __DIR__;
 $SUBSTR_PATH = "/system/booting";
 
 // Check if application running on cli-server/ web-server.
-if( strpos( $BASE_PATH = str_replace( "\\", "/", $BASE_PATH ), $SUBSTR_PATH ) === False )
-{
+if( strpos( $BASE_PATH = str_replace( "\\", "/", $BASE_PATH ), $SUBSTR_PATH ) === False ) {
+
 	/*
 	 * If appilaction running on cli-server
 	 * but the public path as root directory.
 	 *
 	 */
-	if( strpos( $BASE_PATH, "/public" ) !== False )
-	{
+	if( strpos( $BASE_PATH, "/public" ) !== False ) {
 		$SUBSTR_PATH = "/public";
 	}
 	else {

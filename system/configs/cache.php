@@ -10,15 +10,15 @@ return([
 	 * 
 	 */
 	"adapter" => [
-		Yume\Fure\Cache\Pool\FileSystemPool::class => [
+		"Yume\\Fure\\Cache\\Pool\\FileSystemPool" => [
 			"path" => Yume\Fure\IO\Path\Paths::StorageCache->value,
 			"extension" => "cache",
 			"permission" => 0777
 		],
-		Yume\Fure\Cache\Pool\MemcachedAdapter::class => [
+		"Yume\\Fure\\Cache\\Pool\\MemcachedAdapter" => [
 		]
 	],
-	"default" => Yume\Fure\Cache\Pool\FileSystemPool::class,
+	"default" => "Yume\\Fure\\Cache\\Pool\\FileSystemPool",
 	"time" => [
 		"live" => 60
 	]

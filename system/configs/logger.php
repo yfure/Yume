@@ -60,12 +60,6 @@ return([
 			"permission" => 0664
 		]
 	],
-	
-	/*
-	 * Logger threshold configuration.
-	 *
-	 * @values Array<Int>
-	 */
 	"threshold" => [
 		4
 	]
