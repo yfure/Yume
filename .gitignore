@@ -1,6 +1,15 @@
 
+# Avoid PhpStorm Configuration.
+.idea
+
+# Avoid VSCode Configuration.
+.vscode
+
 # Avoid Important Yume Directories.
 storage/caching/*
 storage/logging/*
 storage/furemu/*
+syntaxs/*
+
+# Avoid Composer Directory.
 vendor/*
