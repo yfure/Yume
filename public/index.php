@@ -41,8 +41,8 @@ use Yume\Fure\Main;
 define( "YUME_START", microtime( True ) );
 
 // Check if the application is under maintenance.
-if( file_exists( $maintenance = __DIR__ . "/../assets/furemu/views/maintenance.php" ) )
-{
+if( file_exists( $maintenance = __DIR__ . "/../assets/furemu/views/maintenance.php" ) ) {
+
 	/*
 	 * Application maintenance.
 	 *
@@ -52,38 +52,36 @@ if( file_exists( $maintenance = __DIR__ . "/../assets/furemu/views/maintenance.p
 	 */
 	require( $maintenance );
 }
-else {
-	
-	// Check if the autoload file exists.
-	if( file_exists( $autoload = __DIR__ . "/../vendor/autoload.php" ) )
-	{
+
+// Check if the autoload file exists.
+if( file_exists( $autoload = __DIR__ . "/../vendor/autoload.php" ) ) {
+	try {
+		
 		/*
 		 * Register Auto Load.
-		 *
+		 * 
 		 * Automatic loading of files required for a project or application.
-		 * This includes the files required for the application without
-		 * explicitly including them with the include or require functions.
+		 * This includes the files required for the application without explicitly
+		 * including them with the include or require functions.
 		 */
-		try
-		{
-			require( $autoload );
-		}
-		catch( Throwable $e )
-		{
-			echo $e->getMessage();
-		}
+		require( $autoload );
+
+		/*
+		 * Starting Application.
+		 *
+		 * Time to run the app!
+		 * Relax your life!
+		 */
+		Main\Main::self()->main();
 	}
-	else {
-		exit( sprintf( "File %s not found.", $autoload ) );
+	catch( Throwable $e ) {
+		header( "HTTP/1.1 500 Internal Server Error" );
+		echo $e->getMessage();
 	}
-	
-	/*
-	 * Starting Application.
-	 *
-	 * Time to run the app!
-	 * Relax your life!
-	 */
-	Main\Main::self()->main();
+}
+else {
+	header( "HTTP/1.1 500 Internal Server Error" );
+	echo sprintf( "File %s not found.", $autoload );
 }
 
 ?>
