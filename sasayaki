@@ -58,14 +58,10 @@ require( __DIR__ . "/vendor/autoload.php" );
  * the server or the command line (CLI).
  *
  */
-if( YUME_CONTEXT_CLI )
-{
-	// Starting CLI Tool.
-	CLI\CLI::self()->start(
-		
-		//Instantiating application.
-		Main\Main::self()
-	);
+if( YUME_CONTEXT_CLI ) {
+
+	// Starting the Sasayaki Command Line Interface.
+	CLI\CLI::self( Main\Main::self() )->start();
 }
 else {
 	exit( "Command Line Tools (CLI) cannot be run on the Web or CLI Server." );
